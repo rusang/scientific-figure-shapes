@@ -1,0 +1,5 @@
+interface:
+  display_name: "Scientific Figure Shapes"
+  short_description: "快速把科研图片重建为可编辑 Office/VBA 图形。"
+  brand_color: "#F97316"
+  default_prompt: "Use scientific-figure-shapes to quickly convert this uploaded academic image into editable PowerPoint VBA Shapes."
