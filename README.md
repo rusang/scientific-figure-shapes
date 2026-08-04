@@ -1,5 +1,17 @@
 # Scientific Figure Shapes
 
+## 个人介绍
+
+**抖音博主**
+
+**科研棱镜：** 全网粉丝 20w+，一起拥抱 AI 科研的无限可能！
+
+- AI 集成站：https://ai.hejingpt.com/
+- API 中转站：https://api.sciprism.com/
+- 微信：`LN01678`
+
+<img src="assets/contact/wechat-ln01678.png" alt="微信二维码：LN01678" width="220">
+
 `scientific-figure-shapes` 是一个用于 Codex 的科研图像重建 skill，可以把科研机制图、流程图、截图、学术示意图快速还原为可编辑的 PowerPoint VBA Shapes。
 
 它的目标不是机械地做像素级描摹，而是优先保证“可编辑”和“够快”：标题、标签、箭头、框线、图例、简单图标、坐标轴和版式结构会尽量重建为 Office 原生形状；复杂的生物结构、纹理插画、显微图、照片或高细节区域，则可以作为局部图片裁剪保留。
@@ -89,9 +101,3 @@ scientific-figure-shapes/
 - Microsoft PowerPoint 或 WPS Presentation，用于可用时直接执行宏。
 
 即使本机没有可自动化的 Office 环境，skill 仍然可以生成 VBA、局部素材和说明文件。
-
-## 联系方式
-
-微信：`LN01678`
-
-<img src="assets/contact/wechat-ln01678.png" alt="微信二维码：LN01678" width="220">
