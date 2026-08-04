@@ -40,7 +40,15 @@
 
 ## 安装方式
 
-把仓库克隆到本地 Codex skills 目录：
+最简单的方式：直接把这个 GitHub 链接发给 Codex，并告诉它“帮我安装这个 skill”：
+
+```text
+https://github.com/summer-ai-lab/scientific-figure-shapes
+```
+
+Codex 会把它安装到本地 skills 目录。安装后重启 Codex，或在支持的环境中重新加载 skills。
+
+也可以手动把仓库克隆到本地 Codex skills 目录：
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -54,7 +62,7 @@ mkdir -p ~/.codex/skills
 git clone git@github.com:summer-ai-lab/scientific-figure-shapes.git ~/.codex/skills/scientific-figure-shapes
 ```
 
-安装后重启 Codex，或在支持的环境中重新加载 skills。
+手动安装后同样需要重启 Codex，或在支持的环境中重新加载 skills。
 
 ## 目录结构
 
