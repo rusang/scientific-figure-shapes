@@ -89,3 +89,7 @@ scientific-figure-shapes/
 - Microsoft PowerPoint 或 WPS Presentation，用于可用时直接执行宏。
 
 即使本机没有可自动化的 Office 环境，skill 仍然可以生成 VBA、局部素材和说明文件。
+
+## 联系方式
+
+微信：`LN01678`
