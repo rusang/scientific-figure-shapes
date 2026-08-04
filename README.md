@@ -93,3 +93,5 @@ scientific-figure-shapes/
 ## 联系方式
 
 微信：`LN01678`
+
+<img src="assets/contact/wechat-ln01678.png" alt="微信二维码：LN01678" width="220">
