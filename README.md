@@ -1,43 +1,50 @@
 # Scientific Figure Shapes
 
-`scientific-figure-shapes` is a Codex skill for quickly reconstructing scientific figures, mechanism diagrams, screenshots, and academic visuals as editable PowerPoint VBA Shapes.
+`scientific-figure-shapes` 是一个用于 Codex 的科研图像重建 skill，可以把科研机制图、流程图、截图、学术示意图快速还原为可编辑的 PowerPoint VBA Shapes。
 
-It favors practical editability over pixel-perfect tracing: text, labels, arrows, boxes, tables, simple icons, axes, and diagram structure are rebuilt as Office shapes, while complex biological artwork or texture-heavy regions can be preserved as small traceable image crops.
+它的目标不是机械地做像素级描摹，而是优先保证“可编辑”和“够快”：标题、标签、箭头、框线、图例、简单图标、坐标轴和版式结构会尽量重建为 Office 原生形状；复杂的生物结构、纹理插画、显微图、照片或高细节区域，则可以作为局部图片裁剪保留。
 
-## What It Does
+## 能做什么
 
-- Converts uploaded scientific images into editable PowerPoint-oriented VBA modules.
-- Rebuilds layout, labels, callouts, connectors, legends, and simple visual elements as shapes.
-- Preserves high-detail elements as local crops when redrawing them would be slow or lower fidelity.
-- Produces runnable `.bas` macros plus manifests, validation notes, and optional editable `.pptx` fallbacks.
-- Supports a fast workflow first, with stricter fidelity checks available when requested.
+- 将上传的科研图片转换为面向 PowerPoint 的可运行 VBA 模块。
+- 把文字、标注、连接线、箭头、图例、表格、简单图标和整体布局重建为可编辑 Shapes。
+- 对复杂插画或高细节区域生成可追溯的局部裁剪，避免耗时重画造成失真。
+- 输出 `.bas` 宏文件、局部素材、结构清单、运行记录，以及可选的 `.pptx` 兜底文件。
+- 默认走快速重建流程；如果需要，也可以要求更严格的保真检查和修正轮次。
 
-## Typical Use
+## 典型用法
 
-Ask Codex something like:
-
-```text
-Use scientific-figure-shapes to quickly convert this uploaded academic image into editable PowerPoint VBA Shapes.
-```
-
-Chinese prompts work well too:
+可以这样向 Codex 提问：
 
 ```text
 用 scientific-figure-shapes，把这张科研机制图快速还原成可编辑 PowerPoint VBA Shapes。
 ```
 
-## Installation
+也可以指定更高保真：
 
-Clone the repository into your Codex skills directory:
+```text
+用 scientific-figure-shapes 高保真还原这张图，尽量保持布局、颜色和箭头位置一致。
+```
+
+## 安装方式
+
+把仓库克隆到本地 Codex skills 目录：
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone git@github-summer-ai-lab:summer-ai-lab/scientific-figure-shapes.git ~/.codex/skills/scientific-figure-shapes
+git clone https://github.com/summer-ai-lab/scientific-figure-shapes.git ~/.codex/skills/scientific-figure-shapes
 ```
 
-Restart Codex, or reload skills if your environment supports it.
+如果使用 SSH：
 
-## Repository Structure
+```bash
+mkdir -p ~/.codex/skills
+git clone git@github.com:summer-ai-lab/scientific-figure-shapes.git ~/.codex/skills/scientific-figure-shapes
+```
+
+安装后重启 Codex，或在支持的环境中重新加载 skills。
+
+## 目录结构
 
 ```text
 scientific-figure-shapes/
@@ -58,25 +65,27 @@ scientific-figure-shapes/
     └── render_delta_probe.py
 ```
 
-## Outputs
+## 常见输出
 
-A normal run may produce:
+一次正常运行通常会生成：
 
-- `*.bas` - runnable VBA module with a `BuildFinal` macro.
-- `assets/*.png` - preserved source crops for complex visual regions.
-- `manifest.md` - editable-vs-preserved reconstruction map.
-- `*.pptx` - editable fallback deck when direct Office automation is unavailable.
-- `preview.png` - diagnostic preview image.
-- `run_report.md` - validation and automation notes.
+- `*.bas`：包含 `BuildFinal` 的可运行 VBA 模块。
+- `assets/*.png`：复杂视觉区域的局部保留素材。
+- `manifest.md`：说明哪些区域是可编辑对象，哪些区域是保留裁剪。
+- `*.pptx`：在 Office 自动化不可用时生成的可编辑兜底文件。
+- `preview.png`：用于检查整体视觉效果的预览图。
+- `run_report.md`：运行、校验和自动化状态说明。
 
-## Design Notes
+## 设计取向
 
-This skill is an independent rewrite focused on a speed-first scientific figure reconstruction workflow. It is meant for practical academic editing tasks, not automated publication-grade vector tracing. For high-fidelity recreation, ask explicitly for stricter review, preview comparison, and correction passes.
+这个 skill 是面向实际科研制图修改场景的独立重写版，重点是快速得到可编辑结果。它适合组会图、机制图、论文示意图、汇报图和需要二次修改的学术图片。
 
-## Requirements
+如果目标是投稿级、像素级、逐元素复刻，请在提示中明确要求“高保真”“逐元素检查”或“多轮修正”。
 
-- Codex with local skills support.
-- Python 3 for helper scripts.
-- Microsoft PowerPoint or WPS Presentation for direct macro execution when available.
+## 基础要求
 
-The skill can still generate VBA and supporting files when Office automation is not available.
+- 支持本地 skills 的 Codex 环境。
+- Python 3，用于运行辅助脚本。
+- Microsoft PowerPoint 或 WPS Presentation，用于可用时直接执行宏。
+
+即使本机没有可自动化的 Office 环境，skill 仍然可以生成 VBA、局部素材和说明文件。
