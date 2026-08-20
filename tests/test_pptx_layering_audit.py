@@ -122,6 +122,39 @@ class LayeringAuditTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertEqual(result["z_order_errors"][0]["before"], "large")
 
+    def test_expected_face_bounds_mismatch_fails(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._add_cuboid(slide, "SUMMER_E_large", 80, 80, 80, 70)
+        self._add_cuboid(slide, "SUMMER_E_small", 100, 40, 40, 35)
+        path = self.root / "geometry-reference.pptx"
+        presentation.save(path)
+        manifest = self._manifest()
+        manifest["cuboids"][0]["expected_face_bounds_pt"] = {
+            "front": [110, 50, 40, 35],
+            "top": [100, 40, 40, 10],
+            "right": [140, 50, 10, 35],
+        }
+        manifest["cuboids"][0]["bounds_tolerance_pt"] = 0.5
+        result = module.audit_presentation(str(path), manifest=manifest)
+        self.assertFalse(result["passed"])
+        self.assertEqual(result["geometry_reference_errors"][0]["face"], "front")
+
+    def test_required_gradient_face_fails_when_solid(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._add_cuboid(slide, "SUMMER_E_large", 80, 80, 80, 70)
+        self._add_cuboid(slide, "SUMMER_E_small", 100, 40, 40, 35)
+        path = self.root / "gradient-required.pptx"
+        presentation.save(path)
+        manifest = self._manifest()
+        manifest["cuboids"][0]["gradient_faces"] = ["front"]
+        result = module.audit_presentation(str(path), manifest=manifest)
+        self.assertFalse(result["passed"])
+        self.assertEqual(result["gradient_errors"][0]["face"], "front")
+
 
 if __name__ == "__main__":
     unittest.main()

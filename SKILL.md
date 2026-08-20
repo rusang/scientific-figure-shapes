@@ -91,10 +91,12 @@ Read `references/office-shape-recipes.md` for the fan-in pattern and manifest ex
 Do not use one `msoShapeCube` when the source relies on visible face shading, stepped scale, or occlusion:
 
 - Rebuild each important cuboid as separate `front`, `top`, and `right` faces with stable names.
+- For high-fidelity work, trace source face polygons in source pixels and record their expected Office-point bounds with an explicit tolerance. A structural three-face match is not enough.
 - Keep one consistent depth vector across all layers; top faces are lighter and side faces darker than front faces.
+- Sample face colors from the source and use controlled gradients when the source contains directional shading; record required gradient faces in the manifest.
 - Create back layers first and foreground layers later so z-order matches the source.
 - Record size order and required overlap pairs in a layering manifest.
-- Run `pptx_layering_audit.py` on the materialized deck. Missing faces, flat face colors, detached faces, wrong size order, missing overlap, or wrong z-order are failures.
+- Run `pptx_layering_audit.py` on the materialized deck. Missing faces, flat face colors, detached faces, reference-bound errors, missing gradients, wrong size order, missing overlap, or wrong z-order are failures.
 
 Read `references/office-shape-recipes.md` for the three-face cuboid recipe.
 

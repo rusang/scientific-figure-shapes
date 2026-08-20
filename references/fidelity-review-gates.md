@@ -32,10 +32,12 @@ Check that these are editable when present:
 ## 4. Depth and Layering Gate
 
 - Visually important 3D blocks use explicit `front`, `top`, and `right` faces instead of one uncontrollable auto-cube.
+- Each face has source-derived expected bounds; materialized geometry stays within the declared tolerance (normally no more than 1 pt after Office quantization).
 - All layers share one depth vector and consistent face shading direction.
+- Faces marked as gradient in the manifest remain gradient after PPTX materialization.
 - Feature-pyramid sizes increase in the intended order.
 - Required layer pairs overlap, and back-to-front z-order matches the source.
-- Run `scripts/pptx_layering_audit.py`; missing faces, flat colors, detached faces, hierarchy errors, overlap errors, or z-order errors fail the gate.
+- Run `scripts/pptx_layering_audit.py`; missing faces, flat colors, detached faces, reference-geometry errors, missing gradients, hierarchy errors, overlap errors, or z-order errors fail the gate.
 
 ## 5. Text Gate
 

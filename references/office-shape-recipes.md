@@ -165,7 +165,9 @@ Dim ff As FreeformBuilder
 ' Front face.
 Set frontFace = sld.Shapes.AddShape(msoShapeRectangle, 100, 70, 60, 80)
 frontFace.Name = "SUMMER_E_layer_c3_front"
-frontFace.Fill.ForeColor.RGB = RGB(213, 229, 250)
+frontFace.Fill.TwoColorGradient msoGradientVertical, 1
+frontFace.Fill.ForeColor.RGB = RGB(225, 238, 255)
+frontFace.Fill.BackColor.RGB = RGB(204, 220, 250)
 frontFace.Line.ForeColor.RGB = RGB(46, 111, 239)
 
 ' Top face: one consistent depth vector (+14, -14).
@@ -176,7 +178,9 @@ ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 70
 ff.AddNodes msoSegmentLine, msoEditingAuto, 100, 70
 Set topFace = ff.ConvertToShape
 topFace.Name = "SUMMER_E_layer_c3_top"
-topFace.Fill.ForeColor.RGB = RGB(225, 238, 252)
+topFace.Fill.TwoColorGradient msoGradientHorizontal, 1
+topFace.Fill.ForeColor.RGB = RGB(231, 240, 253)
+topFace.Fill.BackColor.RGB = RGB(218, 231, 248)
 topFace.Line.ForeColor.RGB = RGB(46, 111, 239)
 
 ' Right face: darker than the front face.
@@ -187,7 +191,9 @@ ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 150
 ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 70
 Set rightFace = ff.ConvertToShape
 rightFace.Name = "SUMMER_E_layer_c3_right"
-rightFace.Fill.ForeColor.RGB = RGB(175, 188, 205)
+rightFace.Fill.TwoColorGradient msoGradientVertical, 1
+rightFace.Fill.ForeColor.RGB = RGB(158, 185, 240)
+rightFace.Fill.BackColor.RGB = RGB(150, 179, 238)
 rightFace.Line.ForeColor.RGB = RGB(46, 111, 239)
 ```
 
@@ -201,7 +207,14 @@ Create the largest/back layer first, then progressively smaller foreground layer
         "id": "c3",
         "front": "SUMMER_E_layer_c3_front",
         "top": "SUMMER_E_layer_c3_top",
-        "right": "SUMMER_E_layer_c3_right"
+        "right": "SUMMER_E_layer_c3_right",
+        "gradient_faces": ["front", "top", "right"],
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_bounds_pt": {
+          "front": [100, 70, 60, 80],
+          "top": [100, 56, 74, 14],
+          "right": [160, 56, 14, 94]
+        }
       }
     ],
     "size_order": ["c5", "c4", "c3"],

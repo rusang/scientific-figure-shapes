@@ -72,11 +72,7 @@ def _rect_gap(
     return (gap_x * gap_x + gap_y * gap_y) ** 0.5
 
 
-def _rgb(shape) -> tuple[int, int, int] | None:
-    try:
-        value = shape.fill.fore_color.rgb
-    except Exception:
-        return None
+def _parse_rgb(value) -> tuple[int, int, int] | None:
     if value is None:
         return None
     text = str(value)
@@ -86,6 +82,29 @@ def _rgb(shape) -> tuple[int, int, int] | None:
         return tuple(int(text[index:index + 2], 16) for index in (0, 2, 4))  # type: ignore[return-value]
     except ValueError:
         return None
+
+
+def _fill_colors(shape) -> list[tuple[int, int, int]]:
+    colors: list[tuple[int, int, int]] = []
+    try:
+        for stop in shape.fill.gradient_stops:
+            parsed = _parse_rgb(stop.color.rgb)
+            if parsed is not None:
+                colors.append(parsed)
+    except Exception:
+        pass
+    if colors:
+        return colors
+    try:
+        parsed = _parse_rgb(shape.fill.fore_color.rgb)
+    except Exception:
+        parsed = None
+    return [parsed] if parsed is not None else []
+
+
+def _has_gradient(shape) -> bool:
+    namespace = "{http://schemas.openxmlformats.org/drawingml/2006/main}gradFill"
+    return shape._element.spPr.find(namespace) is not None
 
 
 def _max_color_delta(colors: list[tuple[int, int, int]]) -> int:
@@ -127,6 +146,8 @@ def audit_presentation(
     size_order_errors: list[dict[str, Any]] = []
     z_order_errors: list[dict[str, Any]] = []
     overlap_errors: list[dict[str, Any]] = []
+    geometry_reference_errors: list[dict[str, Any]] = []
+    gradient_errors: list[dict[str, Any]] = []
     cuboids: dict[str, dict[str, Any]] = {}
 
     for spec in cuboid_specs:
@@ -154,18 +175,48 @@ def audit_presentation(
             })
             continue
         rects = {face: _bounds(item[2]) for face, item in faces.items()}
-        colors = [_rgb(item[2]) for item in faces.values()]
-        if any(color is None for color in colors):
+        palettes = {face: _fill_colors(item[2]) for face, item in faces.items()}
+        colors = [palette[0] for palette in palettes.values() if palette]
+        if len(colors) != 3:
             face_color_errors.append({
                 "cuboid": cuboid_id,
                 "code": "face_color_missing",
             })
-        elif _max_color_delta(colors) < min_face_color_delta:  # type: ignore[arg-type]
+        elif _max_color_delta(colors) < min_face_color_delta:
             face_color_errors.append({
                 "cuboid": cuboid_id,
                 "code": "face_contrast_too_low",
                 "colors": colors,
             })
+        for face in spec.get("gradient_faces", []):
+            face = str(face)
+            if face not in faces:
+                continue
+            if not _has_gradient(faces[face][2]):
+                gradient_errors.append({
+                    "cuboid": cuboid_id,
+                    "face": face,
+                    "code": "required_gradient_missing",
+                })
+        expected_bounds = spec.get("expected_face_bounds_pt", {})
+        bounds_tolerance = float(spec.get("bounds_tolerance_pt", 1.0))
+        for face, expected in expected_bounds.items():
+            if face not in rects or not isinstance(expected, list) or len(expected) != 4:
+                continue
+            actual_rect = rects[face]
+            actual = [
+                actual_rect[0], actual_rect[1],
+                actual_rect[2] - actual_rect[0],
+                actual_rect[3] - actual_rect[1],
+            ]
+            if any(abs(float(a) - float(b)) > bounds_tolerance for a, b in zip(actual, expected)):
+                geometry_reference_errors.append({
+                    "cuboid": cuboid_id,
+                    "face": face,
+                    "expected_bounds_pt": expected,
+                    "actual_bounds_pt": [round(value, 3) for value in actual],
+                    "tolerance_pt": bounds_tolerance,
+                })
         for first, second in (("front", "top"), ("front", "right"), ("top", "right")):
             if _rect_gap(rects[first], rects[second]) > face_gap_tolerance:
                 face_geometry_errors.append({
@@ -233,6 +284,8 @@ def audit_presentation(
         size_order_errors,
         z_order_errors,
         overlap_errors,
+        geometry_reference_errors,
+        gradient_errors,
     ))
     return {
         "passed": passed,
@@ -244,6 +297,8 @@ def audit_presentation(
         "size_order_errors": size_order_errors,
         "z_order_errors": z_order_errors,
         "overlap_errors": overlap_errors,
+        "geometry_reference_errors": geometry_reference_errors,
+        "gradient_errors": gradient_errors,
     }
 
 
