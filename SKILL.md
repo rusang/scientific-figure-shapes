@@ -49,7 +49,8 @@ Use generated names with the prefix `SUMMER_`.
    - macOS PowerPoint: `scripts/ppt_macos_macro_launcher.py`
    - Windows PowerPoint: `scripts/ppt_windows_macro_runner.ps1`
 9. For every materialized `.pptx` containing `SUMMER_L_` connectors, run `scripts/pptx_connector_audit.py`. Use a routing manifest for required target edges and explicit intentional exceptions.
-10. If automation is blocked, stop there and deliver the macro, crops, a manifest, and an editable `.pptx` fallback when feasible.
+10. If the source uses multi-face cuboids, feature pyramids, or deliberate overlap, run `scripts/pptx_layering_audit.py` with a layering manifest.
+11. If automation is blocked, stop there and deliver the macro, crops, a manifest, and an editable `.pptx` fallback when feasible.
 
 ## Fidelity Escalation
 
@@ -62,6 +63,7 @@ For that path:
 - render a preview when possible
 - compare source and preview with `scripts/render_delta_probe.py`
 - audit the materialized deck with `scripts/pptx_connector_audit.py`
+- audit explicit faces, size hierarchy, overlap, and z-order with `scripts/pptx_layering_audit.py` when depth is visually salient
 - use `references/fidelity-review-gates.md` for the review checklist
 
 Fast mode does not require an SSIM threshold. Report whatever comparison data is available without pretending a diagnostic preview is the editable deliverable.
@@ -83,6 +85,18 @@ Treat connector routing as geometry, not decoration:
 - Run the audit on the materialized `.pptx`; connector/text collisions, duplicate segments, zero-length segments, and target-edge mismatches are failures. Then inspect the rendered preview. A clean source macro is not evidence that the final arrows are routed correctly.
 
 Read `references/office-shape-recipes.md` for the fan-in pattern and manifest example.
+
+## Depth and Layering Contract
+
+Do not use one `msoShapeCube` when the source relies on visible face shading, stepped scale, or occlusion:
+
+- Rebuild each important cuboid as separate `front`, `top`, and `right` faces with stable names.
+- Keep one consistent depth vector across all layers; top faces are lighter and side faces darker than front faces.
+- Create back layers first and foreground layers later so z-order matches the source.
+- Record size order and required overlap pairs in a layering manifest.
+- Run `pptx_layering_audit.py` on the materialized deck. Missing faces, flat face colors, detached faces, wrong size order, missing overlap, or wrong z-order are failures.
+
+Read `references/office-shape-recipes.md` for the three-face cuboid recipe.
 
 ## Deliverables
 
@@ -106,6 +120,7 @@ Use bundled resources directly. Load long references only when needed.
 - `scripts/preserve_cropper.py`: crop raster-preserved regions and emit a JSON crop manifest.
 - `scripts/macro_smoke_lint.py`: catch common generated VBA mistakes.
 - `scripts/pptx_connector_audit.py`: catch connector/text collisions and verify named connectors enter the required target edge.
+- `scripts/pptx_layering_audit.py`: verify explicit cuboid faces, depth contrast, size hierarchy, overlap, and z-order.
 - `scripts/ppt_macos_macro_launcher.py`: one-shot macOS PowerPoint macro attempt.
 - `scripts/ppt_windows_macro_runner.ps1`: one-shot Windows PowerPoint macro attempt.
 - `scripts/render_delta_probe.py`: optional source-vs-preview image diagnostics.

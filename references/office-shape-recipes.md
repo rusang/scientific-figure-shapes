@@ -152,6 +152,67 @@ dropRight.Line.EndArrowheadStyle = msoArrowheadTriangle
 
 `pptx_connector_audit.py` treats duplicate connector geometry and zero-length connectors as failures. If the bus looks darker than its drops, assume the trunk/bus was drawn more than once and inspect the generated object list.
 
+## Three-Face Cuboid With Controlled Depth
+
+Use three separately named faces when the source depends on depth, overlap, or feature-pyramid scale. Do not rely on `msoShapeCube` adjustments.
+
+```vb
+Dim frontFace As Shape
+Dim topFace As Shape
+Dim rightFace As Shape
+Dim ff As FreeformBuilder
+
+' Front face.
+Set frontFace = sld.Shapes.AddShape(msoShapeRectangle, 100, 70, 60, 80)
+frontFace.Name = "SUMMER_E_layer_c3_front"
+frontFace.Fill.ForeColor.RGB = RGB(213, 229, 250)
+frontFace.Line.ForeColor.RGB = RGB(46, 111, 239)
+
+' Top face: one consistent depth vector (+14, -14).
+Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 100, 70)
+ff.AddNodes msoSegmentLine, msoEditingAuto, 114, 56
+ff.AddNodes msoSegmentLine, msoEditingAuto, 174, 56
+ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 70
+ff.AddNodes msoSegmentLine, msoEditingAuto, 100, 70
+Set topFace = ff.ConvertToShape
+topFace.Name = "SUMMER_E_layer_c3_top"
+topFace.Fill.ForeColor.RGB = RGB(225, 238, 252)
+topFace.Line.ForeColor.RGB = RGB(46, 111, 239)
+
+' Right face: darker than the front face.
+Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 160, 70)
+ff.AddNodes msoSegmentLine, msoEditingAuto, 174, 56
+ff.AddNodes msoSegmentLine, msoEditingAuto, 174, 136
+ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 150
+ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 70
+Set rightFace = ff.ConvertToShape
+rightFace.Name = "SUMMER_E_layer_c3_right"
+rightFace.Fill.ForeColor.RGB = RGB(175, 188, 205)
+rightFace.Line.ForeColor.RGB = RGB(46, 111, 239)
+```
+
+Create the largest/back layer first, then progressively smaller foreground layers. A layering manifest records face names and hierarchy:
+
+```json
+{
+  "layering_audit": {
+    "cuboids": [
+      {
+        "id": "c3",
+        "front": "SUMMER_E_layer_c3_front",
+        "top": "SUMMER_E_layer_c3_top",
+        "right": "SUMMER_E_layer_c3_right"
+      }
+    ],
+    "size_order": ["c5", "c4", "c3"],
+    "z_order": ["c3", "c4", "c5"],
+    "overlap_pairs": [["c4", "c3"]]
+  }
+}
+```
+
+Run `python scripts/pptx_layering_audit.py rebuilt.pptx --manifest layering_manifest.json --pretty` before handoff.
+
 ## Picture Crop Insert
 
 ```vb

@@ -29,14 +29,22 @@ Check that these are editable when present:
 - legends, axes, simple charts, tables
 - repeated simple marks and cells
 
-## 4. Text Gate
+## 4. Depth and Layering Gate
+
+- Visually important 3D blocks use explicit `front`, `top`, and `right` faces instead of one uncontrollable auto-cube.
+- All layers share one depth vector and consistent face shading direction.
+- Feature-pyramid sizes increase in the intended order.
+- Required layer pairs overlap, and back-to-front z-order matches the source.
+- Run `scripts/pptx_layering_audit.py`; missing faces, flat colors, detached faces, hierarchy errors, overlap errors, or z-order errors fail the gate.
+
+## 5. Text Gate
 
 - Text fits inside its box on the rendered preview.
 - Important labels are not hidden behind crops.
 - Font size hierarchy is close enough for the intended use.
 - Biological symbols, arrows, down/up marks, and abbreviations are not accidentally changed.
 
-## 5. Routing Gate
+## 6. Routing Gate
 
 - Major arrows point to the right target region.
 - Dashed zoom lines attach to the intended source and destination.
@@ -48,7 +56,7 @@ Check that these are editable when present:
 - Run `scripts/pptx_connector_audit.py` on the materialized deck. Any collision or target-edge mismatch is a failure.
 - Intentional line-to-text cases are narrow manifest exceptions (`ignore_text_shapes` / `ignore_pairs`), not a global audit bypass.
 
-## 6. Render Gate
+## 7. Render Gate
 
 When a preview exists:
 
@@ -57,7 +65,7 @@ When a preview exists:
 - main panels sit in the expected order.
 - source and preview may be compared with `scripts/render_delta_probe.py`.
 
-## 7. Handoff Gate
+## 8. Handoff Gate
 
 - Macro, assets, manifest, preview, and fallback deck are clearly labeled.
 - Automation failures are reported as local execution issues, not as successful macro runs.
