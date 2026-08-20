@@ -53,6 +53,105 @@ ln.Line.Weight = 1.6
 ln.Line.EndArrowheadStyle = msoArrowheadTriangle
 ```
 
+## Fan-In Routing Without Crossing Labels
+
+Do not route every branch to the same hard-coded point. Name the merge box and each final segment, then enter through different edges:
+
+```vb
+Dim mergeBox As Shape
+Dim branchLeft As Shape
+Dim branchCenter As Shape
+Dim branchRight As Shape
+
+Set mergeBox = sld.Shapes.AddShape(msoShapeRoundedRectangle, 84, 117, 111, 25)
+mergeBox.Name = "SUMMER_E_merge_box"
+
+' Left branch enters the left edge.
+Set branchLeft = sld.Shapes.AddLine(62, 129, 84, 129)
+branchLeft.Name = "SUMMER_L_branch_left_to_merge"
+branchLeft.Line.EndArrowheadStyle = msoArrowheadTriangle
+
+' Center branch enters the top edge.
+Set branchCenter = sld.Shapes.AddLine(139.5, 102, 139.5, 117)
+branchCenter.Name = "SUMMER_L_branch_center_to_merge"
+branchCenter.Line.EndArrowheadStyle = msoArrowheadTriangle
+
+' Right branch enters the right edge.
+Set branchRight = sld.Shapes.AddLine(216, 129, 195, 129)
+branchRight.Name = "SUMMER_L_branch_right_to_merge"
+branchRight.Line.EndArrowheadStyle = msoArrowheadTriangle
+```
+
+Record the expected edges in a routing manifest used by `pptx_connector_audit.py`:
+
+```json
+{
+  "routing_audit": {
+    "routes": [
+      {
+        "connector": "SUMMER_L_branch_left_to_merge",
+        "target": "SUMMER_E_merge_box",
+        "target_edge": "left"
+      },
+      {
+        "connector": "SUMMER_L_branch_center_to_merge",
+        "target": "SUMMER_E_merge_box",
+        "target_edge": "top"
+      },
+      {
+        "connector": "SUMMER_L_branch_right_to_merge",
+        "target": "SUMMER_E_merge_box",
+        "target_edge": "right"
+      }
+    ]
+  }
+}
+```
+
+Run:
+
+```bash
+python scripts/pptx_connector_audit.py rebuilt.pptx \
+  --manifest routing_manifest.json --pretty
+```
+
+If an arrow intentionally points into a text-only label, list that exact text shape or connector/text pair in the manifest. Never ignore all collisions.
+
+## Fan-Out Bus Without Duplicate Strokes
+
+Do not build each branch with a full polyline from the source. That repeats the shared trunk and can create a zero-length segment for the centered branch. Draw the shared geometry once:
+
+```vb
+Dim trunk As Shape
+Dim bus As Shape
+Dim dropLeft As Shape
+Dim dropCenter As Shape
+Dim dropRight As Shape
+
+' Shared trunk: draw once.
+Set trunk = sld.Shapes.AddLine(139, 58, 139, 66)
+trunk.Name = "SUMMER_L_split_trunk"
+
+' Shared horizontal bus: draw once.
+Set bus = sld.Shapes.AddLine(62, 66, 216, 66)
+bus.Name = "SUMMER_L_split_bus"
+
+' Three independent drops; no zero-length horizontal center segment.
+Set dropLeft = sld.Shapes.AddLine(62, 66, 62, 77)
+dropLeft.Name = "SUMMER_L_split_drop_left"
+dropLeft.Line.EndArrowheadStyle = msoArrowheadTriangle
+
+Set dropCenter = sld.Shapes.AddLine(139, 66, 139, 77)
+dropCenter.Name = "SUMMER_L_split_drop_center"
+dropCenter.Line.EndArrowheadStyle = msoArrowheadTriangle
+
+Set dropRight = sld.Shapes.AddLine(216, 66, 216, 77)
+dropRight.Name = "SUMMER_L_split_drop_right"
+dropRight.Line.EndArrowheadStyle = msoArrowheadTriangle
+```
+
+`pptx_connector_audit.py` treats duplicate connector geometry and zero-length connectors as failures. If the bus looks darker than its drops, assume the trunk/bus was drawn more than once and inspect the generated object list.
+
 ## Picture Crop Insert
 
 ```vb
@@ -79,5 +178,6 @@ Loop
 - Prefer simple solid fills and lines for compatibility.
 - Use freeforms sparingly; many small freeforms are hard to maintain.
 - Name every generated object.
+- Name merge boxes and final connector segments semantically so routing manifests remain stable across revisions.
 - Keep helper procedures small: `AddText`, `AddShape`, `AddLine`, `AddPicture`.
 - Use `TextFrame2` when PowerPoint is the target; avoid advanced typography when WPS compatibility matters.

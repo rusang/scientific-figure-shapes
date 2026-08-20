@@ -40,7 +40,13 @@ Check that these are editable when present:
 
 - Major arrows point to the right target region.
 - Dashed zoom lines attach to the intended source and destination.
-- Lines do not cross text in a way that harms reading.
+- Every important final connector segment has a stable name and a recorded target edge (`left`, `right`, `top`, or `bottom`).
+- Shared fan-out trunks/buses are drawn once, not repeated once per branch.
+- No connector is zero-length, and no two connectors have duplicate geometry unless one is explicitly excluded for a documented reason.
+- Fan-in routes do not reuse one hard-coded endpoint when that would force a line through the merge label.
+- Lines may touch target boundaries but do not enter the shrunken text rectangle or cross labels.
+- Run `scripts/pptx_connector_audit.py` on the materialized deck. Any collision or target-edge mismatch is a failure.
+- Intentional line-to-text cases are narrow manifest exceptions (`ignore_text_shapes` / `ignore_pairs`), not a global audit bypass.
 
 ## 6. Render Gate
 

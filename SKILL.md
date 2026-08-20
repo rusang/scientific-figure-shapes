@@ -48,7 +48,8 @@ Use generated names with the prefix `SUMMER_`.
 8. Try materialization once when possible:
    - macOS PowerPoint: `scripts/ppt_macos_macro_launcher.py`
    - Windows PowerPoint: `scripts/ppt_windows_macro_runner.ps1`
-9. If automation is blocked, stop there and deliver the macro, crops, a manifest, and an editable `.pptx` fallback when feasible.
+9. For every materialized `.pptx` containing `SUMMER_L_` connectors, run `scripts/pptx_connector_audit.py`. Use a routing manifest for required target edges and explicit intentional exceptions.
+10. If automation is blocked, stop there and deliver the macro, crops, a manifest, and an editable `.pptx` fallback when feasible.
 
 ## Fidelity Escalation
 
@@ -57,9 +58,10 @@ Use the slower path only when the user asks for high fidelity, pixel-level match
 For that path:
 
 - expand the map to individual visible elements
-- record exact crop boxes and key arrow endpoints
+- record exact crop boxes, key arrow endpoints, and the intended target edge for each fan-in/fan-out route
 - render a preview when possible
 - compare source and preview with `scripts/render_delta_probe.py`
+- audit the materialized deck with `scripts/pptx_connector_audit.py`
 - use `references/fidelity-review-gates.md` for the review checklist
 
 Fast mode does not require an SSIM threshold. Report whatever comparison data is available without pretending a diagnostic preview is the editable deliverable.
@@ -67,6 +69,20 @@ Fast mode does not require an SSIM threshold. Report whatever comparison data is
 ## Crop Contract
 
 For each preserved crop, keep the bbox traceable. The crop should be as small as useful, source aspect ratio must be preserved, and the inserted image must not be stretched independently on x/y. Recreate labels and arrows around the crop as editable objects.
+
+## Connector Routing Contract
+
+Treat connector routing as geometry, not decoration:
+
+- Give merge/split boxes, their text overlays, and final connector segments stable `SUMMER_` names.
+- Draw shared fan-out geometry once: one trunk, one horizontal/vertical bus, then separate branch drops. Repeating the trunk inside a loop creates darker strokes and duplicate geometry.
+- Do not emit zero-length connector segments when a branch is already aligned with the trunk.
+- For fan-in routes, choose the target edge deliberately. Left, center, and right sources should normally enter through left, top/bottom, and right edges rather than sharing one hard-coded endpoint.
+- A connector may touch a text-bearing box at its boundary, but must not enter the shrunken text rectangle or cross the label.
+- Record required edges in a routing manifest. Intentional line-to-text cases must be listed explicitly with `ignore_text_shapes` or `ignore_pairs`; do not disable the audit globally.
+- Run the audit on the materialized `.pptx`; connector/text collisions, duplicate segments, zero-length segments, and target-edge mismatches are failures. Then inspect the rendered preview. A clean source macro is not evidence that the final arrows are routed correctly.
+
+Read `references/office-shape-recipes.md` for the fan-in pattern and manifest example.
 
 ## Deliverables
 
@@ -89,6 +105,7 @@ Use bundled resources directly. Load long references only when needed.
 - `scripts/canvas_point_mapper.py`: calculate source-pixel to Office-point mapping.
 - `scripts/preserve_cropper.py`: crop raster-preserved regions and emit a JSON crop manifest.
 - `scripts/macro_smoke_lint.py`: catch common generated VBA mistakes.
+- `scripts/pptx_connector_audit.py`: catch connector/text collisions and verify named connectors enter the required target edge.
 - `scripts/ppt_macos_macro_launcher.py`: one-shot macOS PowerPoint macro attempt.
 - `scripts/ppt_windows_macro_runner.ps1`: one-shot Windows PowerPoint macro attempt.
 - `scripts/render_delta_probe.py`: optional source-vs-preview image diagnostics.
