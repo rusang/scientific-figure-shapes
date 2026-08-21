@@ -110,6 +110,26 @@ class LayeringAuditTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertEqual(result["face_color_errors"][0]["cuboid"], "large")
 
+    def test_two_near_identical_faces_fail_despite_contrasting_third(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        near_flat = {
+            "front": (225, 238, 255),
+            "top": (231, 240, 253),
+            "right": (158, 185, 240),
+        }
+        self._add_cuboid(slide, "SUMMER_E_large", 80, 80, 80, 70, near_flat)
+        self._add_cuboid(slide, "SUMMER_E_small", 100, 40, 40, 35)
+        path = self.root / "near-flat.pptx"
+        presentation.save(path)
+        result = module.audit_presentation(str(path), manifest=self._manifest())
+        self.assertFalse(result["passed"])
+        self.assertEqual(result["face_color_errors"][0]["cuboid"], "large")
+        self.assertEqual(
+            result["face_color_errors"][0]["code"], "face_contrast_too_low"
+        )
+
     def test_wrong_z_order_fails(self) -> None:
         module = load_module()
         presentation = Presentation()

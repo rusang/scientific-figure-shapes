@@ -107,12 +107,14 @@ def _has_gradient(shape) -> bool:
     return shape._element.spPr.find(namespace) is not None
 
 
-def _max_color_delta(colors: list[tuple[int, int, int]]) -> int:
-    maximum = 0
+def _min_pairwise_color_delta(colors: list[tuple[int, int, int]]) -> int:
+    """每对颜色取最大通道差，再取所有对的最小值——最难分辨的一对说了算。"""
+    minimum: int | None = None
     for index, first in enumerate(colors):
         for second in colors[index + 1:]:
-            maximum = max(maximum, *(abs(a - b) for a, b in zip(first, second)))
-    return maximum
+            delta = max(abs(a - b) for a, b in zip(first, second))
+            minimum = delta if minimum is None else min(minimum, delta)
+    return 0 if minimum is None else minimum
 
 
 def audit_presentation(
@@ -182,7 +184,7 @@ def audit_presentation(
                 "cuboid": cuboid_id,
                 "code": "face_color_missing",
             })
-        elif _max_color_delta(colors) < min_face_color_delta:
+        elif _min_pairwise_color_delta(colors) < min_face_color_delta:
             face_color_errors.append({
                 "cuboid": cuboid_id,
                 "code": "face_contrast_too_low",
