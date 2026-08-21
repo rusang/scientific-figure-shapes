@@ -269,6 +269,109 @@ class LayeringAuditTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertEqual(result["gradient_errors"][0]["face"], "front")
 
+    def test_expected_face_vertices_detect_wrong_depth_geometry(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._face(slide, "FIG_E_cube_front", 100, 80, 60, 50, (180, 210, 250))
+        self._face(slide, "FIG_E_cube_top", 100, 70, 60, 10, (220, 235, 255))
+        self._face(slide, "FIG_E_cube_right", 160, 80, 10, 50, (120, 165, 225))
+        path = self.root / "wrong-depth.pptx"
+        presentation.save(path)
+        manifest = {
+            "cuboids": [
+                {
+                    "id": "cube",
+                    "front": "FIG_E_cube_front",
+                    "top": "FIG_E_cube_top",
+                    "right": "FIG_E_cube_right",
+                    "expected_face_vertices_pt": {
+                        "top": [[100, 70], [110, 60], [170, 60], [160, 70]]
+                    },
+                    "vertex_tolerance_pt": 0.5,
+                }
+            ]
+        }
+
+        result = module.audit_presentation(str(path), manifest=manifest)
+
+        self.assertFalse(result["passed"])
+        self.assertEqual(
+            result["geometry_reference_errors"][0]["code"],
+            "face_vertices_mismatch",
+        )
+
+    def test_expected_gradient_colors_and_angle_are_audited(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        front = self._face(slide, "FIG_E_cube_front", 100, 80, 60, 50, (180, 210, 250))
+        front.fill.gradient()
+        front.fill.gradient_stops[0].color.rgb = RGBColor(220, 235, 255)
+        front.fill.gradient_stops[1].color.rgb = RGBColor(120, 165, 225)
+        front.fill.gradient_angle = 90
+        self._face(slide, "FIG_E_cube_top", 100, 70, 60, 10, (230, 242, 255))
+        self._face(slide, "FIG_E_cube_right", 160, 80, 10, 50, (90, 135, 205))
+        path = self.root / "gradient-reference.pptx"
+        presentation.save(path)
+        manifest = {
+            "cuboids": [
+                {
+                    "id": "cube",
+                    "front": "FIG_E_cube_front",
+                    "top": "FIG_E_cube_top",
+                    "right": "FIG_E_cube_right",
+                    "expected_gradients": {
+                        "front": {
+                            "colors": [[220, 235, 255], [20, 30, 40]],
+                            "angle": 45,
+                            "color_tolerance": 3,
+                            "angle_tolerance": 2,
+                        }
+                    },
+                }
+            ]
+        }
+
+        result = module.audit_presentation(str(path), manifest=manifest)
+        codes = {error["code"] for error in result["gradient_errors"]}
+
+        self.assertFalse(result["passed"])
+        self.assertEqual(codes, {"gradient_color_mismatch", "gradient_angle_mismatch"})
+
+    def test_custom_freeform_vertices_match_reference_geometry(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._face(slide, "FIG_E_cube_front", 100, 70, 60, 50, (180, 210, 250))
+        builder = slide.shapes.build_freeform(100, 70, scale=Pt(1))
+        builder.add_line_segments([(110, 60), (170, 60), (160, 70)], close=True)
+        top = builder.convert_to_shape()
+        top.name = "FIG_E_cube_top"
+        top.fill.solid()
+        top.fill.fore_color.rgb = RGBColor(225, 240, 255)
+        self._face(slide, "FIG_E_cube_right", 160, 70, 10, 50, (120, 165, 225))
+        path = self.root / "custom-vertices.pptx"
+        presentation.save(path)
+        manifest = {
+            "cuboids": [
+                {
+                    "id": "cube",
+                    "front": "FIG_E_cube_front",
+                    "top": "FIG_E_cube_top",
+                    "right": "FIG_E_cube_right",
+                    "expected_face_vertices_pt": {
+                        "top": [[100, 70], [110, 60], [170, 60], [160, 70]]
+                    },
+                    "vertex_tolerance_pt": 0.5,
+                }
+            ]
+        }
+
+        result = module.audit_presentation(str(path), manifest=manifest)
+
+        self.assertTrue(result["passed"], result["geometry_reference_errors"])
+
 
 if __name__ == "__main__":
     unittest.main()

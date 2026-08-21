@@ -169,6 +169,35 @@ class ConnectorAuditTests(unittest.TestCase):
             "SUMMER_L_zero_length",
         )
 
+    def test_default_detection_accepts_project_specific_l_prefix(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        target = slide.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE, Pt(200), Pt(100), Pt(100), Pt(40)
+        )
+        target.name = "FIG_E_target"
+        connector = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT, Pt(100), Pt(120), Pt(200), Pt(120)
+        )
+        connector.name = "FIG_L_to_target"
+        path = self.root / "project-prefix.pptx"
+        presentation.save(path)
+        manifest = {
+            "routes": [
+                {
+                    "connector": "FIG_L_to_target",
+                    "target": "FIG_E_target",
+                    "target_edge": "left",
+                }
+            ]
+        }
+
+        result = module.audit_presentation(str(path), manifest=manifest)
+
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["connector_count"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

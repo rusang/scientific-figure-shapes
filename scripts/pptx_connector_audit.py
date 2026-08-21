@@ -146,7 +146,7 @@ def audit_presentation(
     *,
     shrink_pt: float = 1.0,
     manifest: str | dict[str, Any] | None = None,
-    connector_prefix: str = "SUMMER_L_",
+    connector_prefix: str | None = None,
     segment_tolerance_pt: float = 0.01,
 ) -> dict[str, Any]:
     if shrink_pt < 0:
@@ -160,7 +160,14 @@ def audit_presentation(
     Presentation, MSO_SHAPE_TYPE = _load_pptx()
     presentation = Presentation(str(source))
     config = _manifest_data(manifest)
-    connector_prefix = str(config.get("connector_prefix", connector_prefix))
+    configured_prefix = config.get("connector_prefix", connector_prefix)
+    if configured_prefix is not None:
+        configured_prefix = str(configured_prefix)
+    route_connector_names = {
+        str(route.get("connector", ""))
+        for route in config.get("routes", [])
+        if isinstance(route, dict)
+    }
     ignore_connectors = set(config.get("ignore_connectors", []))
     ignore_text_shapes = set(config.get("ignore_text_shapes", []))
     ignore_pairs = {
@@ -183,7 +190,15 @@ def audit_presentation(
         for shape in slide.shapes:
             indexed_shapes.setdefault(shape.name, []).append((slide_index, shape))
             if shape.shape_type == MSO_SHAPE_TYPE.LINE:
-                if shape.name.startswith(connector_prefix) and shape.name not in ignore_connectors:
+                named_connector = (
+                    shape.name in route_connector_names
+                    or (
+                        shape.name.startswith(configured_prefix)
+                        if configured_prefix is not None
+                        else "_L_" in shape.name
+                    )
+                )
+                if named_connector and shape.name not in ignore_connectors:
                     preset = _connector_preset(shape)
                     if preset in STRAIGHT_PRSTS:
                         connectors.append(shape)
@@ -328,7 +343,10 @@ def main() -> int:
     parser.add_argument("pptx")
     parser.add_argument("--manifest")
     parser.add_argument("--shrink-pt", type=float, default=1.0)
-    parser.add_argument("--connector-prefix", default="SUMMER_L_")
+    parser.add_argument(
+        "--connector-prefix",
+        help="optional exact project prefix; default detects stable names containing _L_",
+    )
     parser.add_argument("--segment-tolerance-pt", type=float, default=0.01)
     parser.add_argument("--json-out")
     parser.add_argument("--pretty", action="store_true")

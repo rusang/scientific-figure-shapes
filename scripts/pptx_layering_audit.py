@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -107,6 +108,75 @@ def _has_gradient(shape) -> bool:
     return shape._element.spPr.find(namespace) is not None
 
 
+def _gradient_angle(shape) -> float | None:
+    try:
+        return float(shape.fill.gradient_angle)
+    except Exception:
+        return None
+
+
+def _rotate_point(
+    point: tuple[float, float], center: tuple[float, float], angle_deg: float
+) -> tuple[float, float]:
+    if not angle_deg:
+        return point
+    radians = math.radians(angle_deg)
+    dx, dy = point[0] - center[0], point[1] - center[1]
+    return (
+        center[0] + dx * math.cos(radians) - dy * math.sin(radians),
+        center[1] + dx * math.sin(radians) + dy * math.cos(radians),
+    )
+
+
+def _shape_vertices_pt(shape) -> list[tuple[float, float]]:
+    """Return custom-geometry vertices in slide coordinates; rectangles fall back to corners."""
+    drawing = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
+    path = shape._element.find(f".//{drawing}custGeom/{drawing}pathLst/{drawing}path")
+    left, top, right, bottom = _bounds(shape)
+    vertices: list[tuple[float, float]] = []
+    if path is not None:
+        try:
+            path_width = float(path.get("w"))
+            path_height = float(path.get("h"))
+        except (TypeError, ValueError):
+            path_width = path_height = 0
+        if path_width > 0 and path_height > 0:
+            for node in path.findall(f".//{drawing}pt"):
+                try:
+                    x = left + float(node.get("x")) / path_width * (right - left)
+                    y = top + float(node.get("y")) / path_height * (bottom - top)
+                except (TypeError, ValueError):
+                    continue
+                point = (x, y)
+                if not vertices or point != vertices[-1]:
+                    vertices.append(point)
+            if len(vertices) > 1 and vertices[0] == vertices[-1]:
+                vertices.pop()
+    if not vertices:
+        vertices = [(left, top), (right, top), (right, bottom), (left, bottom)]
+    center = ((left + right) / 2, (top + bottom) / 2)
+    return [_rotate_point(point, center, float(shape.rotation or 0)) for point in vertices]
+
+
+def _polygon_max_delta(
+    actual: list[tuple[float, float]], expected: list[tuple[float, float]]
+) -> float:
+    if len(actual) != len(expected) or not actual:
+        return float("inf")
+    candidates: list[float] = []
+    for sequence in (actual, list(reversed(actual))):
+        for offset in range(len(sequence)):
+            rotated = sequence[offset:] + sequence[:offset]
+            candidates.append(
+                max(math.dist(first, second) for first, second in zip(rotated, expected))
+            )
+    return min(candidates)
+
+
+def _angle_delta(first: float, second: float) -> float:
+    return abs((first - second + 180) % 360 - 180)
+
+
 def _min_pairwise_color_delta(colors: list[tuple[int, int, int]]) -> int:
     """每对颜色取最大通道差，再取所有对的最小值——最难分辨的一对说了算。"""
     minimum: int | None = None
@@ -177,6 +247,7 @@ def audit_presentation(
             })
             continue
         rects = {face: _bounds(item[2]) for face, item in faces.items()}
+        vertices = {face: _shape_vertices_pt(item[2]) for face, item in faces.items()}
         palettes = {face: _fill_colors(item[2]) for face, item in faces.items()}
         colors = [palette[0] for palette in palettes.values() if palette]
         if len(colors) != 3:
@@ -200,6 +271,50 @@ def audit_presentation(
                     "face": face,
                     "code": "required_gradient_missing",
                 })
+        expected_gradients = spec.get("expected_gradients", {})
+        if isinstance(expected_gradients, dict):
+            for face, expected in expected_gradients.items():
+                if face not in faces or not isinstance(expected, dict):
+                    continue
+                if not _has_gradient(faces[face][2]):
+                    gradient_errors.append({
+                        "cuboid": cuboid_id,
+                        "face": face,
+                        "code": "required_gradient_missing",
+                    })
+                    continue
+                expected_colors = expected.get("colors")
+                actual_colors = palettes.get(face, [])
+                color_tolerance = int(expected.get("color_tolerance", 5))
+                if isinstance(expected_colors, list):
+                    normalized = [tuple(int(channel) for channel in color) for color in expected_colors]
+                    mismatch = len(normalized) != len(actual_colors) or any(
+                        max(abs(a - b) for a, b in zip(actual, wanted)) > color_tolerance
+                        for actual, wanted in zip(actual_colors, normalized)
+                    )
+                    if mismatch:
+                        gradient_errors.append({
+                            "cuboid": cuboid_id,
+                            "face": face,
+                            "code": "gradient_color_mismatch",
+                            "expected": normalized,
+                            "actual": actual_colors,
+                            "tolerance": color_tolerance,
+                        })
+                if "angle" in expected:
+                    actual_angle = _gradient_angle(faces[face][2])
+                    angle_tolerance = float(expected.get("angle_tolerance", 2.0))
+                    if actual_angle is None or _angle_delta(
+                        actual_angle, float(expected["angle"])
+                    ) > angle_tolerance:
+                        gradient_errors.append({
+                            "cuboid": cuboid_id,
+                            "face": face,
+                            "code": "gradient_angle_mismatch",
+                            "expected": float(expected["angle"]),
+                            "actual": actual_angle,
+                            "tolerance": angle_tolerance,
+                        })
         expected_bounds = spec.get("expected_face_bounds_pt", {})
         bounds_tolerance = float(spec.get("bounds_tolerance_pt", 1.0))
         for face, expected in expected_bounds.items():
@@ -219,6 +334,34 @@ def audit_presentation(
                     "actual_bounds_pt": [round(value, 3) for value in actual],
                     "tolerance_pt": bounds_tolerance,
                 })
+        expected_vertices = spec.get("expected_face_vertices_pt", {})
+        vertex_tolerance = float(spec.get("vertex_tolerance_pt", 1.0))
+        if isinstance(expected_vertices, dict):
+            for face, expected in expected_vertices.items():
+                if face not in vertices or not isinstance(expected, list):
+                    continue
+                try:
+                    wanted = [(float(point[0]), float(point[1])) for point in expected]
+                except (TypeError, ValueError, IndexError):
+                    geometry_reference_errors.append({
+                        "cuboid": cuboid_id,
+                        "face": face,
+                        "code": "expected_vertices_invalid",
+                    })
+                    continue
+                delta = _polygon_max_delta(vertices[face], wanted)
+                if delta > vertex_tolerance:
+                    geometry_reference_errors.append({
+                        "cuboid": cuboid_id,
+                        "face": face,
+                        "code": "face_vertices_mismatch",
+                        "expected_vertices_pt": expected,
+                        "actual_vertices_pt": [
+                            [round(x, 3), round(y, 3)] for x, y in vertices[face]
+                        ],
+                        "max_delta_pt": None if math.isinf(delta) else round(delta, 3),
+                        "tolerance_pt": vertex_tolerance,
+                    })
         for first, second in (("front", "top"), ("front", "right"), ("top", "right")):
             if _rect_gap(rects[first], rects[second]) > face_gap_tolerance:
                 face_geometry_errors.append({
@@ -232,6 +375,10 @@ def audit_presentation(
             "slide": next(iter(slides)),
             "bounds_pt": union,
             "face_bounds_pt": {face: list(rect) for face, rect in rects.items()},
+            "face_vertices_pt": {
+                face: [[round(x, 3), round(y, 3)] for x, y in points]
+                for face, points in vertices.items()
+            },
             "area_pt2": _area(union),
             "z_min": min(z_values),
             "z_max": max(z_values),
