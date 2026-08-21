@@ -13,6 +13,11 @@ from pathlib import Path
 
 
 PPT_APP = Path("/Applications/Microsoft PowerPoint.app")
+DEFAULT_MACRO = "BuildFinal"
+EDITABLE_FALLBACK = (
+    "Use scripts/office_shape_canvas.py (python-pptx) to materialize the same "
+    "scene as an editable PPTX, or import the .bas module manually."
+)
 
 
 def q(value: str) -> str:
@@ -30,6 +35,43 @@ def apple_program(vba_file: Path) -> str:
             "end tell",
         ]
     )
+
+
+def visual_basic_probe_program() -> str:
+    """Return a non-destructive AppleScript capability probe."""
+    return "\n".join(
+        [
+            'tell application "Microsoft PowerPoint"',
+            "    activate",
+            '    do Visual Basic "Debug.Print \\\"codex-vba-probe\\\""',
+            "end tell",
+        ]
+    )
+
+
+def probe_visual_basic() -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        ["osascript", "-"],
+        input=visual_basic_probe_program(),
+        capture_output=True,
+        text=True,
+    )
+
+
+def classify_capability(proc: subprocess.CompletedProcess[str]) -> dict:
+    if proc.returncode == 0:
+        return {
+            "available": True,
+            "status": "visual_basic_available",
+            "returncode": proc.returncode,
+        }
+    return {
+        "available": False,
+        "status": "visual_basic_unavailable",
+        "returncode": proc.returncode,
+        "stderr": proc.stderr.strip(),
+        "fallback": EDITABLE_FALLBACK,
+    }
 
 
 def invoke(vba_file: Path) -> subprocess.CompletedProcess[str]:
@@ -72,13 +114,19 @@ def emit(payload: dict, pretty: bool, exit_code: int) -> int:
     return exit_code
 
 
-def main() -> int:
+def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(description="Try to execute a generated VBA module in PowerPoint for Mac.")
-    ap.add_argument("vba_file")
-    ap.add_argument("--macro", default="ReconstructFromImage")
+    ap.add_argument("vba_file", nargs="?")
+    ap.add_argument("--macro", default=DEFAULT_MACRO)
     ap.add_argument("--no-body-fallback", action="store_true")
+    ap.add_argument("--skip-capability-probe", action="store_true")
+    ap.add_argument("--probe-only", action="store_true")
     ap.add_argument("--pretty", action="store_true")
-    ns = ap.parse_args()
+    return ap
+
+
+def main() -> int:
+    ns = build_parser().parse_args()
 
     if platform.system() != "Darwin":
         return emit({"status": "unsupported_platform", "platform": platform.system()}, ns.pretty, 2)
@@ -86,6 +134,14 @@ def main() -> int:
         return emit({"status": "powerpoint_not_found", "expected_path": str(PPT_APP)}, ns.pretty, 2)
     if shutil.which("osascript") is None:
         return emit({"status": "osascript_not_found"}, ns.pretty, 2)
+
+    if ns.probe_only or not ns.skip_capability_probe:
+        capability = classify_capability(probe_visual_basic())
+        if ns.probe_only or not capability["available"]:
+            return emit(capability, ns.pretty, 0 if capability["available"] else 1)
+
+    if not ns.vba_file:
+        return emit({"status": "vba_file_required"}, ns.pretty, 2)
 
     module_path = Path(ns.vba_file).expanduser().resolve()
     if not module_path.is_file():
@@ -118,7 +174,7 @@ def main() -> int:
             "vba_file": str(module_path),
             "macro": ns.macro,
             "attempts": attempts,
-            "fallback": "Open PowerPoint, import the .bas file in the VBA editor, then run the macro manually.",
+            "fallback": EDITABLE_FALLBACK,
         },
         ns.pretty,
         1,
