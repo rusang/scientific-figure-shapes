@@ -12,7 +12,7 @@
 
 <img src="assets/contact/wechat-ln01678.png" alt="微信二维码：LN01678" width="220">
 
-`scientific-figure-shapes` 是一个用于 Codex 的科研图像重建 skill，可以把科研机制图、流程图、截图、学术示意图快速还原为可编辑的 PowerPoint VBA Shapes。
+`scientific-figure-shapes` 是一个用于 Codex 的科研图像重建 skill，可以把科研机制图、流程图、截图、学术示意图快速还原为可编辑的 PowerPoint Shapes，并可同步生成 VBA。
 
 它的目标不是机械地做像素级描摹，而是优先保证“可编辑”和“够快”：标题、标签、箭头、框线、图例、简单图标、坐标轴和版式结构会尽量重建为 Office 原生形状；复杂的生物结构、纹理插画、显微图、照片或高细节区域，则可以作为局部图片裁剪保留。
 
@@ -22,7 +22,9 @@
 - 把文字、标注、连接线、箭头、图例、表格、简单图标和整体布局重建为可编辑 Shapes。
 - 对复杂插画或高细节区域生成可追溯的局部裁剪，避免耗时重画造成失真。
 - 输出 `.bas` 宏文件、局部素材、结构清单、运行记录，以及可选的 `.pptx` 兜底文件。
-- 默认走快速重建流程；如果需要，也可以要求更严格的保真检查和修正轮次。
+- 在 macOS VBA 自动化不可用时，直接用 `python-pptx` 生成同源可编辑 `.pptx`，不把宏执行作为唯一交付路径。
+- 对箭头穿字、立体层次、文字字号/对齐、整页栅格伪装、局部小图标遗漏做自动审计。
+- 支持简单图标的 OpenCV 矢量描摹、逻辑分组/增量更新，以及 PowerPoint/LibreOffice 双渲染差分。
 
 ## 典型用法
 
@@ -74,15 +76,28 @@ scientific-figure-shapes/
 ├── references/
 │   ├── delivery-note-format.md
 │   ├── fidelity-review-gates.md
-│   └── office-shape-recipes.md
+│   ├── office-shape-recipes.md
+│   ├── audit-toolchain.md
+│   ├── figure-manifest.schema.json
+│   └── figure-manifest-example.json
 └── scripts/
     ├── canvas_point_mapper.py
+    ├── dual_renderer_probe.py
+    ├── fidelity_audit.py
     ├── macro_smoke_lint.py
+    ├── manifest_validate.py
+    ├── office_shape_canvas.py
+    ├── office_shape_vba.py
     ├── office_runtime_probe.py
     ├── ppt_macos_macro_launcher.py
     ├── ppt_windows_macro_runner.ps1
+    ├── pptx_connector_audit.py
+    ├── pptx_editability_audit.py
+    ├── pptx_layering_audit.py
+    ├── pptx_text_audit.py
     ├── preserve_cropper.py
-    └── render_delta_probe.py
+    ├── render_delta_probe.py
+    └── vector_trace.py
 ```
 
 ## 常见输出
@@ -92,9 +107,11 @@ scientific-figure-shapes/
 - `*.bas`：包含 `BuildFinal` 的可运行 VBA 模块。
 - `assets/*.png`：复杂视觉区域的局部保留素材。
 - `manifest.md`：说明哪些区域是可编辑对象，哪些区域是保留裁剪。
+- `figure-manifest.json`：统一登记显著元素、文字、箭头路由、立体面、保留裁剪和可编辑性阈值。
 - `*.pptx`：在 Office 自动化不可用时生成的可编辑兜底文件。
 - `preview.png`：用于检查整体视觉效果的预览图。
 - `run_report.md`：运行、校验和自动化状态说明。
+- `audit/`：保真热图、文字/箭头/层次/可编辑性和双渲染差分报告。
 
 ## 设计取向
 
@@ -108,4 +125,4 @@ scientific-figure-shapes/
 - Python 3，用于运行辅助脚本。
 - Microsoft PowerPoint 或 WPS Presentation，用于可用时直接执行宏。
 
-即使本机没有可自动化的 Office 环境，skill 仍然可以生成 VBA、局部素材和说明文件。
+即使本机没有可自动化的 Office 环境，skill 仍然可以直接生成可编辑 PPTX、VBA、局部素材、统一 manifest 和审计报告。

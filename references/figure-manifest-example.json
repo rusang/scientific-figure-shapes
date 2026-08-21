@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "canvas": {
+    "width_px": 1600,
+    "height_px": 1000,
+    "width_pt": 960,
+    "height_pt": 600
+  },
+  "elements": [
+    {
+      "id": "backbone_c5",
+      "label": "Backbone C5 feature block",
+      "type": "cuboid",
+      "bbox_px": [280, 150, 90, 120],
+      "status": "matched",
+      "salience": "high"
+    },
+    {
+      "id": "input_photo",
+      "label": "Input industrial surface image",
+      "type": "preserved_raster",
+      "bbox_px": [20, 120, 180, 260],
+      "status": "preserved",
+      "salience": "high"
+    }
+  ],
+  "routing_audit": {
+    "routes": [
+      {
+        "connector": "FIG_L_c5_to_fusion",
+        "target": "FIG_E_fusion_box",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      }
+    ],
+    "ignore_text_shapes": [],
+    "ignore_pairs": []
+  },
+  "layering_audit": {
+    "min_face_color_delta": 8,
+    "cuboids": [
+      {
+        "id": "c5",
+        "front": "FIG_E_c5_front",
+        "top": "FIG_E_c5_top",
+        "right": "FIG_E_c5_right",
+        "expected_face_vertices_pt": {
+          "top": [[180, 90], [188, 82], [226, 82], [218, 90]]
+        },
+        "vertex_tolerance_pt": 1.5,
+        "expected_gradients": {
+          "front": {
+            "colors": [[202, 222, 251], [96, 145, 224]],
+            "angle": 90,
+            "color_tolerance": 8,
+            "angle_tolerance": 3
+          }
+        }
+      }
+    ],
+    "size_order": ["c5"],
+    "z_order": ["c5"],
+    "overlap_pairs": []
+  },
+  "text_audit": {
+    "items": [
+      {
+        "name": "FIG_T_title",
+        "text": "MPHF-Net 工业表面缺陷检测网络结构设计图",
+        "min_font_pt": 22,
+        "align": "center",
+        "valign": "middle",
+        "max_lines": 1,
+        "estimate_overflow": true
+      }
+    ]
+  },
+  "editability_audit": {
+    "allowed_raster_shapes": ["FIG_R_input_photo"],
+    "reference_slide_shapes": ["FIG_R_reference_full"],
+    "max_unregistered_raster_ratio": 0.02,
+    "max_preserved_raster_ratio": 0.2,
+    "min_editable_shape_count": 10
+  }
+}

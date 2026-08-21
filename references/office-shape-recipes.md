@@ -18,7 +18,7 @@ Set sld = pres.Slides.Add(1, ppLayoutBlank)
 ```vb
 Dim box As Shape
 Set box = sld.Shapes.AddShape(msoShapeRectangle, 40, 40, 220, 90)
-box.Name = "SUMMER_E_panel_01"
+box.Name = "FIG_E_panel_01"
 box.Fill.ForeColor.RGB = RGB(245, 248, 252)
 box.Line.ForeColor.RGB = RGB(80, 110, 130)
 box.Line.Weight = 1.25
@@ -29,7 +29,7 @@ box.Line.Weight = 1.25
 ```vb
 Dim t As Shape
 Set t = sld.Shapes.AddTextbox(msoTextOrientationHorizontal, 60, 55, 180, 40)
-t.Name = "SUMMER_E_label_01"
+t.Name = "FIG_E_label_01"
 With t.TextFrame2
     .MarginLeft = 0
     .MarginRight = 0
@@ -47,7 +47,7 @@ End With
 ```vb
 Dim ln As Shape
 Set ln = sld.Shapes.AddLine(100, 120, 210, 120)
-ln.Name = "SUMMER_L_arrow_01"
+ln.Name = "FIG_L_arrow_01"
 ln.Line.ForeColor.RGB = RGB(0, 0, 0)
 ln.Line.Weight = 1.6
 ln.Line.EndArrowheadStyle = msoArrowheadTriangle
@@ -64,21 +64,21 @@ Dim branchCenter As Shape
 Dim branchRight As Shape
 
 Set mergeBox = sld.Shapes.AddShape(msoShapeRoundedRectangle, 84, 117, 111, 25)
-mergeBox.Name = "SUMMER_E_merge_box"
+mergeBox.Name = "FIG_E_merge_box"
 
 ' Left branch enters the left edge.
 Set branchLeft = sld.Shapes.AddLine(62, 129, 84, 129)
-branchLeft.Name = "SUMMER_L_branch_left_to_merge"
+branchLeft.Name = "FIG_L_branch_left_to_merge"
 branchLeft.Line.EndArrowheadStyle = msoArrowheadTriangle
 
 ' Center branch enters the top edge.
 Set branchCenter = sld.Shapes.AddLine(139.5, 102, 139.5, 117)
-branchCenter.Name = "SUMMER_L_branch_center_to_merge"
+branchCenter.Name = "FIG_L_branch_center_to_merge"
 branchCenter.Line.EndArrowheadStyle = msoArrowheadTriangle
 
 ' Right branch enters the right edge.
 Set branchRight = sld.Shapes.AddLine(216, 129, 195, 129)
-branchRight.Name = "SUMMER_L_branch_right_to_merge"
+branchRight.Name = "FIG_L_branch_right_to_merge"
 branchRight.Line.EndArrowheadStyle = msoArrowheadTriangle
 ```
 
@@ -89,18 +89,18 @@ Record the expected edges in a routing manifest used by `pptx_connector_audit.py
   "routing_audit": {
     "routes": [
       {
-        "connector": "SUMMER_L_branch_left_to_merge",
-        "target": "SUMMER_E_merge_box",
+        "connector": "FIG_L_branch_left_to_merge",
+        "target": "FIG_E_merge_box",
         "target_edge": "left"
       },
       {
-        "connector": "SUMMER_L_branch_center_to_merge",
-        "target": "SUMMER_E_merge_box",
+        "connector": "FIG_L_branch_center_to_merge",
+        "target": "FIG_E_merge_box",
         "target_edge": "top"
       },
       {
-        "connector": "SUMMER_L_branch_right_to_merge",
-        "target": "SUMMER_E_merge_box",
+        "connector": "FIG_L_branch_right_to_merge",
+        "target": "FIG_E_merge_box",
         "target_edge": "right"
       }
     ]
@@ -130,23 +130,23 @@ Dim dropRight As Shape
 
 ' Shared trunk: draw once.
 Set trunk = sld.Shapes.AddLine(139, 58, 139, 66)
-trunk.Name = "SUMMER_L_split_trunk"
+trunk.Name = "FIG_L_split_trunk"
 
 ' Shared horizontal bus: draw once.
 Set bus = sld.Shapes.AddLine(62, 66, 216, 66)
-bus.Name = "SUMMER_L_split_bus"
+bus.Name = "FIG_L_split_bus"
 
 ' Three independent drops; no zero-length horizontal center segment.
 Set dropLeft = sld.Shapes.AddLine(62, 66, 62, 77)
-dropLeft.Name = "SUMMER_L_split_drop_left"
+dropLeft.Name = "FIG_L_split_drop_left"
 dropLeft.Line.EndArrowheadStyle = msoArrowheadTriangle
 
 Set dropCenter = sld.Shapes.AddLine(139, 66, 139, 77)
-dropCenter.Name = "SUMMER_L_split_drop_center"
+dropCenter.Name = "FIG_L_split_drop_center"
 dropCenter.Line.EndArrowheadStyle = msoArrowheadTriangle
 
 Set dropRight = sld.Shapes.AddLine(216, 66, 216, 77)
-dropRight.Name = "SUMMER_L_split_drop_right"
+dropRight.Name = "FIG_L_split_drop_right"
 dropRight.Line.EndArrowheadStyle = msoArrowheadTriangle
 ```
 
@@ -164,7 +164,7 @@ Dim ff As FreeformBuilder
 
 ' Front face.
 Set frontFace = sld.Shapes.AddShape(msoShapeRectangle, 100, 70, 60, 80)
-frontFace.Name = "SUMMER_E_layer_c3_front"
+frontFace.Name = "FIG_E_layer_c3_front"
 frontFace.Fill.TwoColorGradient msoGradientVertical, 1
 frontFace.Fill.ForeColor.RGB = RGB(225, 238, 255)
 frontFace.Fill.BackColor.RGB = RGB(204, 220, 250)
@@ -177,7 +177,7 @@ ff.AddNodes msoSegmentLine, msoEditingAuto, 174, 56
 ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 70
 ff.AddNodes msoSegmentLine, msoEditingAuto, 100, 70
 Set topFace = ff.ConvertToShape
-topFace.Name = "SUMMER_E_layer_c3_top"
+topFace.Name = "FIG_E_layer_c3_top"
 topFace.Fill.TwoColorGradient msoGradientHorizontal, 1
 topFace.Fill.ForeColor.RGB = RGB(231, 240, 253)
 topFace.Fill.BackColor.RGB = RGB(218, 231, 248)
@@ -190,7 +190,7 @@ ff.AddNodes msoSegmentLine, msoEditingAuto, 174, 136
 ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 150
 ff.AddNodes msoSegmentLine, msoEditingAuto, 160, 70
 Set rightFace = ff.ConvertToShape
-rightFace.Name = "SUMMER_E_layer_c3_right"
+rightFace.Name = "FIG_E_layer_c3_right"
 rightFace.Fill.TwoColorGradient msoGradientVertical, 1
 rightFace.Fill.ForeColor.RGB = RGB(158, 185, 240)
 rightFace.Fill.BackColor.RGB = RGB(150, 179, 238)
@@ -205,9 +205,9 @@ Create the largest/back layer first, then progressively smaller foreground layer
     "cuboids": [
       {
         "id": "c3",
-        "front": "SUMMER_E_layer_c3_front",
-        "top": "SUMMER_E_layer_c3_top",
-        "right": "SUMMER_E_layer_c3_right",
+        "front": "FIG_E_layer_c3_front",
+        "top": "FIG_E_layer_c3_top",
+        "right": "FIG_E_layer_c3_right",
         "gradient_faces": ["front", "top", "right"],
         "bounds_tolerance_pt": 1.0,
         "expected_face_bounds_pt": {
@@ -235,7 +235,7 @@ Set pic = sld.Shapes.AddPicture( _
     LinkToFile:=msoFalse, _
     SaveWithDocument:=msoTrue, _
     Left:=xPt, Top:=yPt, Width:=wPt, Height:=hPt)
-pic.Name = "SUMMER_R_anatomy_01"
+pic.Name = "FIG_R_anatomy_01"
 pic.LockAspectRatio = msoTrue
 ```
 

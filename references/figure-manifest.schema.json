@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/summer-ai-lab/scientific-figure-shapes/figure-manifest.schema.json",
+  "title": "Scientific Figure Reconstruction Manifest",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "canvas": {
+      "type": "object",
+      "required": ["width_px", "height_px"],
+      "properties": {
+        "width_px": {"type": "number", "exclusiveMinimum": 0},
+        "height_px": {"type": "number", "exclusiveMinimum": 0},
+        "width_pt": {"type": "number", "exclusiveMinimum": 0},
+        "height_pt": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": true
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "label": {"type": "string"},
+          "type": {"type": "string"},
+          "bbox_px": {"$ref": "#/$defs/bbox"},
+          "rendered_bbox_px": {"$ref": "#/$defs/bbox"},
+          "status": {"enum": ["matched", "preserved", "simplified", "omitted"]},
+          "approved": {"type": "boolean"},
+          "salience": {"enum": ["low", "normal", "high"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "routing_audit": {
+      "type": "object",
+      "properties": {
+        "routes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["connector", "target"],
+            "properties": {
+              "connector": {"type": "string", "minLength": 1},
+              "target": {"type": "string", "minLength": 1},
+              "target_edge": {"enum": ["left", "right", "top", "bottom", "center"]},
+              "tolerance_pt": {"type": "number", "minimum": 0}
+            },
+            "additionalProperties": true
+          }
+        },
+        "ignore_text_shapes": {"type": "array", "items": {"type": "string"}},
+        "ignore_pairs": {"type": "array"}
+      },
+      "additionalProperties": true
+    },
+    "layering_audit": {
+      "type": "object",
+      "properties": {
+        "cuboids": {"type": "array", "items": {"type": "object"}},
+        "size_order": {"type": "array", "items": {"type": "string"}},
+        "z_order": {"type": "array", "items": {"type": "string"}},
+        "overlap_pairs": {"type": "array"}
+      },
+      "additionalProperties": true
+    },
+    "text_audit": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "text": {"type": "string"},
+              "contains": {"type": "string"},
+              "min_font_pt": {"type": "number", "exclusiveMinimum": 0},
+              "max_font_pt": {"type": "number", "exclusiveMinimum": 0},
+              "align": {"enum": ["left", "center", "right", "justify", "distribute"]},
+              "valign": {"enum": ["top", "middle", "bottom"]},
+              "max_lines": {"type": "integer", "minimum": 1},
+              "estimate_overflow": {"type": "boolean"}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "editability_audit": {
+      "type": "object",
+      "properties": {
+        "allowed_raster_shapes": {"type": "array", "items": {"type": "string"}},
+        "reference_slide_shapes": {"type": "array", "items": {"type": "string"}},
+        "max_unregistered_raster_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "max_preserved_raster_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "min_editable_shape_count": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "bbox": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number"},
+        {"type": "number"},
+        {"type": "number", "exclusiveMinimum": 0},
+        {"type": "number", "exclusiveMinimum": 0}
+      ],
+      "minItems": 4,
+      "maxItems": 4
+    }
+  },
+  "additionalProperties": true
+}

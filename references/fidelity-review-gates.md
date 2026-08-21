@@ -12,12 +12,13 @@ Use this checklist only for high-fidelity or repeated-correction work.
 
 For every `R*` crop:
 
-- bbox is recorded in source pixels.
+- bbox and stable `asset_id` are recorded in source pixels.
 - crop file exists and has nonzero size.
 - crop aspect ratio matches the recorded bbox.
 - inserted image keeps aspect ratio.
 - rotation and flips are intentional and documented.
 - nearby labels, arrows, and highlights are rebuilt as editable objects when practical.
+- repeated crop runs cannot silently overwrite an earlier asset; `--overwrite` is an explicit decision.
 
 ## 3. Editable Structure Gate
 
@@ -32,9 +33,9 @@ Check that these are editable when present:
 ## 4. Depth and Layering Gate
 
 - Visually important 3D blocks use explicit `front`, `top`, and `right` faces instead of one uncontrollable auto-cube.
-- Each face has source-derived expected bounds; materialized geometry stays within the declared tolerance (normally no more than 1 pt after Office quantization).
+- Each face has source-derived expected bounds and, when perspective matters, expected vertices; materialized geometry stays within the declared tolerance (normally no more than 1 pt after Office quantization).
 - All layers share one depth vector and consistent face shading direction.
-- Faces marked as gradient in the manifest remain gradient after PPTX materialization.
+- Faces marked as gradient retain expected stop colors and angle after PPTX materialization.
 - Feature-pyramid sizes increase in the intended order.
 - Required layer pairs overlap, and back-to-front z-order matches the source.
 - Run `scripts/pptx_layering_audit.py`; missing faces, flat colors, detached faces, reference-geometry errors, missing gradients, hierarchy errors, overlap errors, or z-order errors fail the gate.
@@ -45,6 +46,7 @@ Check that these are editable when present:
 - Important labels are not hidden behind crops.
 - Font size hierarchy is close enough for the intended use.
 - Biological symbols, arrows, down/up marks, and abbreviations are not accidentally changed.
+- Run `scripts/pptx_text_audit.py`; required text, font, alignment, explicit line count, and opted-in overflow estimates must pass.
 
 ## 6. Routing Gate
 
@@ -65,10 +67,18 @@ When a preview exists:
 - no large blank region appears unexpectedly.
 - no crop is visibly stretched.
 - main panels sit in the expected order.
-- source and preview may be compared with `scripts/render_delta_probe.py`.
+- source and preview are compared with `scripts/fidelity_audit.py`; every salient small icon or label has an ROI entry so global averaging cannot hide an omission.
+- when both renderers are available, PowerPoint and LibreOffice previews are compared with `scripts/dual_renderer_probe.py`.
 
-## 8. Handoff Gate
+## 8. Editability Gate
 
-- Macro, assets, manifest, preview, and fallback deck are clearly labeled.
+- Run `scripts/pptx_editability_audit.py` on the editable deck.
+- Every preserved raster shape is registered by name in the manifest.
+- A full-slide or large unregistered picture is a failure even when editable objects are placed above it.
+- Reference-image slides are explicitly registered or use the `_R_reference_full` name and are excluded from the content-slide score.
+
+## 9. Handoff Gate
+
+- Editable PPTX, macro, assets, validated manifest, preview, and audit reports are clearly labeled.
 - Automation failures are reported as local execution issues, not as successful macro runs.
 - Remaining non-editable regions are listed honestly.
