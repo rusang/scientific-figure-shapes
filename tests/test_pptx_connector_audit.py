@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE
 from pptx.util import Pt
 
 
@@ -109,6 +109,31 @@ class ConnectorAuditTests(unittest.TestCase):
         result = module.audit_presentation(str(path), shrink_pt=1.0)
         self.assertTrue(result["passed"])
         self.assertEqual(result["collisions"], [])
+
+    def test_elbow_connector_reported_unsupported_not_misjudged(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        text = slide.shapes.add_textbox(Pt(180), Pt(110), Pt(60), Pt(30))
+        text.name = "SUMMER_E_label_text"
+        text.text_frame.text = "标签"
+        connector = slide.shapes.add_connector(
+            MSO_CONNECTOR.ELBOW, Pt(100), Pt(100), Pt(300), Pt(160)
+        )
+        connector.name = "SUMMER_L_elbow_route"
+        path = self.root / "elbow.pptx"
+        presentation.save(path)
+
+        result = module.audit_presentation(str(path), shrink_pt=1.0)
+        self.assertFalse(result["passed"])
+        self.assertEqual(result["collisions"], [])
+        self.assertEqual(
+            result["unsupported_connectors"][0]["connector"],
+            "SUMMER_L_elbow_route",
+        )
+        self.assertNotIn(
+            result["unsupported_connectors"][0]["preset"], ("line", "straightConnector1")
+        )
 
     def test_flags_duplicate_connector_segments(self) -> None:
         module = load_module()

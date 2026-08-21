@@ -13,6 +13,8 @@ from typing import Any
 EMU_PER_POINT = 12700
 VALID_EDGES = {"left", "right", "top", "bottom"}
 DECORATIVE_TEXT = re.compile(r"^[\s•·.…⋮⋯]+$")
+PRST_GEOM = "{http://schemas.openxmlformats.org/drawingml/2006/main}prstGeom"
+STRAIGHT_PRSTS = {"line", "straightConnector1"}
 
 
 def _load_pptx():
@@ -40,6 +42,11 @@ def _bounds(shape) -> tuple[float, float, float, float]:
 
 def _truthy_xml(value: str | None) -> bool:
     return value in {"1", "true", "True"}
+
+
+def _connector_preset(shape) -> str:
+    prst_geom = shape._element.spPr.find(PRST_GEOM)
+    return prst_geom.get("prst", "") if prst_geom is not None else ""
 
 
 def _line_endpoints(shape) -> tuple[tuple[float, float], tuple[float, float]]:
@@ -165,6 +172,7 @@ def audit_presentation(
     route_errors: list[dict[str, Any]] = []
     duplicate_segments: list[dict[str, Any]] = []
     degenerate_segments: list[dict[str, Any]] = []
+    unsupported_connectors: list[dict[str, Any]] = []
     indexed_shapes: dict[str, list[tuple[int, Any]]] = {}
     connector_count = 0
     text_count = 0
@@ -176,7 +184,16 @@ def audit_presentation(
             indexed_shapes.setdefault(shape.name, []).append((slide_index, shape))
             if shape.shape_type == MSO_SHAPE_TYPE.LINE:
                 if shape.name.startswith(connector_prefix) and shape.name not in ignore_connectors:
-                    connectors.append(shape)
+                    preset = _connector_preset(shape)
+                    if preset in STRAIGHT_PRSTS:
+                        connectors.append(shape)
+                    else:
+                        # elbow/curved：端点≠bbox 对角线，按直线审计必错，显式拒审
+                        unsupported_connectors.append({
+                            "slide": slide_index,
+                            "connector": shape.name,
+                            "preset": preset,
+                        })
             elif getattr(shape, "has_text_frame", False):
                 text = shape.text.strip()
                 if (text and not DECORATIVE_TEXT.fullmatch(text)
@@ -257,6 +274,14 @@ def audit_presentation(
             continue
         connector_slide, connector = connector_matches[0]
         target_slide, target = target_matches[0]
+        preset = _connector_preset(connector)
+        if preset not in STRAIGHT_PRSTS:
+            route_errors.append({
+                "code": "unsupported_connector_geometry",
+                "connector": connector_name,
+                "preset": preset,
+            })
+            continue
         if connector_slide != target_slide:
             route_errors.append({
                 "code": "route_cross_slide",
@@ -280,6 +305,7 @@ def audit_presentation(
         "passed": (
             not collisions and not route_errors
             and not duplicate_segments and not degenerate_segments
+            and not unsupported_connectors
         ),
         "pptx": str(source.resolve()),
         "slides": len(presentation.slides),
@@ -291,6 +317,7 @@ def audit_presentation(
         "route_errors": route_errors,
         "duplicate_segments": duplicate_segments,
         "degenerate_segments": degenerate_segments,
+        "unsupported_connectors": unsupported_connectors,
     }
 
 
