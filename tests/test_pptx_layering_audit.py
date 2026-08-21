@@ -183,6 +183,59 @@ class LayeringAuditTests(unittest.TestCase):
         )
         self.assertEqual(result["overlap_errors"][0]["code"], "cross_slide_pair")
 
+    def test_overlap_uses_face_rects_not_union_bbox_phantom_corner(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        # cuboid a：union bbox (100,100)-(190,180)，右上角 (180,100)-(190,110)
+        # 为无面幽灵区
+        self._face(slide, "SUMMER_E_a_front", 100, 110, 80, 70, (180, 210, 250))
+        self._face(slide, "SUMMER_E_a_top", 100, 100, 80, 10, (220, 235, 255))
+        self._face(slide, "SUMMER_E_a_right", 180, 110, 10, 70, (120, 165, 225))
+        # cuboid b：front 底边仅侵入 a 的幽灵区，与 a 任何面零交集，
+        # 但两 union bbox 相交 8x2=16 pt^2
+        self._face(slide, "SUMMER_E_b_front", 182, 60, 40, 42, (180, 210, 250))
+        self._face(slide, "SUMMER_E_b_top", 182, 50, 40, 10, (220, 235, 255))
+        self._face(slide, "SUMMER_E_b_right", 222, 60, 10, 42, (120, 165, 225))
+        path = self.root / "phantom-overlap.pptx"
+        presentation.save(path)
+        manifest = {
+            "cuboids": [
+                {
+                    "id": "a",
+                    "front": "SUMMER_E_a_front",
+                    "top": "SUMMER_E_a_top",
+                    "right": "SUMMER_E_a_right",
+                },
+                {
+                    "id": "b",
+                    "front": "SUMMER_E_b_front",
+                    "top": "SUMMER_E_b_top",
+                    "right": "SUMMER_E_b_right",
+                },
+            ],
+            "overlap_pairs": [["a", "b"]],
+        }
+        result = module.audit_presentation(str(path), manifest=manifest)
+        self.assertFalse(result["passed"])
+        self.assertEqual(
+            result["overlap_errors"][0]["code"], "required_overlap_missing"
+        )
+
+    def test_real_face_overlap_still_satisfies_pair(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._add_cuboid(slide, "SUMMER_E_large", 80, 80, 80, 70)
+        self._add_cuboid(slide, "SUMMER_E_small", 100, 40, 40, 35)
+        path = self.root / "real-overlap.pptx"
+        presentation.save(path)
+        manifest = self._manifest()
+        manifest["overlap_pairs"] = [["large", "small"]]
+        result = module.audit_presentation(str(path), manifest=manifest)
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["overlap_errors"], [])
+
     def test_expected_face_bounds_mismatch_fails(self) -> None:
         module = load_module()
         presentation = Presentation()

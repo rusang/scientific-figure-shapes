@@ -231,6 +231,7 @@ def audit_presentation(
         cuboids[cuboid_id] = {
             "slide": next(iter(slides)),
             "bounds_pt": union,
+            "face_bounds_pt": {face: list(rect) for face, rect in rects.items()},
             "area_pt2": _area(union),
             "z_min": min(z_values),
             "z_max": max(z_values),
@@ -299,8 +300,12 @@ def audit_presentation(
                 "pair": [first, second],
             })
             continue
-        overlap = _intersection_area(
-            cuboids[first]["bounds_pt"], cuboids[second]["bounds_pt"]
+        # 按面矩形对求最大交集：三面 union bbox 的空角（top-right 幽灵区）
+        # 不算真实视觉重叠；斜面仍以其自身 bbox 近似。
+        overlap = max(
+            _intersection_area(tuple(rect_a), tuple(rect_b))
+            for rect_a in cuboids[first]["face_bounds_pt"].values()
+            for rect_b in cuboids[second]["face_bounds_pt"].values()
         )
         if overlap < min_overlap_area:
             overlap_errors.append({
