@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "source_image": "/Users/shengshiliao/.skillshub/scientific-figure-shapes/assets/reference-figures/mphf-net-architecture.png",
+  "source_size_px": {
+    "width": 1536,
+    "height": 1024
+  },
+  "output_dir": "/Users/shengshiliao/.skillshub/scientific-figure-shapes/examples/mphf-net/assets",
+  "assets": [
+    {
+      "name": "R1_pcb",
+      "reason": "",
+      "asset_path": "/Users/shengshiliao/.skillshub/scientific-figure-shapes/examples/mphf-net/assets/01_R1_pcb.png",
+      "source_box_px": {
+        "x": 25,
+        "y": 162,
+        "width": 171,
+        "height": 244
+      }
+    }
+  ]
+}

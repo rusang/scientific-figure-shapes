@@ -1,0 +1,176 @@
+{
+  "layering_audit": {
+    "cuboids": [
+      {
+        "id": "bb1",
+        "front": "SUMMER_E_bb1_front",
+        "top": "SUMMER_E_bb1_top",
+        "right": "SUMMER_E_bb1_right",
+        "expected_face_bounds_pt": {
+          "top": [
+            178.75,
+            98.75,
+            21.25,
+            5.0
+          ],
+          "front": [
+            178.75,
+            103.75,
+            21.25,
+            16.25
+          ],
+          "right": [
+            200.0,
+            103.75,
+            5.0,
+            16.25
+          ]
+        },
+        "bounds_tolerance_pt": 1.0
+      },
+      {
+        "id": "bb2",
+        "front": "SUMMER_E_bb2_front",
+        "top": "SUMMER_E_bb2_top",
+        "right": "SUMMER_E_bb2_right",
+        "expected_face_bounds_pt": {
+          "top": [
+            170.0,
+            116.25,
+            30.0,
+            5.0
+          ],
+          "front": [
+            170.0,
+            121.25,
+            30.0,
+            23.75
+          ],
+          "right": [
+            200.0,
+            121.25,
+            5.0,
+            23.75
+          ]
+        },
+        "bounds_tolerance_pt": 1.0
+      },
+      {
+        "id": "bb3",
+        "front": "SUMMER_E_bb3_front",
+        "top": "SUMMER_E_bb3_top",
+        "right": "SUMMER_E_bb3_right",
+        "expected_face_bounds_pt": {
+          "top": [
+            160.0,
+            140.0,
+            40.0,
+            5.0
+          ],
+          "front": [
+            160.0,
+            145.0,
+            40.0,
+            31.25
+          ],
+          "right": [
+            200.0,
+            145.0,
+            5.0,
+            31.25
+          ]
+        },
+        "bounds_tolerance_pt": 1.0
+      },
+      {
+        "id": "bb4",
+        "front": "SUMMER_E_bb4_front",
+        "top": "SUMMER_E_bb4_top",
+        "right": "SUMMER_E_bb4_right",
+        "expected_face_bounds_pt": {
+          "top": [
+            150.0,
+            172.5,
+            51.25,
+            5.0
+          ],
+          "front": [
+            150.0,
+            177.5,
+            51.25,
+            38.75
+          ],
+          "right": [
+            201.25,
+            177.5,
+            5.0,
+            38.75
+          ]
+        },
+        "bounds_tolerance_pt": 1.0
+      },
+      {
+        "id": "out_p3",
+        "front": "SUMMER_E_out_p3_front",
+        "top": "SUMMER_E_out_p3_top",
+        "right": "SUMMER_E_out_p3_right"
+      },
+      {
+        "id": "neck_p3",
+        "front": "SUMMER_E_neck_p3_front",
+        "top": "SUMMER_E_neck_p3_top",
+        "right": "SUMMER_E_neck_p3_right"
+      },
+      {
+        "id": "out_p4",
+        "front": "SUMMER_E_out_p4_front",
+        "top": "SUMMER_E_out_p4_top",
+        "right": "SUMMER_E_out_p4_right"
+      },
+      {
+        "id": "neck_p4",
+        "front": "SUMMER_E_neck_p4_front",
+        "top": "SUMMER_E_neck_p4_top",
+        "right": "SUMMER_E_neck_p4_right"
+      },
+      {
+        "id": "out_p5",
+        "front": "SUMMER_E_out_p5_front",
+        "top": "SUMMER_E_out_p5_top",
+        "right": "SUMMER_E_out_p5_right"
+      },
+      {
+        "id": "neck_p5",
+        "front": "SUMMER_E_neck_p5_front",
+        "top": "SUMMER_E_neck_p5_top",
+        "right": "SUMMER_E_neck_p5_right"
+      }
+    ],
+    "size_order": [
+      "bb1",
+      "bb2",
+      "bb3",
+      "bb4"
+    ],
+    "z_order": [
+      "bb1",
+      "bb2",
+      "bb3",
+      "bb4"
+    ],
+    "overlap_pairs": [
+      [
+        "bb1",
+        "bb2"
+      ],
+      [
+        "bb2",
+        "bb3"
+      ],
+      [
+        "bb3",
+        "bb4"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "routing_audit": {
+    "routes": [
+      {
+        "connector": "SUMMER_L_input_backbone",
+        "target": "SUMMER_E_panel_backbone",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_backbone_neck",
+        "target": "SUMMER_E_panel_neck",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_neck_head",
+        "target": "SUMMER_E_panel_head",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_b1_b2",
+        "target": "SUMMER_E_panel_b2",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_b2_b3",
+        "target": "SUMMER_E_panel_b3",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_neck_add1_fusion",
+        "target": "SUMMER_E_neck_fusion1",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_neck_add2_fusion",
+        "target": "SUMMER_E_neck_fusion2",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_head_iou_dec",
+        "target": "SUMMER_E_head_dec",
+        "target_edge": "top",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_head_dec_out",
+        "target": "SUMMER_E_head_out",
+        "target_edge": "top",
+        "tolerance_pt": 1.5
+      }
+    ]
+  }
+}
