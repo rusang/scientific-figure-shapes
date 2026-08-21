@@ -140,6 +140,29 @@ class LayeringAuditTests(unittest.TestCase):
         self.assertEqual(result["overlap_errors"][0]["code"], "unknown_cuboid_id")
         self.assertEqual(result["overlap_errors"][0]["unknown"], ["smal"])
 
+    def test_cross_slide_pair_reported_not_compared(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide_one = presentation.slides.add_slide(presentation.slide_layouts[6])
+        slide_two = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._add_cuboid(slide_one, "SUMMER_E_small", 100, 40, 40, 35)
+        self._add_cuboid(slide_two, "SUMMER_E_large", 80, 80, 80, 70)
+        path = self.root / "cross-slide.pptx"
+        presentation.save(path)
+        manifest = self._manifest()
+        manifest["overlap_pairs"] = [["large", "small"]]
+        result = module.audit_presentation(str(path), manifest=manifest)
+        self.assertFalse(result["passed"])
+        self.assertEqual(
+            [error["code"] for error in result["z_order_errors"]],
+            ["cross_slide_pair"],
+        )
+        self.assertEqual(
+            [error["code"] for error in result["size_order_errors"]],
+            ["cross_slide_pair"],
+        )
+        self.assertEqual(result["overlap_errors"][0]["code"], "cross_slide_pair")
+
     def test_expected_face_bounds_mismatch_fails(self) -> None:
         module = load_module()
         presentation = Presentation()

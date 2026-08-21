@@ -241,6 +241,12 @@ def audit_presentation(
     for smaller, larger in zip(size_order, size_order[1:]):
         if smaller not in cuboids or larger not in cuboids:
             continue
+        if cuboids[smaller]["slide"] != cuboids[larger]["slide"]:
+            size_order_errors.append({
+                "code": "cross_slide_pair",
+                "pair": [smaller, larger],
+            })
+            continue
         small_area = cuboids[smaller]["area_pt2"]
         large_area = cuboids[larger]["area_pt2"]
         if large_area < small_area * min_size_growth:
@@ -257,6 +263,12 @@ def audit_presentation(
             z_order_errors.append({"code": "unknown_cuboid_id", "id": name})
     for before, after in zip(z_order, z_order[1:]):
         if before not in cuboids or after not in cuboids:
+            continue
+        if cuboids[before]["slide"] != cuboids[after]["slide"]:
+            z_order_errors.append({
+                "code": "cross_slide_pair",
+                "pair": [before, after],
+            })
             continue
         if cuboids[before]["z_max"] >= cuboids[after]["z_min"]:
             z_order_errors.append({
@@ -277,6 +289,12 @@ def audit_presentation(
                 "code": "unknown_cuboid_id",
                 "pair": [first, second],
                 "unknown": unknown,
+            })
+            continue
+        if cuboids[first]["slide"] != cuboids[second]["slide"]:
+            overlap_errors.append({
+                "code": "cross_slide_pair",
+                "pair": [first, second],
             })
             continue
         overlap = _intersection_area(
