@@ -235,6 +235,9 @@ def audit_presentation(
         }
 
     size_order = [str(value) for value in config.get("size_order", [])]
+    for name in size_order:
+        if name not in cuboids:
+            size_order_errors.append({"code": "unknown_cuboid_id", "id": name})
     for smaller, larger in zip(size_order, size_order[1:]):
         if smaller not in cuboids or larger not in cuboids:
             continue
@@ -249,6 +252,9 @@ def audit_presentation(
             })
 
     z_order = [str(value) for value in config.get("z_order", [])]
+    for name in z_order:
+        if name not in cuboids:
+            z_order_errors.append({"code": "unknown_cuboid_id", "id": name})
     for before, after in zip(z_order, z_order[1:]):
         if before not in cuboids or after not in cuboids:
             continue
@@ -265,7 +271,13 @@ def audit_presentation(
             overlap_errors.append({"code": "overlap_pair_invalid", "pair": pair})
             continue
         first, second = str(pair[0]), str(pair[1])
-        if first not in cuboids or second not in cuboids:
+        unknown = [name for name in (first, second) if name not in cuboids]
+        if unknown:
+            overlap_errors.append({
+                "code": "unknown_cuboid_id",
+                "pair": [first, second],
+                "unknown": unknown,
+            })
             continue
         overlap = _intersection_area(
             cuboids[first]["bounds_pt"], cuboids[second]["bounds_pt"]

@@ -122,6 +122,24 @@ class LayeringAuditTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertEqual(result["z_order_errors"][0]["before"], "large")
 
+    def test_unknown_manifest_id_fails_instead_of_silent_skip(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        self._add_cuboid(slide, "SUMMER_E_small", 100, 40, 40, 35)
+        self._add_cuboid(slide, "SUMMER_E_large", 80, 80, 80, 70)
+        path = self.root / "typo-id.pptx"
+        presentation.save(path)
+        manifest = self._manifest()
+        manifest["z_order"] = ["large", "smal"]
+        manifest["overlap_pairs"] = [["large", "smal"]]
+        result = module.audit_presentation(str(path), manifest=manifest)
+        self.assertFalse(result["passed"])
+        codes = [error["code"] for error in result["z_order_errors"]]
+        self.assertIn("unknown_cuboid_id", codes)
+        self.assertEqual(result["overlap_errors"][0]["code"], "unknown_cuboid_id")
+        self.assertEqual(result["overlap_errors"][0]["unknown"], ["smal"])
+
     def test_expected_face_bounds_mismatch_fails(self) -> None:
         module = load_module()
         presentation = Presentation()
