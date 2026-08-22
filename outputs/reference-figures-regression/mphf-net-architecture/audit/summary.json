@@ -1,0 +1,47 @@
+{
+  "manifest": true,
+  "text": {
+    "passed": true,
+    "findings": 0
+  },
+  "connectors": {
+    "passed": true,
+    "count": 85,
+    "findings": 0
+  },
+  "layering": {
+    "passed": true,
+    "cuboids": 10,
+    "findings": 0
+  },
+  "editability": {
+    "passed": true,
+    "editable_shapes": 355,
+    "unregistered_raster_ratio": 0.0,
+    "preserved_raster_ratio": 0.029892,
+    "findings": 0
+  },
+  "fidelity_default": {
+    "passed": true,
+    "verdict": "WARN",
+    "findings": 5,
+    "mae": 0.070486,
+    "edge_mae": 0.074633
+  },
+  "fidelity_calibrated": {
+    "passed": true,
+    "verdict": "PASS",
+    "findings": 0,
+    "mae": 0.070486,
+    "edge_mae": 0.074633
+  },
+  "refactor_render_delta": {
+    "passed": true,
+    "mean_abs_delta": 0.0,
+    "ssim": 1.0,
+    "findings": 0
+  },
+  "visual_review_findings": 0,
+  "pptx_review_findings": 0,
+  "tests": "51 passed"
+}

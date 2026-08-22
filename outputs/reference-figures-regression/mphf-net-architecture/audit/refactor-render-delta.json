@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "verdict": "PASS",
+  "renderer_a": {
+    "name": "pre-refactor",
+    "image": "outputs/reference-figures-regression/mphf-net-architecture/audit/pre-refactor-preview.png",
+    "size_px": [
+      1536,
+      1024
+    ]
+  },
+  "renderer_b": {
+    "name": "post-refactor",
+    "image": "outputs/reference-figures-regression/mphf-net-architecture/figures/libreoffice-preview.png",
+    "size_px": [
+      1536,
+      1024
+    ]
+  },
+  "mean_abs_delta": 0.0,
+  "ssim": 1.0,
+  "heatmap_path": null,
+  "issues": []
+}

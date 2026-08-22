@@ -1,0 +1,7881 @@
+{
+  "schema_version": "1.0",
+  "canvas": {
+    "width_pt": 960.0,
+    "height_pt": 640.0
+  },
+  "groups": {},
+  "operations": [
+    {
+      "kind": "shape",
+      "name": "SUMMER_B_banner",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 2.5,
+      "y": 2.5,
+      "w": 955.0,
+      "h": 37.5,
+      "fill": [
+        1,
+        23,
+        73
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_banner",
+      "x": 6.25,
+      "y": 5.0,
+      "w": 947.5,
+      "h": 31.25,
+      "value": "MPHF-Net 工业表面缺陷检测网络结构设计图",
+      "size": 26.0,
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "Arial",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_input",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 7.5,
+      "y": 48.75,
+      "w": 123.75,
+      "h": 290.625,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_backbone",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 141.25,
+      "y": 48.75,
+      "w": 160.625,
+      "h": 290.625,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_neck",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 310.625,
+      "y": 48.75,
+      "w": 353.125,
+      "h": 290.625,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_head",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 672.5,
+      "y": 48.75,
+      "w": 156.875,
+      "h": 290.625,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_legend",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 838.125,
+      "y": 48.75,
+      "w": 113.125,
+      "h": 290.625,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_input_title",
+      "x": 7.5,
+      "y": 53.75,
+      "w": 125.0,
+      "h": 13.75,
+      "value": "输入图像",
+      "size": 11.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "picture",
+      "name": "SUMMER_R1_pcb",
+      "path": "outputs/reference-figures-regression/mphf-net-architecture/assets/01_R1_pcb.png",
+      "x": 15.62496062992126,
+      "y": 101.25,
+      "w": 106.87496062992126,
+      "h": 152.5
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_input_size",
+      "x": 7.5,
+      "y": 268.75,
+      "w": 125.0,
+      "h": 15.0,
+      "value": "640 × 640 × 3",
+      "size": 11.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_backbone_title",
+      "x": 142.5,
+      "y": 53.75,
+      "w": 161.25,
+      "h": 12.5,
+      "value": "Backbone: CSP-MEEM",
+      "size": 11.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_backbone_sub",
+      "x": 142.5,
+      "y": 67.5,
+      "w": 161.25,
+      "h": 10.0,
+      "value": "多尺度细粒度特征提取",
+      "size": 8.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb1_top",
+      "points": [
+        [
+          175.0,
+          105.625
+        ],
+        [
+          180.0,
+          100.625
+        ],
+        [
+          204.375,
+          100.625
+        ],
+        [
+          199.375,
+          105.625
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb1_front",
+      "points": [
+        [
+          175.0,
+          105.625
+        ],
+        [
+          199.375,
+          105.625
+        ],
+        [
+          199.375,
+          128.125
+        ],
+        [
+          175.0,
+          128.125
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb1_right",
+      "points": [
+        [
+          199.375,
+          105.625
+        ],
+        [
+          204.375,
+          100.625
+        ],
+        [
+          204.375,
+          123.125
+        ],
+        [
+          199.375,
+          128.125
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb2_top",
+      "points": [
+        [
+          171.25,
+          158.75
+        ],
+        [
+          180.625,
+          149.375
+        ],
+        [
+          209.375,
+          149.375
+        ],
+        [
+          200.0,
+          158.75
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb2_front",
+      "points": [
+        [
+          171.25,
+          158.75
+        ],
+        [
+          200.0,
+          158.75
+        ],
+        [
+          200.0,
+          196.25
+        ],
+        [
+          171.25,
+          196.25
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb2_right",
+      "points": [
+        [
+          200.0,
+          158.75
+        ],
+        [
+          209.375,
+          149.375
+        ],
+        [
+          209.375,
+          186.875
+        ],
+        [
+          200.0,
+          196.25
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb3_top",
+      "points": [
+        [
+          165.0,
+          195.0
+        ],
+        [
+          178.125,
+          181.875
+        ],
+        [
+          215.625,
+          181.875
+        ],
+        [
+          202.5,
+          195.0
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb3_front",
+      "points": [
+        [
+          165.0,
+          195.0
+        ],
+        [
+          202.5,
+          195.0
+        ],
+        [
+          202.5,
+          232.5
+        ],
+        [
+          165.0,
+          232.5
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb3_right",
+      "points": [
+        [
+          202.5,
+          195.0
+        ],
+        [
+          215.625,
+          181.875
+        ],
+        [
+          215.625,
+          219.375
+        ],
+        [
+          202.5,
+          232.5
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb4_top",
+      "points": [
+        [
+          156.25,
+          235.625
+        ],
+        [
+          173.125,
+          218.75
+        ],
+        [
+          215.625,
+          218.75
+        ],
+        [
+          198.75,
+          235.625
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb4_front",
+      "points": [
+        [
+          156.25,
+          235.625
+        ],
+        [
+          198.75,
+          235.625
+        ],
+        [
+          198.75,
+          275.0
+        ],
+        [
+          156.25,
+          275.0
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_bb4_right",
+      "points": [
+        [
+          198.75,
+          235.625
+        ],
+        [
+          215.625,
+          218.75
+        ],
+        [
+          215.625,
+          258.125
+        ],
+        [
+          198.75,
+          275.0
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_backbone_dots",
+      "x": 168.75,
+      "y": 282.5,
+      "w": 25.0,
+      "h": 11.25,
+      "value": "⋮",
+      "size": 11.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_bb_c5",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 246.875,
+      "y": 125.0,
+      "w": 38.125,
+      "h": 33.75,
+      "fill": [
+        245,
+        248,
+        255
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_c5",
+      "x": 246.875,
+      "y": 127.5,
+      "w": 38.125,
+      "h": 15.0,
+      "value": "C5",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_c5_dim",
+      "x": 246.875,
+      "y": 142.5,
+      "w": 38.125,
+      "h": 13.75,
+      "value": "20×C",
+      "size": 8.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_to_spine",
+      "x1": 204.375,
+      "y1": 114.375,
+      "x2": 231.875,
+      "y2": 114.375,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_output_spine",
+      "x1": 231.875,
+      "y1": 114.375,
+      "x2": 231.875,
+      "y2": 258.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_down_1",
+      "x1": 190.0,
+      "y1": 128.125,
+      "x2": 190.0,
+      "y2": 149.375,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_down_2",
+      "x1": 190.0,
+      "y1": 187.5,
+      "x2": 190.0,
+      "y2": 202.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_down_3",
+      "x1": 190.0,
+      "y1": 219.375,
+      "x2": 190.0,
+      "y2": 237.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_to_c5",
+      "x1": 231.875,
+      "y1": 141.875,
+      "x2": 246.875,
+      "y2": 141.875,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.2,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_bb_c4",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 246.875,
+      "y": 183.75,
+      "w": 38.125,
+      "h": 33.75,
+      "fill": [
+        245,
+        252,
+        242
+      ],
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_c4",
+      "x": 246.875,
+      "y": 186.25,
+      "w": 38.125,
+      "h": 15.0,
+      "value": "C4",
+      "size": 10.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_c4_dim",
+      "x": 246.875,
+      "y": 201.25,
+      "w": 38.125,
+      "h": 13.75,
+      "value": "40×C",
+      "size": 8.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_to_c4",
+      "x1": 231.875,
+      "y1": 200.625,
+      "x2": 246.875,
+      "y2": 200.625,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.2,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_bb_c3",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 246.875,
+      "y": 241.875,
+      "w": 38.125,
+      "h": 33.75,
+      "fill": [
+        255,
+        248,
+        243
+      ],
+      "line": [
+        224,
+        58,
+        38
+      ],
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_c3",
+      "x": 246.875,
+      "y": 244.375,
+      "w": 38.125,
+      "h": 15.0,
+      "value": "C3",
+      "size": 10.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_c3_dim",
+      "x": 246.875,
+      "y": 259.375,
+      "w": 38.125,
+      "h": 13.75,
+      "value": "80×C",
+      "size": 8.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_bb_to_c3",
+      "x1": 231.875,
+      "y1": 258.75,
+      "x2": 246.875,
+      "y2": 258.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.2,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_bb_outbar",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 150.0,
+      "y": 312.5,
+      "w": 135.0,
+      "h": 20.0,
+      "fill": [
+        235,
+        241,
+        255
+      ],
+      "line": [
+        214,
+        219,
+        232
+      ],
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_bb_outbar",
+      "x": 150.0,
+      "y": 315.0,
+      "w": 135.0,
+      "h": 15.0,
+      "value": "输出多尺度特征",
+      "size": 9.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_title",
+      "x": 311.25,
+      "y": 53.75,
+      "w": 358.75,
+      "h": 12.5,
+      "value": "Neck: FPN-PAN （LOSC + CGAFusion）",
+      "size": 11.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_td",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 337.5,
+      "y": 72.5,
+      "w": 81.25,
+      "h": 16.25,
+      "fill": [
+        218,
+        239,
+        210
+      ],
+      "line": null,
+      "weight": 0.9,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_td",
+      "x": 337.5,
+      "y": 74.375,
+      "w": 81.25,
+      "h": 12.5,
+      "value": "Top-Down 路径",
+      "size": 8.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_bu",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 517.5,
+      "y": 72.5,
+      "w": 81.25,
+      "h": 16.25,
+      "fill": [
+        218,
+        239,
+        210
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_bu",
+      "x": 517.5,
+      "y": 74.375,
+      "w": 81.25,
+      "h": 12.5,
+      "value": "Bottom-Up 路径",
+      "size": 8.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_c5",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 350.0,
+      "y": 95.0,
+      "w": 25.0,
+      "h": 17.5,
+      "fill": [
+        245,
+        248,
+        255
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_c5",
+      "x": 350.0,
+      "y": 97.5,
+      "w": 25.0,
+      "h": 12.5,
+      "value": "C5",
+      "size": 9.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_c4",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 315.0,
+      "y": 166.25,
+      "w": 25.0,
+      "h": 17.5,
+      "fill": [
+        238,
+        249,
+        233
+      ],
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 0.9,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_c4",
+      "x": 315.0,
+      "y": 168.75,
+      "w": 25.0,
+      "h": 12.5,
+      "value": "C4",
+      "size": 9.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_c3",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 315.0,
+      "y": 255.0,
+      "w": 25.0,
+      "h": 17.5,
+      "fill": [
+        255,
+        239,
+        224
+      ],
+      "line": [
+        224,
+        58,
+        38
+      ],
+      "weight": 0.9,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_c3",
+      "x": 315.0,
+      "y": 257.5,
+      "w": 25.0,
+      "h": 12.5,
+      "value": "C3",
+      "size": 9.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_up1",
+      "vba_shape": "msoShapeOval",
+      "x": 351.25,
+      "y": 126.25,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        209,
+        193,
+        246
+      ],
+      "line": [
+        105,
+        55,
+        190
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_up1_text",
+      "x": 351.25,
+      "y": 126.25,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "UP\n↑",
+      "size": 5.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_up2",
+      "vba_shape": "msoShapeOval",
+      "x": 351.25,
+      "y": 202.5,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        209,
+        193,
+        246
+      ],
+      "line": [
+        105,
+        55,
+        190
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_up2_text",
+      "x": 351.25,
+      "y": 202.5,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "UP\n↑",
+      "size": 5.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_add_td1",
+      "vba_shape": "msoShapeOval",
+      "x": 351.25,
+      "y": 162.5,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_add_td1_text",
+      "x": 351.25,
+      "y": 162.5,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "+",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_add_td2",
+      "vba_shape": "msoShapeOval",
+      "x": 351.25,
+      "y": 250.0,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_add_td2_text",
+      "x": 351.25,
+      "y": 250.0,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "+",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_fusion1",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 406.25,
+      "y": 165.625,
+      "w": 57.5,
+      "h": 18.75,
+      "fill": [
+        240,
+        245,
+        255
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_fusion1",
+      "x": 406.25,
+      "y": 168.75,
+      "w": 57.5,
+      "h": 12.5,
+      "value": "CGAFusion",
+      "size": 8.5,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_fusion2",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 406.25,
+      "y": 253.125,
+      "w": 57.5,
+      "h": 18.75,
+      "fill": [
+        240,
+        245,
+        255
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_fusion2",
+      "x": 406.25,
+      "y": 256.25,
+      "w": 57.5,
+      "h": 12.5,
+      "value": "CGAFusion",
+      "size": 8.5,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_add_p5",
+      "vba_shape": "msoShapeOval",
+      "x": 545.0,
+      "y": 101.25,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_add_p5_text",
+      "x": 545.0,
+      "y": 101.25,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "+",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_add_p4",
+      "vba_shape": "msoShapeOval",
+      "x": 545.0,
+      "y": 201.25,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_add_p4_text",
+      "x": 545.0,
+      "y": 201.25,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "+",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_add_p3",
+      "vba_shape": "msoShapeOval",
+      "x": 545.0,
+      "y": 280.0,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_add_p3_text",
+      "x": 545.0,
+      "y": 280.0,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "+",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_down1",
+      "vba_shape": "msoShapeOval",
+      "x": 545.0,
+      "y": 138.75,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        244,
+        172,
+        96
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_down1_text",
+      "x": 545.0,
+      "y": 138.75,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "Down\n↓",
+      "size": 4.0,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_down2",
+      "vba_shape": "msoShapeOval",
+      "x": 545.0,
+      "y": 240.0,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        244,
+        172,
+        96
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_neck_down2_text",
+      "x": 545.0,
+      "y": 240.0,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "Down\n↓",
+      "size": 4.0,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_losc",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 535.0,
+      "y": 180.0,
+      "w": 45.0,
+      "h": 16.25,
+      "fill": [
+        253,
+        240,
+        232
+      ],
+      "line": [
+        226,
+        110,
+        50
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_losc",
+      "x": 535.0,
+      "y": 181.875,
+      "w": 45.0,
+      "h": 12.5,
+      "value": "LOSC",
+      "size": 9.0,
+      "color": [
+        206,
+        90,
+        30
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p5_top",
+      "points": [
+        [
+          607.5,
+          106.25
+        ],
+        [
+          612.5,
+          101.25
+        ],
+        [
+          627.5,
+          101.25
+        ],
+        [
+          622.5,
+          106.25
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p5_front",
+      "points": [
+        [
+          607.5,
+          106.25
+        ],
+        [
+          622.5,
+          106.25
+        ],
+        [
+          622.5,
+          126.25
+        ],
+        [
+          607.5,
+          126.25
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p5_right",
+      "points": [
+        [
+          622.5,
+          106.25
+        ],
+        [
+          627.5,
+          101.25
+        ],
+        [
+          627.5,
+          121.25
+        ],
+        [
+          622.5,
+          126.25
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_p5",
+      "x": 632.5,
+      "y": 96.25,
+      "w": 32.5,
+      "h": 12.5,
+      "value": "P5",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_p5_dim",
+      "x": 632.5,
+      "y": 107.5,
+      "w": 32.5,
+      "h": 10.0,
+      "value": "20×C",
+      "size": 8.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p4_top",
+      "points": [
+        [
+          607.5,
+          203.125
+        ],
+        [
+          612.5,
+          198.125
+        ],
+        [
+          627.5,
+          198.125
+        ],
+        [
+          622.5,
+          203.125
+        ]
+      ],
+      "fill": [
+        177,
+        234,
+        164
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p4_front",
+      "points": [
+        [
+          607.5,
+          203.125
+        ],
+        [
+          622.5,
+          203.125
+        ],
+        [
+          622.5,
+          222.5
+        ],
+        [
+          607.5,
+          222.5
+        ]
+      ],
+      "fill": [
+        145,
+        202,
+        132
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          169,
+          226,
+          156
+        ],
+        "end": [
+          127,
+          184,
+          114
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p4_right",
+      "points": [
+        [
+          622.5,
+          203.125
+        ],
+        [
+          627.5,
+          198.125
+        ],
+        [
+          627.5,
+          217.5
+        ],
+        [
+          622.5,
+          222.5
+        ]
+      ],
+      "fill": [
+        97,
+        154,
+        84
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_p4",
+      "x": 632.5,
+      "y": 196.25,
+      "w": 32.5,
+      "h": 12.5,
+      "value": "P4",
+      "size": 10.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_p4_dim",
+      "x": 632.5,
+      "y": 207.5,
+      "w": 32.5,
+      "h": 10.0,
+      "value": "40×C",
+      "size": 8.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p3_top",
+      "points": [
+        [
+          607.5,
+          282.5
+        ],
+        [
+          612.5,
+          277.5
+        ],
+        [
+          627.5,
+          277.5
+        ],
+        [
+          622.5,
+          282.5
+        ]
+      ],
+      "fill": [
+        255,
+        150,
+        94
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p3_front",
+      "points": [
+        [
+          607.5,
+          282.5
+        ],
+        [
+          622.5,
+          282.5
+        ],
+        [
+          622.5,
+          301.25
+        ],
+        [
+          607.5,
+          301.25
+        ]
+      ],
+      "fill": [
+        255,
+        118,
+        62
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          255,
+          142,
+          86
+        ],
+        "end": [
+          237,
+          100,
+          44
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_neck_p3_right",
+      "points": [
+        [
+          622.5,
+          282.5
+        ],
+        [
+          627.5,
+          277.5
+        ],
+        [
+          627.5,
+          296.25
+        ],
+        [
+          622.5,
+          301.25
+        ]
+      ],
+      "fill": [
+        207,
+        70,
+        14
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_p3",
+      "x": 632.5,
+      "y": 275.0,
+      "w": 32.5,
+      "h": 12.5,
+      "value": "P3",
+      "size": 10.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_p3_dim",
+      "x": 632.5,
+      "y": 286.25,
+      "w": 32.5,
+      "h": 10.0,
+      "value": "80×C",
+      "size": 8.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_c5_up",
+      "x1": 363.75,
+      "y1": 126.25,
+      "x2": 362.5,
+      "y2": 112.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_up1_add",
+      "x1": 363.75,
+      "y1": 151.25,
+      "x2": 363.75,
+      "y2": 162.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_c4_add",
+      "x1": 350.0,
+      "y1": 175.0,
+      "x2": 340.0,
+      "y2": 175.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_add1_fusion",
+      "x1": 377.5,
+      "y1": 175.0,
+      "x2": 406.25,
+      "y2": 175.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_up2_add",
+      "x1": 363.75,
+      "y1": 227.5,
+      "x2": 363.75,
+      "y2": 250.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_c3_add",
+      "x1": 340.0,
+      "y1": 263.125,
+      "x2": 350.0,
+      "y2": 263.125,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_add2_fusion",
+      "x1": 377.5,
+      "y1": 262.5,
+      "x2": 406.25,
+      "y2": 262.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion1_add_seg1",
+      "x1": 463.75,
+      "y1": 175.0,
+      "x2": 488.75,
+      "y2": 175.0,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion1_add_seg2",
+      "x1": 488.75,
+      "y1": 175.0,
+      "x2": 488.75,
+      "y2": 113.75,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion1_add_seg3",
+      "x1": 488.75,
+      "y1": 113.75,
+      "x2": 543.75,
+      "y2": 113.75,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion2_p4_seg1",
+      "x1": 463.75,
+      "y1": 262.5,
+      "x2": 488.75,
+      "y2": 262.5,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion2_p4_seg2",
+      "x1": 488.75,
+      "y1": 262.5,
+      "x2": 488.75,
+      "y2": 213.75,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion2_p4_seg3",
+      "x1": 488.75,
+      "y1": 213.75,
+      "x2": 543.75,
+      "y2": 213.75,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion2_add_seg1",
+      "x1": 435.0,
+      "y1": 272.5,
+      "x2": 435.0,
+      "y2": 292.5,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion2_add_seg2",
+      "x1": 435.0,
+      "y1": 292.5,
+      "x2": 543.75,
+      "y2": 292.5,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_addp5_cube",
+      "x1": 571.25,
+      "y1": 113.75,
+      "x2": 607.5,
+      "y2": 113.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_addp4_cube",
+      "x1": 571.25,
+      "y1": 213.75,
+      "x2": 607.5,
+      "y2": 213.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_addp3_cube",
+      "x1": 571.25,
+      "y1": 292.5,
+      "x2": 607.5,
+      "y2": 292.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_addp5_down",
+      "x1": 557.5,
+      "y1": 126.25,
+      "x2": 557.5,
+      "y2": 138.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_down_losc",
+      "x1": 557.5,
+      "y1": 164.375,
+      "x2": 557.5,
+      "y2": 180.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_losc_addp4",
+      "x1": 557.5,
+      "y1": 196.25,
+      "x2": 557.5,
+      "y2": 201.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_addp4_down2",
+      "x1": 557.5,
+      "y1": 226.25,
+      "x2": 557.5,
+      "y2": 240.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_down2_addp3",
+      "x1": 557.5,
+      "y1": 265.0,
+      "x2": 557.5,
+      "y2": 280.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion1_up2_seg1",
+      "x1": 435.0,
+      "y1": 185.0,
+      "x2": 435.0,
+      "y2": 215.0,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_neck_fusion1_up2_seg2",
+      "x1": 435.0,
+      "y1": 215.0,
+      "x2": 376.875,
+      "y2": 215.0,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_note_cga",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 316.25,
+      "y": 317.5,
+      "w": 156.25,
+      "h": 17.5,
+      "fill": [
+        224,
+        236,
+        252
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_note_cga",
+      "x": 316.25,
+      "y": 320.0,
+      "w": 156.25,
+      "h": 12.5,
+      "value": "CGAFusion（高低频自适应融合）",
+      "size": 8.5,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_neck_note_losc",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 483.75,
+      "y": 317.5,
+      "w": 156.25,
+      "h": 17.5,
+      "fill": [
+        252,
+        230,
+        220
+      ],
+      "line": [
+        224,
+        58,
+        38
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_neck_note_losc",
+      "x": 483.75,
+      "y": 320.0,
+      "w": 156.25,
+      "h": 12.5,
+      "value": "LOSC（方向性下采样建模）",
+      "size": 8.5,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_head_title",
+      "x": 672.5,
+      "y": 57.5,
+      "w": 156.875,
+      "h": 17.5,
+      "value": "Head: RT-DETR 原始检测头",
+      "size": 10.0,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 679.375,
+      "y": 90.0,
+      "w": 143.125,
+      "h": 75.0,
+      "fill": [
+        255,
+        255,
+        255
+      ],
+      "line": [
+        205,
+        196,
+        235
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_head_iou_line1",
+      "x": 679.375,
+      "y": 100.0,
+      "w": 143.125,
+      "h": 12.5,
+      "value": "IoU-Aware",
+      "size": 9,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_head_iou",
+      "x": 679.375,
+      "y": 113.125,
+      "w": 143.125,
+      "h": 12.5,
+      "value": "Query Selection",
+      "size": 9,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou_sq_0",
+      "vba_shape": "msoShapeRectangle",
+      "x": 700.0,
+      "y": 136.25,
+      "w": 10.625,
+      "h": 10.625,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou_sq_1",
+      "vba_shape": "msoShapeRectangle",
+      "x": 715.625,
+      "y": 136.25,
+      "w": 10.625,
+      "h": 10.625,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou_sq_2",
+      "vba_shape": "msoShapeRectangle",
+      "x": 731.25,
+      "y": 136.25,
+      "w": 10.625,
+      "h": 10.625,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou_sq_3",
+      "vba_shape": "msoShapeRectangle",
+      "x": 746.875,
+      "y": 136.25,
+      "w": 10.625,
+      "h": 10.625,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou_sq_4",
+      "vba_shape": "msoShapeRectangle",
+      "x": 762.5,
+      "y": 136.25,
+      "w": 10.625,
+      "h": 10.625,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_iou_sq_5",
+      "vba_shape": "msoShapeRectangle",
+      "x": 778.125,
+      "y": 136.25,
+      "w": 10.625,
+      "h": 10.625,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_head_iou_sq_dots",
+      "x": 795.0,
+      "y": 135.0,
+      "w": 18.75,
+      "h": 13.125,
+      "value": "····",
+      "size": 8.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_iou_dec",
+      "x1": 753.75,
+      "y1": 165.0,
+      "x2": 753.75,
+      "y2": 181.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_dec",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 679.375,
+      "y": 181.25,
+      "w": 143.125,
+      "h": 83.125,
+      "fill": [
+        255,
+        255,
+        255
+      ],
+      "line": [
+        205,
+        196,
+        235
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_head_dec",
+      "x": 679.375,
+      "y": 191.25,
+      "w": 143.125,
+      "h": 15.0,
+      "value": "Transformer Decoder × 6 层",
+      "size": 9.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_top_bus",
+      "x1": 695.0,
+      "y1": 221.25,
+      "x2": 807.5,
+      "y2": 221.25,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_dec_sq_0",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 688.75,
+      "y": 230.625,
+      "w": 12.5,
+      "h": 17.5,
+      "fill": [
+        150,
+        120,
+        220
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_top_0",
+      "x1": 695.0,
+      "y1": 221.25,
+      "x2": 695.0,
+      "y2": 230.625,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_bottom_0",
+      "x1": 695.0,
+      "y1": 248.125,
+      "x2": 695.0,
+      "y2": 256.875,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_dec_sq_1",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 717.5,
+      "y": 230.625,
+      "w": 12.5,
+      "h": 17.5,
+      "fill": [
+        150,
+        120,
+        220
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_top_1",
+      "x1": 723.75,
+      "y1": 221.25,
+      "x2": 723.75,
+      "y2": 230.625,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_bottom_1",
+      "x1": 723.75,
+      "y1": 248.125,
+      "x2": 723.75,
+      "y2": 256.875,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_dec_sq_2",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 746.25,
+      "y": 230.625,
+      "w": 12.5,
+      "h": 17.5,
+      "fill": [
+        150,
+        120,
+        220
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_top_2",
+      "x1": 752.5,
+      "y1": 221.25,
+      "x2": 752.5,
+      "y2": 230.625,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_bottom_2",
+      "x1": 752.5,
+      "y1": 248.125,
+      "x2": 752.5,
+      "y2": 256.875,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_dec_sq_3",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 801.25,
+      "y": 230.625,
+      "w": 12.5,
+      "h": 17.5,
+      "fill": [
+        150,
+        120,
+        220
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_top_3",
+      "x1": 807.5,
+      "y1": 221.25,
+      "x2": 807.5,
+      "y2": 230.625,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_stem_bottom_3",
+      "x1": 807.5,
+      "y1": 248.125,
+      "x2": 807.5,
+      "y2": 256.875,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_chain_0",
+      "x1": 701.25,
+      "y1": 239.375,
+      "x2": 717.5,
+      "y2": 239.375,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_chain_1",
+      "x1": 730.0,
+      "y1": 239.375,
+      "x2": 746.25,
+      "y2": 239.375,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_chain_2",
+      "x1": 758.75,
+      "y1": 239.375,
+      "x2": 768.75,
+      "y2": 239.375,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_chain_3",
+      "x1": 787.5,
+      "y1": 239.375,
+      "x2": 801.25,
+      "y2": 239.375,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_head_dec_sq_dots",
+      "x": 767.5,
+      "y": 233.125,
+      "w": 21.25,
+      "h": 12.5,
+      "value": "••••",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_head_dec_out",
+      "x1": 753.75,
+      "y1": 264.375,
+      "x2": 753.75,
+      "y2": 274.375,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_out",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 679.375,
+      "y": 274.375,
+      "w": 143.125,
+      "h": 62.5,
+      "fill": [
+        255,
+        255,
+        255
+      ],
+      "line": [
+        205,
+        196,
+        235
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_head_out",
+      "x": 686.25,
+      "y": 279.375,
+      "w": 129.375,
+      "h": 23.75,
+      "value": "输出：\n类别概率 + 归一化边界框坐标",
+      "size": 8.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_E_head_bars_axis_x",
+      "x1": 706.25,
+      "y1": 335.625,
+      "x2": 738.75,
+      "y2": 335.625,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_E_head_bars_axis_y",
+      "x1": 706.25,
+      "y1": 335.625,
+      "x2": 706.25,
+      "y2": 308.125,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_bars_0",
+      "vba_shape": "msoShapeRectangle",
+      "x": 708.75,
+      "y": 315.625,
+      "w": 4.375,
+      "h": 20.0,
+      "fill": [
+        90,
+        118,
+        216
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_bars_1",
+      "vba_shape": "msoShapeRectangle",
+      "x": 715.625,
+      "y": 324.375,
+      "w": 4.375,
+      "h": 11.25,
+      "fill": [
+        90,
+        118,
+        216
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_bars_2",
+      "vba_shape": "msoShapeRectangle",
+      "x": 722.5,
+      "y": 319.375,
+      "w": 4.375,
+      "h": 16.25,
+      "fill": [
+        90,
+        118,
+        216
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_bars_3",
+      "vba_shape": "msoShapeRectangle",
+      "x": 729.375,
+      "y": 309.375,
+      "w": 4.375,
+      "h": 26.25,
+      "fill": [
+        90,
+        118,
+        216
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_head_bbox",
+      "vba_shape": "msoShapeRectangle",
+      "x": 758.75,
+      "y": 306.25,
+      "w": 28.75,
+      "h": 26.25,
+      "fill": null,
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_legend_title",
+      "x": 837.5,
+      "y": 53.75,
+      "w": 116.25,
+      "h": 12.5,
+      "value": "图例说明",
+      "size": 10.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p5_top",
+      "points": [
+        [
+          850.0,
+          76.875
+        ],
+        [
+          853.125,
+          73.75
+        ],
+        [
+          863.125,
+          73.75
+        ],
+        [
+          860.0,
+          76.875
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p5_front",
+      "points": [
+        [
+          850.0,
+          76.875
+        ],
+        [
+          860.0,
+          76.875
+        ],
+        [
+          860.0,
+          86.25
+        ],
+        [
+          850.0,
+          86.25
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p5_right",
+      "points": [
+        [
+          860.0,
+          76.875
+        ],
+        [
+          863.125,
+          73.75
+        ],
+        [
+          863.125,
+          83.125
+        ],
+        [
+          860.0,
+          86.25
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_p5",
+      "x": 871.875,
+      "y": 72.5,
+      "w": 78.125,
+      "h": 15.0,
+      "value": "P5 / C5 （20×C）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p4_top",
+      "points": [
+        [
+          850.0,
+          99.375
+        ],
+        [
+          853.125,
+          96.25
+        ],
+        [
+          863.125,
+          96.25
+        ],
+        [
+          860.0,
+          99.375
+        ]
+      ],
+      "fill": [
+        177,
+        234,
+        164
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p4_front",
+      "points": [
+        [
+          850.0,
+          99.375
+        ],
+        [
+          860.0,
+          99.375
+        ],
+        [
+          860.0,
+          108.75
+        ],
+        [
+          850.0,
+          108.75
+        ]
+      ],
+      "fill": [
+        145,
+        202,
+        132
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          169,
+          226,
+          156
+        ],
+        "end": [
+          127,
+          184,
+          114
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p4_right",
+      "points": [
+        [
+          860.0,
+          99.375
+        ],
+        [
+          863.125,
+          96.25
+        ],
+        [
+          863.125,
+          105.625
+        ],
+        [
+          860.0,
+          108.75
+        ]
+      ],
+      "fill": [
+        97,
+        154,
+        84
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_p4",
+      "x": 871.875,
+      "y": 95.0,
+      "w": 78.125,
+      "h": 15.0,
+      "value": "P4 / C4 （40×C）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p3_top",
+      "points": [
+        [
+          850.0,
+          121.875
+        ],
+        [
+          853.125,
+          118.75
+        ],
+        [
+          863.125,
+          118.75
+        ],
+        [
+          860.0,
+          121.875
+        ]
+      ],
+      "fill": [
+        255,
+        150,
+        94
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p3_front",
+      "points": [
+        [
+          850.0,
+          121.875
+        ],
+        [
+          860.0,
+          121.875
+        ],
+        [
+          860.0,
+          131.25
+        ],
+        [
+          850.0,
+          131.25
+        ]
+      ],
+      "fill": [
+        255,
+        118,
+        62
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          255,
+          142,
+          86
+        ],
+        "end": [
+          237,
+          100,
+          44
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_lg_p3_right",
+      "points": [
+        [
+          860.0,
+          121.875
+        ],
+        [
+          863.125,
+          118.75
+        ],
+        [
+          863.125,
+          128.125
+        ],
+        [
+          860.0,
+          131.25
+        ]
+      ],
+      "fill": [
+        207,
+        70,
+        14
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_p3",
+      "x": 871.875,
+      "y": 117.5,
+      "w": 78.125,
+      "h": 15.0,
+      "value": "P3 / C3 （80×C）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_lg_up",
+      "vba_shape": "msoShapeOval",
+      "x": 846.875,
+      "y": 146.875,
+      "w": 16.25,
+      "h": 16.25,
+      "fill": [
+        209,
+        193,
+        246
+      ],
+      "line": [
+        105,
+        55,
+        190
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_lg_up_text",
+      "x": 846.875,
+      "y": 146.875,
+      "w": 16.25,
+      "h": 16.25,
+      "value": "UP\n↑",
+      "size": 5.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_up",
+      "x": 873.75,
+      "y": 148.75,
+      "w": 76.25,
+      "h": 15.0,
+      "value": "上采样 （× 2）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_lg_down",
+      "vba_shape": "msoShapeOval",
+      "x": 846.875,
+      "y": 174.375,
+      "w": 16.25,
+      "h": 16.25,
+      "fill": [
+        244,
+        172,
+        96
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_lg_down_text",
+      "x": 846.875,
+      "y": 174.375,
+      "w": 16.25,
+      "h": 16.25,
+      "value": "Down\n↓",
+      "size": 4.0,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_down",
+      "x": 873.75,
+      "y": 175.0,
+      "w": 76.25,
+      "h": 15.0,
+      "value": "下采样 （× 2）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_lg_add",
+      "vba_shape": "msoShapeOval",
+      "x": 846.875,
+      "y": 200.625,
+      "w": 16.25,
+      "h": 16.25,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_lg_add_text",
+      "x": 846.875,
+      "y": 200.625,
+      "w": 16.25,
+      "h": 16.25,
+      "value": "+",
+      "size": 7.0,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_add",
+      "x": 873.75,
+      "y": 201.25,
+      "w": 76.25,
+      "h": 15.0,
+      "value": "拼接 （Concat）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_lg_losc",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 847.5,
+      "y": 227.5,
+      "w": 23.75,
+      "h": 11.25,
+      "fill": [
+        253,
+        240,
+        232
+      ],
+      "line": [
+        226,
+        110,
+        50
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_losc_tag",
+      "x": 847.5,
+      "y": 228.125,
+      "w": 23.75,
+      "h": 10.0,
+      "value": "LOSC",
+      "size": 5.5,
+      "color": [
+        206,
+        90,
+        30
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_losc",
+      "x": 875.0,
+      "y": 225.0,
+      "w": 75.0,
+      "h": 15.0,
+      "value": "方向性下采样建模",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_lg_cga",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 846.25,
+      "y": 252.5,
+      "w": 26.25,
+      "h": 11.25,
+      "fill": [
+        235,
+        242,
+        255
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_cga_tag",
+      "x": 846.25,
+      "y": 253.125,
+      "w": 26.25,
+      "h": 10.0,
+      "value": "CGAFusion",
+      "size": 3.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_cga",
+      "x": 875.0,
+      "y": 250.0,
+      "w": 75.0,
+      "h": 15.0,
+      "value": "高低频自适应融合",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_LD_lg_solid",
+      "x1": 848.75,
+      "y1": 293.75,
+      "x2": 868.75,
+      "y2": 293.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_solid",
+      "x": 875.0,
+      "y": 286.875,
+      "w": 75.0,
+      "h": 15.0,
+      "value": "数据流向",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_LD_lg_dash",
+      "x1": 848.75,
+      "y1": 316.25,
+      "x2": 868.75,
+      "y2": 316.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.4,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_lg_dash",
+      "x": 875.0,
+      "y": 309.375,
+      "w": 75.0,
+      "h": 15.0,
+      "value": "跨层连接",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_input_backbone",
+      "x1": 131.25,
+      "y1": 185.0,
+      "x2": 141.25,
+      "y2": 185.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 2.5,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_m1",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 8.125,
+      "y": 348.75,
+      "w": 296.875,
+      "h": 173.75,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_m2",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 310.625,
+      "y": 348.75,
+      "w": 256.25,
+      "h": 173.75,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        255,
+        105,
+        55
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_m3",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 572.5,
+      "y": 348.75,
+      "w": 378.75,
+      "h": 173.75,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_title",
+      "x": 7.5,
+      "y": 353.75,
+      "w": 296.25,
+      "h": 12.5,
+      "value": "模块一：CSP-MEEM（多尺度细粒度特征提取）",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_in",
+      "x": 59.375,
+      "y": 371.25,
+      "w": 56.25,
+      "h": 12.5,
+      "value": "输入图像",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m1_csp",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 68.75,
+      "y": 385.625,
+      "w": 37.5,
+      "h": 25.625,
+      "fill": [
+        228,
+        238,
+        253
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_csp",
+      "x": 68.75,
+      "y": 388.75,
+      "w": 37.5,
+      "h": 18.75,
+      "value": "CSP\n分割",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m1_b0",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 25.0,
+      "y": 423.125,
+      "w": 28.125,
+      "h": 15.625,
+      "fill": [
+        232,
+        245,
+        225
+      ],
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_b0",
+      "x": 25.0,
+      "y": 425.0,
+      "w": 28.125,
+      "h": 11.875,
+      "value": "分支1",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m1_b1",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 72.5,
+      "y": 423.125,
+      "w": 28.125,
+      "h": 15.625,
+      "fill": [
+        232,
+        245,
+        225
+      ],
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_b1",
+      "x": 72.5,
+      "y": 425.0,
+      "w": 28.125,
+      "h": 11.875,
+      "value": "分支2",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m1_b2",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 117.5,
+      "y": 423.125,
+      "w": 28.125,
+      "h": 15.625,
+      "fill": [
+        232,
+        245,
+        225
+      ],
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_b2",
+      "x": 117.5,
+      "y": 425.0,
+      "w": 28.125,
+      "h": 11.875,
+      "value": "分支n",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_bdots",
+      "x": 100.625,
+      "y": 423.75,
+      "w": 16.875,
+      "h": 13.125,
+      "value": "···",
+      "size": 10.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m1_fuse",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 52.5,
+      "y": 448.75,
+      "w": 70.0,
+      "h": 15.625,
+      "fill": [
+        226,
+        237,
+        252
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_fuse",
+      "x": 52.5,
+      "y": 450.0,
+      "w": 70.0,
+      "h": 12.5,
+      "value": "融合",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m1_ema",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 52.5,
+      "y": 473.75,
+      "w": 70.0,
+      "h": 16.25,
+      "fill": [
+        255,
+        237,
+        215
+      ],
+      "line": [
+        230,
+        125,
+        35
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_ema",
+      "x": 52.5,
+      "y": 475.625,
+      "w": 70.0,
+      "h": 12.5,
+      "value": "EMA 注意力",
+      "size": 8.0,
+      "color": [
+        200,
+        100,
+        30
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_out",
+      "x": 59.375,
+      "y": 496.875,
+      "w": 56.25,
+      "h": 12.5,
+      "value": "输出特征",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_f1",
+      "x1": 87.5,
+      "y1": 383.75,
+      "x2": 87.5,
+      "y2": 385.625,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_branch_bus",
+      "x1": 38.75,
+      "y1": 413.75,
+      "x2": 131.875,
+      "y2": 413.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_branch_drop_0",
+      "x1": 38.75,
+      "y1": 413.75,
+      "x2": 38.75,
+      "y2": 423.125,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_branch_drop_1",
+      "x1": 87.5,
+      "y1": 413.75,
+      "x2": 87.5,
+      "y2": 423.125,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_branch_drop_2",
+      "x1": 131.875,
+      "y1": 413.75,
+      "x2": 131.875,
+      "y2": 423.125,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_fanin_left_v",
+      "x1": 38.75,
+      "y1": 438.75,
+      "x2": 38.75,
+      "y2": 456.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_fanin_left_h",
+      "x1": 38.75,
+      "y1": 456.25,
+      "x2": 52.5,
+      "y2": 456.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_fanin_right_v",
+      "x1": 131.875,
+      "y1": 438.75,
+      "x2": 131.875,
+      "y2": 456.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_fanin_right_h",
+      "x1": 131.875,
+      "y1": 456.25,
+      "x2": 122.5,
+      "y2": 456.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_f2",
+      "x1": 87.5,
+      "y1": 411.25,
+      "x2": 87.5,
+      "y2": 413.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_f3",
+      "x1": 87.5,
+      "y1": 438.75,
+      "x2": 87.5,
+      "y2": 448.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_f4",
+      "x1": 87.5,
+      "y1": 464.375,
+      "x2": 87.5,
+      "y2": 473.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m1_f5",
+      "x1": 87.5,
+      "y1": 490.0,
+      "x2": 87.5,
+      "y2": 497.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_p0",
+      "x": 162.5,
+      "y": 378.75,
+      "w": 153.75,
+      "h": 35.0,
+      "value": "•  多尺度并行感知，捕获不同\n大小的缺陷信息",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_p1",
+      "x": 162.5,
+      "y": 420.0,
+      "w": 153.75,
+      "h": 35.0,
+      "value": "•  增强细节特征表达，保留\n边缘和纹理",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m1_p2",
+      "x": 162.5,
+      "y": 461.25,
+      "w": 153.75,
+      "h": 35.0,
+      "value": "•  EMA 注意力增强关键特征，\n抑制冗余信息",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_title",
+      "x": 311.25,
+      "y": 353.75,
+      "w": 255.0,
+      "h": 12.5,
+      "value": "模块二：LOSC（方向性下采样建模）",
+      "size": 10.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_in",
+      "x": 325.0,
+      "y": 371.25,
+      "w": 75.0,
+      "h": 11.25,
+      "value": "输入特征",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_G_m2_in_bg",
+      "vba_shape": "msoShapeRectangle",
+      "x": 338.125,
+      "y": 385.625,
+      "w": 46.25,
+      "h": 30.0,
+      "fill": [
+        214,
+        228,
+        252
+      ],
+      "line": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.75,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_in_v1",
+      "x1": 349.6875,
+      "y1": 385.625,
+      "x2": 349.6875,
+      "y2": 415.625,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_in_v2",
+      "x1": 361.25,
+      "y1": 385.625,
+      "x2": 361.25,
+      "y2": 415.625,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_in_v3",
+      "x1": 372.8125,
+      "y1": 385.625,
+      "x2": 372.8125,
+      "y2": 415.625,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_in_h1",
+      "x1": 338.125,
+      "y1": 395.625,
+      "x2": 384.375,
+      "y2": 395.625,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_in_h2",
+      "x1": 338.125,
+      "y1": 405.625,
+      "x2": 384.375,
+      "y2": 405.625,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m2_down",
+      "vba_shape": "msoShapeOval",
+      "x": 347.5,
+      "y": 433.75,
+      "w": 27.5,
+      "h": 27.5,
+      "fill": [
+        244,
+        172,
+        96
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_m2_down_text",
+      "x": 347.5,
+      "y": 433.75,
+      "w": 27.5,
+      "h": 27.5,
+      "value": "Down\n↓",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_G_m2_out_bg",
+      "vba_shape": "msoShapeRectangle",
+      "x": 343.75,
+      "y": 481.25,
+      "w": 36.25,
+      "h": 21.25,
+      "fill": [
+        214,
+        228,
+        252
+      ],
+      "line": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.75,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_out_v1",
+      "x1": 355.83333333333337,
+      "y1": 481.25,
+      "x2": 355.83333333333337,
+      "y2": 502.5,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_out_v2",
+      "x1": 367.91666666666663,
+      "y1": 481.25,
+      "x2": 367.91666666666663,
+      "y2": 502.5,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m2_out_h1",
+      "x1": 343.75,
+      "y1": 491.875,
+      "x2": 380.0,
+      "y2": 491.875,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_out",
+      "x": 325.0,
+      "y": 503.75,
+      "w": 75.0,
+      "h": 11.25,
+      "value": "输出特征",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m2_f1",
+      "x1": 361.25,
+      "y1": 415.625,
+      "x2": 361.25,
+      "y2": 433.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m2_f2",
+      "x1": 361.25,
+      "y1": 461.25,
+      "x2": 361.25,
+      "y2": 481.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_p0",
+      "x": 421.875,
+      "y": 390.0,
+      "w": 147.5,
+      "h": 30.0,
+      "value": "•  引入方向性卷积核",
+      "size": 9.2,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_p1",
+      "x": 421.875,
+      "y": 415.0,
+      "w": 147.5,
+      "h": 30.0,
+      "value": "•  沿关键方向提取特征",
+      "size": 9.2,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_p2",
+      "x": 421.875,
+      "y": 440.0,
+      "w": 147.5,
+      "h": 30.0,
+      "value": "•  抑制无关干扰，保留方向信息",
+      "size": 9.2,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m2_p3",
+      "x": 421.875,
+      "y": 465.0,
+      "w": 147.5,
+      "h": 30.0,
+      "value": "•  增强对工业表面纹理与缺陷\n形态的建模能力",
+      "size": 9.2,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_title",
+      "x": 572.5,
+      "y": 353.75,
+      "w": 381.25,
+      "h": 12.5,
+      "value": "模块三：CGAFusion（高低频自适应融合）",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_fh",
+      "x": 581.25,
+      "y": 373.75,
+      "w": 81.25,
+      "h": 11.25,
+      "value": "输入特征 Fh（高频）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_G_m3_fh_bg",
+      "vba_shape": "msoShapeRectangle",
+      "x": 591.25,
+      "y": 386.25,
+      "w": 35.0,
+      "h": 28.75,
+      "fill": [
+        214,
+        228,
+        252
+      ],
+      "line": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.75,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fh_v1",
+      "x1": 600.0,
+      "y1": 386.25,
+      "x2": 600.0,
+      "y2": 415.0,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fh_v2",
+      "x1": 608.75,
+      "y1": 386.25,
+      "x2": 608.75,
+      "y2": 415.0,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fh_v3",
+      "x1": 617.5,
+      "y1": 386.25,
+      "x2": 617.5,
+      "y2": 415.0,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fh_h1",
+      "x1": 591.25,
+      "y1": 395.83333333333337,
+      "x2": 626.25,
+      "y2": 395.83333333333337,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fh_h2",
+      "x1": 591.25,
+      "y1": 405.41666666666663,
+      "x2": 626.25,
+      "y2": 405.41666666666663,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m3_high",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 663.75,
+      "y": 387.5,
+      "w": 58.75,
+      "h": 25.0,
+      "fill": [
+        235,
+        242,
+        255
+      ],
+      "line": [
+        37,
+        80,
+        216
+      ],
+      "weight": 0.9,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m3_input_high",
+      "x1": 626.25,
+      "y1": 400.0,
+      "x2": 663.75,
+      "y2": 400.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_high",
+      "x": 663.75,
+      "y": 390.0,
+      "w": 58.75,
+      "h": 20.0,
+      "value": "高频分支\n（细节信息）",
+      "size": 7.5,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_fl",
+      "x": 581.25,
+      "y": 426.25,
+      "w": 81.25,
+      "h": 11.25,
+      "value": "输入特征 Fl（低频）",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_G_m3_fl_bg",
+      "vba_shape": "msoShapeRectangle",
+      "x": 591.25,
+      "y": 438.75,
+      "w": 35.0,
+      "h": 28.75,
+      "fill": [
+        224,
+        242,
+        216
+      ],
+      "line": [
+        112,
+        176,
+        92
+      ],
+      "weight": 0.75,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fl_v1",
+      "x1": 600.0,
+      "y1": 438.75,
+      "x2": 600.0,
+      "y2": 467.5,
+      "color": [
+        112,
+        176,
+        92
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fl_v2",
+      "x1": 608.75,
+      "y1": 438.75,
+      "x2": 608.75,
+      "y2": 467.5,
+      "color": [
+        112,
+        176,
+        92
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fl_v3",
+      "x1": 617.5,
+      "y1": 438.75,
+      "x2": 617.5,
+      "y2": 467.5,
+      "color": [
+        112,
+        176,
+        92
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fl_h1",
+      "x1": 591.25,
+      "y1": 448.33333333333337,
+      "x2": 626.25,
+      "y2": 448.33333333333337,
+      "color": [
+        112,
+        176,
+        92
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_fl_h2",
+      "x1": 591.25,
+      "y1": 457.91666666666663,
+      "x2": 626.25,
+      "y2": 457.91666666666663,
+      "color": [
+        112,
+        176,
+        92
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m3_low",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 663.75,
+      "y": 440.0,
+      "w": 58.75,
+      "h": 25.0,
+      "fill": [
+        235,
+        248,
+        238
+      ],
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 0.9,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m3_input_low",
+      "x1": 626.25,
+      "y1": 452.5,
+      "x2": 663.75,
+      "y2": 452.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.8,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_low",
+      "x": 663.75,
+      "y": 442.5,
+      "w": 58.75,
+      "h": 20.0,
+      "value": "低频分支\n（结构信息）",
+      "size": 7.5,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_m3_add",
+      "vba_shape": "msoShapeOval",
+      "x": 746.25,
+      "y": 440.0,
+      "w": 25.0,
+      "h": 25.0,
+      "fill": [
+        158,
+        226,
+        235
+      ],
+      "line": [
+        25,
+        150,
+        170
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_m3_add_text",
+      "x": 746.25,
+      "y": 440.0,
+      "w": 25.0,
+      "h": 25.0,
+      "value": "+",
+      "size": 6.5,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_G_m3_out_bg",
+      "vba_shape": "msoShapeRectangle",
+      "x": 742.5,
+      "y": 481.25,
+      "w": 32.5,
+      "h": 25.0,
+      "fill": [
+        214,
+        228,
+        252
+      ],
+      "line": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.75,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_out_v1",
+      "x1": 753.3333333333333,
+      "y1": 481.25,
+      "x2": 753.3333333333333,
+      "y2": 506.25,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_out_v2",
+      "x1": 764.1666666666667,
+      "y1": 481.25,
+      "x2": 764.1666666666667,
+      "y2": 506.25,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_G_m3_out_h1",
+      "x1": 742.5,
+      "y1": 493.75,
+      "x2": 775.0,
+      "y2": 493.75,
+      "color": [
+        120,
+        156,
+        228
+      ],
+      "weight": 0.5,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_out",
+      "x": 727.5,
+      "y": 507.5,
+      "w": 62.5,
+      "h": 11.25,
+      "value": "输出特征",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m3_f1_seg1",
+      "x1": 722.5,
+      "y1": 400.0,
+      "x2": 758.75,
+      "y2": 400.0,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m3_f1_seg2",
+      "x1": 758.75,
+      "y1": 400.0,
+      "x2": 758.75,
+      "y2": 438.125,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m3_f2_seg1",
+      "x1": 722.5,
+      "y1": 452.5,
+      "x2": 744.375,
+      "y2": 452.5,
+      "color": [
+        55,
+        58,
+        68
+      ],
+      "weight": 1.1,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_m3_f3",
+      "x1": 758.75,
+      "y1": 465.0,
+      "x2": 758.75,
+      "y2": 481.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_p0",
+      "x": 798.75,
+      "y": 388.75,
+      "w": 156.25,
+      "h": 27.5,
+      "value": "•  分离高频细节与低频结构信息",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_p1",
+      "x": 798.75,
+      "y": 420.0,
+      "w": 156.25,
+      "h": 27.5,
+      "value": "•  空间联合注意力自适应融合",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_p2",
+      "x": 798.75,
+      "y": 451.25,
+      "w": 156.25,
+      "h": 27.5,
+      "value": "•  突出关键细节，抑制噪声干扰",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_m3_p3",
+      "x": 798.75,
+      "y": 482.5,
+      "w": 156.25,
+      "h": 27.5,
+      "value": "•  提升特征表达与泛化能力",
+      "size": 9.0,
+      "color": [
+        12,
+        12,
+        12
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "top",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_b1",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 7.5,
+      "y": 528.75,
+      "w": 191.25,
+      "h": 104.375,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_b2",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 218.75,
+      "y": 528.75,
+      "w": 330.625,
+      "h": 104.375,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_b3",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 567.5,
+      "y": 528.75,
+      "w": 141.25,
+      "h": 104.375,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_panel_b4",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 718.75,
+      "y": 528.75,
+      "w": 232.5,
+      "h": 104.375,
+      "fill": [
+        253,
+        253,
+        253
+      ],
+      "line": [
+        192,
+        203,
+        224
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b1_title",
+      "x": 7.5,
+      "y": 537.5,
+      "w": 201.25,
+      "h": 12.5,
+      "value": "输出多尺度特征金字塔",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p3_top",
+      "points": [
+        [
+          29.375,
+          563.75
+        ],
+        [
+          34.375,
+          558.75
+        ],
+        [
+          55.625,
+          558.75
+        ],
+        [
+          50.625,
+          563.75
+        ]
+      ],
+      "fill": [
+        255,
+        150,
+        94
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p3_front",
+      "points": [
+        [
+          29.375,
+          563.75
+        ],
+        [
+          50.625,
+          563.75
+        ],
+        [
+          50.625,
+          583.75
+        ],
+        [
+          29.375,
+          583.75
+        ]
+      ],
+      "fill": [
+        255,
+        118,
+        62
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          255,
+          142,
+          86
+        ],
+        "end": [
+          237,
+          100,
+          44
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p3_right",
+      "points": [
+        [
+          50.625,
+          563.75
+        ],
+        [
+          55.625,
+          558.75
+        ],
+        [
+          55.625,
+          578.75
+        ],
+        [
+          50.625,
+          583.75
+        ]
+      ],
+      "fill": [
+        207,
+        70,
+        14
+      ],
+      "line": [
+        185,
+        48,
+        0
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_out_p3_label",
+      "x": 21.25,
+      "y": 590.0,
+      "w": 46.25,
+      "h": 31.25,
+      "value": "P3\n（80×C）",
+      "size": 8.0,
+      "color": [
+        224,
+        58,
+        38
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p4_top",
+      "points": [
+        [
+          86.25,
+          567.5
+        ],
+        [
+          91.25,
+          562.5
+        ],
+        [
+          111.25,
+          562.5
+        ],
+        [
+          106.25,
+          567.5
+        ]
+      ],
+      "fill": [
+        177,
+        234,
+        164
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p4_front",
+      "points": [
+        [
+          86.25,
+          567.5
+        ],
+        [
+          106.25,
+          567.5
+        ],
+        [
+          106.25,
+          584.375
+        ],
+        [
+          86.25,
+          584.375
+        ]
+      ],
+      "fill": [
+        145,
+        202,
+        132
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          169,
+          226,
+          156
+        ],
+        "end": [
+          127,
+          184,
+          114
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p4_right",
+      "points": [
+        [
+          106.25,
+          567.5
+        ],
+        [
+          111.25,
+          562.5
+        ],
+        [
+          111.25,
+          579.375
+        ],
+        [
+          106.25,
+          584.375
+        ]
+      ],
+      "fill": [
+        97,
+        154,
+        84
+      ],
+      "line": [
+        75,
+        132,
+        62
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_out_p4_label",
+      "x": 77.5,
+      "y": 592.5,
+      "w": 43.75,
+      "h": 30.0,
+      "value": "P4\n（40×C）",
+      "size": 8.0,
+      "color": [
+        28,
+        148,
+        84
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p5_top",
+      "points": [
+        [
+          142.5,
+          570.625
+        ],
+        [
+          146.875,
+          566.25
+        ],
+        [
+          164.375,
+          566.25
+        ],
+        [
+          160.0,
+          570.625
+        ]
+      ],
+      "fill": [
+        174,
+        212,
+        255
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p5_front",
+      "points": [
+        [
+          142.5,
+          570.625
+        ],
+        [
+          160.0,
+          570.625
+        ],
+        [
+          160.0,
+          585.0
+        ],
+        [
+          142.5,
+          585.0
+        ]
+      ],
+      "fill": [
+        142,
+        180,
+        238
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": {
+        "start": [
+          166,
+          204,
+          255
+        ],
+        "end": [
+          124,
+          162,
+          220
+        ],
+        "angle": 90.0
+      }
+    },
+    {
+      "kind": "freeform",
+      "name": "SUMMER_E_out_p5_right",
+      "points": [
+        [
+          160.0,
+          570.625
+        ],
+        [
+          164.375,
+          566.25
+        ],
+        [
+          164.375,
+          580.625
+        ],
+        [
+          160.0,
+          585.0
+        ]
+      ],
+      "fill": [
+        94,
+        132,
+        190
+      ],
+      "line": [
+        72,
+        110,
+        168
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_out_p5_label",
+      "x": 127.5,
+      "y": 595.0,
+      "w": 55.0,
+      "h": 27.5,
+      "value": "P5\n（20×C）",
+      "size": 8.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b2_title",
+      "x": 218.75,
+      "y": 535.0,
+      "w": 330.625,
+      "h": 15.0,
+      "value": "输入到 RT-DETR Head",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b2_iou",
+      "x": 238.75,
+      "y": 552.5,
+      "w": 88.75,
+      "h": 26.25,
+      "value": "IoU-Aware\nQuery Selection",
+      "size": 8.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq1_0",
+      "vba_shape": "msoShapeRectangle",
+      "x": 240.0,
+      "y": 583.75,
+      "w": 10.0,
+      "h": 10.0,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq1_1",
+      "vba_shape": "msoShapeRectangle",
+      "x": 254.375,
+      "y": 583.75,
+      "w": 10.0,
+      "h": 10.0,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq1_2",
+      "vba_shape": "msoShapeRectangle",
+      "x": 268.75,
+      "y": 583.75,
+      "w": 10.0,
+      "h": 10.0,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq1_3",
+      "vba_shape": "msoShapeRectangle",
+      "x": 283.125,
+      "y": 583.75,
+      "w": 10.0,
+      "h": 10.0,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq1_4",
+      "vba_shape": "msoShapeRectangle",
+      "x": 297.5,
+      "y": 583.75,
+      "w": 10.0,
+      "h": 10.0,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq1_5",
+      "vba_shape": "msoShapeRectangle",
+      "x": 311.875,
+      "y": 583.75,
+      "w": 10.0,
+      "h": 10.0,
+      "fill": [
+        198,
+        178,
+        239
+      ],
+      "line": null,
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_E_b2_sq1_dots",
+      "x": 327.5,
+      "y": 582.5,
+      "w": 18.75,
+      "h": 12.5,
+      "value": "····",
+      "size": 8.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b2_dec",
+      "x": 368.75,
+      "y": 546.875,
+      "w": 168.75,
+      "h": 13.75,
+      "value": "Transformer Decoder × 6 层",
+      "size": 8.5,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq2_0",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 371.25,
+      "y": 573.75,
+      "w": 13.75,
+      "h": 20.0,
+      "fill": [
+        140,
+        110,
+        214
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_stem_top_0",
+      "x1": 378.125,
+      "y1": 565.0,
+      "x2": 378.125,
+      "y2": 573.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_stem_bottom_0",
+      "x1": 378.125,
+      "y1": 593.75,
+      "x2": 378.125,
+      "y2": 602.5,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq2_1",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 408.75,
+      "y": 573.75,
+      "w": 13.75,
+      "h": 20.0,
+      "fill": [
+        140,
+        110,
+        214
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_stem_top_1",
+      "x1": 415.625,
+      "y1": 565.0,
+      "x2": 415.625,
+      "y2": 573.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_stem_bottom_1",
+      "x1": 415.625,
+      "y1": 593.75,
+      "x2": 415.625,
+      "y2": 602.5,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_sq2_2",
+      "vba_shape": "msoShapeRoundedRectangle",
+      "x": 446.25,
+      "y": 573.75,
+      "w": 13.75,
+      "h": 20.0,
+      "fill": [
+        140,
+        110,
+        214
+      ],
+      "line": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.8,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_stem_top_2",
+      "x1": 453.125,
+      "y1": 565.0,
+      "x2": 453.125,
+      "y2": 573.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_stem_bottom_2",
+      "x1": 453.125,
+      "y1": 593.75,
+      "x2": 453.125,
+      "y2": 602.5,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_chain_0",
+      "x1": 385.0,
+      "y1": 583.75,
+      "x2": 408.75,
+      "y2": 583.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_chain_1",
+      "x1": 422.5,
+      "y1": 583.75,
+      "x2": 446.25,
+      "y2": 583.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_chain_2",
+      "x1": 460.0,
+      "y1": 583.75,
+      "x2": 467.5,
+      "y2": 583.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_chain_3",
+      "x1": 500.0,
+      "y1": 583.75,
+      "x2": 515.0,
+      "y2": 583.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b2_dots2",
+      "x": 470.0,
+      "y": 576.875,
+      "w": 30.0,
+      "h": 15.0,
+      "value": "····",
+      "size": 9.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b2_last",
+      "vba_shape": "msoShapeRectangle",
+      "x": 515.0,
+      "y": 573.75,
+      "w": 13.75,
+      "h": 20.0,
+      "fill": [
+        140,
+        110,
+        214
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_last_top",
+      "x1": 521.875,
+      "y1": 565.0,
+      "x2": 521.875,
+      "y2": 573.75,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_last_bottom",
+      "x1": 521.875,
+      "y1": 593.75,
+      "x2": 521.875,
+      "y2": 602.5,
+      "color": [
+        112,
+        62,
+        200
+      ],
+      "weight": 0.7,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_flow",
+      "x1": 328.75,
+      "y1": 588.75,
+      "x2": 368.75,
+      "y2": 588.75,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.2,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b1_b2",
+      "x1": 198.75,
+      "y1": 583.75,
+      "x2": 218.75,
+      "y2": 583.75,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 2.5,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_L_b2_b3",
+      "x1": 549.375,
+      "y1": 583.75,
+      "x2": 567.5,
+      "y2": 583.75,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 2.5,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b3_title",
+      "x": 567.5,
+      "y": 537.5,
+      "w": 141.25,
+      "h": 12.5,
+      "value": "检测结果",
+      "size": 10.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_E_b3_bars_axis_x",
+      "x1": 587.5,
+      "y1": 595.0,
+      "x2": 620.0,
+      "y2": 595.0,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "line",
+      "name": "SUMMER_E_b3_bars_axis_y",
+      "x1": 587.5,
+      "y1": 595.0,
+      "x2": 587.5,
+      "y2": 561.25,
+      "color": [
+        37,
+        80,
+        216
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_bars_0",
+      "vba_shape": "msoShapeRectangle",
+      "x": 590.0,
+      "y": 579.375,
+      "w": 3.75,
+      "h": 15.625,
+      "fill": [
+        70,
+        95,
+        205
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_bars_1",
+      "vba_shape": "msoShapeRectangle",
+      "x": 595.625,
+      "y": 563.75,
+      "w": 3.75,
+      "h": 31.25,
+      "fill": [
+        70,
+        95,
+        205
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_bars_2",
+      "vba_shape": "msoShapeRectangle",
+      "x": 601.25,
+      "y": 583.75,
+      "w": 3.75,
+      "h": 11.25,
+      "fill": [
+        70,
+        95,
+        205
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_bars_3",
+      "vba_shape": "msoShapeRectangle",
+      "x": 606.875,
+      "y": 572.5,
+      "w": 3.75,
+      "h": 22.5,
+      "fill": [
+        70,
+        95,
+        205
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_bars_4",
+      "vba_shape": "msoShapeRectangle",
+      "x": 612.5,
+      "y": 587.5,
+      "w": 3.75,
+      "h": 7.5,
+      "fill": [
+        70,
+        95,
+        205
+      ],
+      "line": null,
+      "weight": 1.0,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b3_bars",
+      "x": 572.5,
+      "y": 598.75,
+      "w": 62.5,
+      "h": 11.25,
+      "value": "类别概率",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_box1",
+      "vba_shape": "msoShapeRectangle",
+      "x": 648.75,
+      "y": 558.75,
+      "w": 23.75,
+      "h": 28.75,
+      "fill": null,
+      "line": [
+        224,
+        58,
+        38
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "shape",
+      "name": "SUMMER_E_b3_box2",
+      "vba_shape": "msoShapeRectangle",
+      "x": 660.0,
+      "y": 568.75,
+      "w": 23.75,
+      "h": 26.25,
+      "fill": null,
+      "line": [
+        28,
+        148,
+        84
+      ],
+      "weight": 1.2,
+      "transparency": 0,
+      "rotation": 0,
+      "gradient": null
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b3_box",
+      "x": 630.0,
+      "y": 598.75,
+      "w": 77.5,
+      "h": 11.25,
+      "value": "归一化边界框坐标",
+      "size": 7.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "bold": false,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_title",
+      "x": 718.75,
+      "y": 531.875,
+      "w": 232.5,
+      "h": 17.5,
+      "value": "三模块协同优势",
+      "size": 11.0,
+      "color": [
+        0,
+        55,
+        210
+      ],
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "margin": 0,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "picture",
+      "name": "SUMMER_E_b4_icon0",
+      "path": "outputs/reference-figures-regression/mphf-net-architecture/assets/02_adv_precision.png",
+      "x": 725.0,
+      "y": 546.25,
+      "w": 26.25,
+      "h": 26.25
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_head0",
+      "x": 765.625,
+      "y": 552.5,
+      "w": 45.0,
+      "h": 17.5,
+      "value": "更精细：",
+      "size": 9.8,
+      "color": [
+        0,
+        55,
+        210
+      ],
+      "bold": true,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_tail0",
+      "x": 807.5,
+      "y": 552.5,
+      "w": 138.75,
+      "h": 17.5,
+      "value": "保留小目标细粒度特征",
+      "size": 10.5,
+      "color": [
+        18,
+        18,
+        18
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "picture",
+      "name": "SUMMER_E_b4_icon1",
+      "path": "outputs/reference-figures-regression/mphf-net-architecture/assets/03_adv_robust.png",
+      "x": 725.0,
+      "y": 571.25,
+      "w": 26.25,
+      "h": 26.25
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_head1",
+      "x": 765.625,
+      "y": 577.5,
+      "w": 45.0,
+      "h": 17.5,
+      "value": "更鲁棒：",
+      "size": 9.8,
+      "color": [
+        0,
+        125,
+        48
+      ],
+      "bold": true,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_tail1",
+      "x": 807.5,
+      "y": 577.5,
+      "w": 138.75,
+      "h": 17.5,
+      "value": "增强方向性缺陷感知",
+      "size": 10.5,
+      "color": [
+        18,
+        18,
+        18
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "picture",
+      "name": "SUMMER_E_b4_icon2",
+      "path": "outputs/reference-figures-regression/mphf-net-architecture/assets/04_adv_efficient.png",
+      "x": 725.0,
+      "y": 596.25,
+      "w": 26.25,
+      "h": 26.25
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_head2",
+      "x": 765.625,
+      "y": 602.5,
+      "w": 45.0,
+      "h": 17.5,
+      "value": "更高效：",
+      "size": 9.8,
+      "color": [
+        255,
+        55,
+        30
+      ],
+      "bold": true,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "text",
+      "name": "SUMMER_T_b4_tail2",
+      "x": 807.5,
+      "y": 602.5,
+      "w": 138.75,
+      "h": 17.5,
+      "value": "自适应融合多尺度特征",
+      "size": 10.5,
+      "color": [
+        18,
+        18,
+        18
+      ],
+      "bold": false,
+      "align": "left",
+      "valign": "middle",
+      "margin": 0.5,
+      "font_name": "PingFang SC",
+      "rotation": 0
+    },
+    {
+      "kind": "reference_slide_picture",
+      "name": "SUMMER_R_reference_full",
+      "path": "assets/reference-figures/mphf-net-architecture.png",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 960.0,
+      "h": 640.0
+    }
+  ]
+}

@@ -1,0 +1,1102 @@
+{
+  "schema_version": "1.0",
+  "canvas": {
+    "width_px": 1536,
+    "height_px": 1024,
+    "width_pt": 960,
+    "height_pt": 640
+  },
+  "elements": [
+    {
+      "id": "input_pcb",
+      "label": "PCB input image",
+      "bbox_px": [
+        25,
+        162,
+        171,
+        244
+      ],
+      "status": "preserved",
+      "salience": "high"
+    },
+    {
+      "id": "backbone_pyramid",
+      "bbox_px": [
+        230,
+        145,
+        240,
+        335
+      ],
+      "status": "matched",
+      "salience": "normal"
+    },
+    {
+      "id": "neck",
+      "bbox_px": [
+        498,
+        76,
+        574,
+        460
+      ],
+      "status": "matched",
+      "salience": "normal"
+    },
+    {
+      "id": "head",
+      "bbox_px": [
+        1086,
+        76,
+        240,
+        460
+      ],
+      "status": "matched",
+      "salience": "normal"
+    },
+    {
+      "id": "advantages",
+      "bbox_px": [
+        1148,
+        852,
+        378,
+        164
+      ],
+      "status": "matched",
+      "salience": "normal"
+    }
+  ],
+  "routing_audit": {
+    "routes": [
+      {
+        "connector": "SUMMER_L_input_backbone",
+        "target": "SUMMER_E_panel_backbone",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_b1_b2",
+        "target": "SUMMER_E_panel_b2",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_b2_b3",
+        "target": "SUMMER_E_panel_b3",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_neck_add1_fusion",
+        "target": "SUMMER_E_neck_fusion1",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_neck_add2_fusion",
+        "target": "SUMMER_E_neck_fusion2",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_head_iou_dec",
+        "target": "SUMMER_E_head_dec",
+        "target_edge": "top",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "SUMMER_L_head_dec_out",
+        "target": "SUMMER_E_head_out",
+        "target_edge": "top",
+        "tolerance_pt": 1.5
+      }
+    ],
+    "segments": [
+      {
+        "connector": "SUMMER_L_neck_fusion1_add_seg1",
+        "dash": true,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion1_add_seg2",
+        "dash": true,
+        "orientation": "vertical",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion1_add_seg3",
+        "dash": true,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion2_add_seg1",
+        "dash": true,
+        "orientation": "vertical",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion2_add_seg2",
+        "dash": true,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion1_up2_seg1",
+        "dash": true,
+        "orientation": "vertical",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion1_up2_seg2",
+        "dash": true,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion2_p4_seg1",
+        "dash": true,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion2_p4_seg2",
+        "dash": true,
+        "orientation": "vertical",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_neck_fusion2_p4_seg3",
+        "dash": true,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_m3_f1_seg1",
+        "dash": false,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_m3_f1_seg2",
+        "dash": false,
+        "orientation": "vertical",
+        "tolerance_pt": 0.2
+      },
+      {
+        "connector": "SUMMER_L_m3_f2_seg1",
+        "dash": false,
+        "orientation": "horizontal",
+        "tolerance_pt": 0.2
+      }
+    ]
+  },
+  "layering_audit": {
+    "cuboids": [
+      {
+        "id": "bb1",
+        "front": "SUMMER_E_bb1_front",
+        "top": "SUMMER_E_bb1_top",
+        "right": "SUMMER_E_bb1_right",
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              175.0,
+              105.625
+            ],
+            [
+              199.375,
+              105.625
+            ],
+            [
+              199.375,
+              128.125
+            ],
+            [
+              175.0,
+              128.125
+            ]
+          ],
+          "top": [
+            [
+              175.0,
+              105.625
+            ],
+            [
+              180.0,
+              100.625
+            ],
+            [
+              204.375,
+              100.625
+            ],
+            [
+              199.375,
+              105.625
+            ]
+          ],
+          "right": [
+            [
+              199.375,
+              105.625
+            ],
+            [
+              204.375,
+              100.625
+            ],
+            [
+              204.375,
+              123.125
+            ],
+            [
+              199.375,
+              128.125
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                166,
+                204,
+                255
+              ],
+              [
+                124,
+                162,
+                220
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "bb2",
+        "front": "SUMMER_E_bb2_front",
+        "top": "SUMMER_E_bb2_top",
+        "right": "SUMMER_E_bb2_right",
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              171.25,
+              158.75
+            ],
+            [
+              200.0,
+              158.75
+            ],
+            [
+              200.0,
+              196.25
+            ],
+            [
+              171.25,
+              196.25
+            ]
+          ],
+          "top": [
+            [
+              171.25,
+              158.75
+            ],
+            [
+              180.625,
+              149.375
+            ],
+            [
+              209.375,
+              149.375
+            ],
+            [
+              200.0,
+              158.75
+            ]
+          ],
+          "right": [
+            [
+              200.0,
+              158.75
+            ],
+            [
+              209.375,
+              149.375
+            ],
+            [
+              209.375,
+              186.875
+            ],
+            [
+              200.0,
+              196.25
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                166,
+                204,
+                255
+              ],
+              [
+                124,
+                162,
+                220
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "bb3",
+        "front": "SUMMER_E_bb3_front",
+        "top": "SUMMER_E_bb3_top",
+        "right": "SUMMER_E_bb3_right",
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              165.0,
+              195.0
+            ],
+            [
+              202.5,
+              195.0
+            ],
+            [
+              202.5,
+              232.5
+            ],
+            [
+              165.0,
+              232.5
+            ]
+          ],
+          "top": [
+            [
+              165.0,
+              195.0
+            ],
+            [
+              178.125,
+              181.875
+            ],
+            [
+              215.625,
+              181.875
+            ],
+            [
+              202.5,
+              195.0
+            ]
+          ],
+          "right": [
+            [
+              202.5,
+              195.0
+            ],
+            [
+              215.625,
+              181.875
+            ],
+            [
+              215.625,
+              219.375
+            ],
+            [
+              202.5,
+              232.5
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                166,
+                204,
+                255
+              ],
+              [
+                124,
+                162,
+                220
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "bb4",
+        "front": "SUMMER_E_bb4_front",
+        "top": "SUMMER_E_bb4_top",
+        "right": "SUMMER_E_bb4_right",
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              156.25,
+              235.625
+            ],
+            [
+              198.75,
+              235.625
+            ],
+            [
+              198.75,
+              275.0
+            ],
+            [
+              156.25,
+              275.0
+            ]
+          ],
+          "top": [
+            [
+              156.25,
+              235.625
+            ],
+            [
+              173.125,
+              218.75
+            ],
+            [
+              215.625,
+              218.75
+            ],
+            [
+              198.75,
+              235.625
+            ]
+          ],
+          "right": [
+            [
+              198.75,
+              235.625
+            ],
+            [
+              215.625,
+              218.75
+            ],
+            [
+              215.625,
+              258.125
+            ],
+            [
+              198.75,
+              275.0
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                166,
+                204,
+                255
+              ],
+              [
+                124,
+                162,
+                220
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "out_p3",
+        "front": "SUMMER_E_out_p3_front",
+        "top": "SUMMER_E_out_p3_top",
+        "right": "SUMMER_E_out_p3_right",
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              29.375,
+              563.75
+            ],
+            [
+              50.625,
+              563.75
+            ],
+            [
+              50.625,
+              583.75
+            ],
+            [
+              29.375,
+              583.75
+            ]
+          ],
+          "top": [
+            [
+              29.375,
+              563.75
+            ],
+            [
+              34.375,
+              558.75
+            ],
+            [
+              55.625,
+              558.75
+            ],
+            [
+              50.625,
+              563.75
+            ]
+          ],
+          "right": [
+            [
+              50.625,
+              563.75
+            ],
+            [
+              55.625,
+              558.75
+            ],
+            [
+              55.625,
+              578.75
+            ],
+            [
+              50.625,
+              583.75
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                255,
+                142,
+                86
+              ],
+              [
+                237,
+                100,
+                44
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "neck_p3",
+        "front": "SUMMER_E_neck_p3_front",
+        "top": "SUMMER_E_neck_p3_top",
+        "right": "SUMMER_E_neck_p3_right",
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              607.5,
+              282.5
+            ],
+            [
+              622.5,
+              282.5
+            ],
+            [
+              622.5,
+              301.25
+            ],
+            [
+              607.5,
+              301.25
+            ]
+          ],
+          "top": [
+            [
+              607.5,
+              282.5
+            ],
+            [
+              612.5,
+              277.5
+            ],
+            [
+              627.5,
+              277.5
+            ],
+            [
+              622.5,
+              282.5
+            ]
+          ],
+          "right": [
+            [
+              622.5,
+              282.5
+            ],
+            [
+              627.5,
+              277.5
+            ],
+            [
+              627.5,
+              296.25
+            ],
+            [
+              622.5,
+              301.25
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                255,
+                142,
+                86
+              ],
+              [
+                237,
+                100,
+                44
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "out_p4",
+        "front": "SUMMER_E_out_p4_front",
+        "top": "SUMMER_E_out_p4_top",
+        "right": "SUMMER_E_out_p4_right",
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              86.25,
+              567.5
+            ],
+            [
+              106.25,
+              567.5
+            ],
+            [
+              106.25,
+              584.375
+            ],
+            [
+              86.25,
+              584.375
+            ]
+          ],
+          "top": [
+            [
+              86.25,
+              567.5
+            ],
+            [
+              91.25,
+              562.5
+            ],
+            [
+              111.25,
+              562.5
+            ],
+            [
+              106.25,
+              567.5
+            ]
+          ],
+          "right": [
+            [
+              106.25,
+              567.5
+            ],
+            [
+              111.25,
+              562.5
+            ],
+            [
+              111.25,
+              579.375
+            ],
+            [
+              106.25,
+              584.375
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                169,
+                226,
+                156
+              ],
+              [
+                127,
+                184,
+                114
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "neck_p4",
+        "front": "SUMMER_E_neck_p4_front",
+        "top": "SUMMER_E_neck_p4_top",
+        "right": "SUMMER_E_neck_p4_right",
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              607.5,
+              203.125
+            ],
+            [
+              622.5,
+              203.125
+            ],
+            [
+              622.5,
+              222.5
+            ],
+            [
+              607.5,
+              222.5
+            ]
+          ],
+          "top": [
+            [
+              607.5,
+              203.125
+            ],
+            [
+              612.5,
+              198.125
+            ],
+            [
+              627.5,
+              198.125
+            ],
+            [
+              622.5,
+              203.125
+            ]
+          ],
+          "right": [
+            [
+              622.5,
+              203.125
+            ],
+            [
+              627.5,
+              198.125
+            ],
+            [
+              627.5,
+              217.5
+            ],
+            [
+              622.5,
+              222.5
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                169,
+                226,
+                156
+              ],
+              [
+                127,
+                184,
+                114
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "out_p5",
+        "front": "SUMMER_E_out_p5_front",
+        "top": "SUMMER_E_out_p5_top",
+        "right": "SUMMER_E_out_p5_right",
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              142.5,
+              570.625
+            ],
+            [
+              160.0,
+              570.625
+            ],
+            [
+              160.0,
+              585.0
+            ],
+            [
+              142.5,
+              585.0
+            ]
+          ],
+          "top": [
+            [
+              142.5,
+              570.625
+            ],
+            [
+              146.875,
+              566.25
+            ],
+            [
+              164.375,
+              566.25
+            ],
+            [
+              160.0,
+              570.625
+            ]
+          ],
+          "right": [
+            [
+              160.0,
+              570.625
+            ],
+            [
+              164.375,
+              566.25
+            ],
+            [
+              164.375,
+              580.625
+            ],
+            [
+              160.0,
+              585.0
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                166,
+                204,
+                255
+              ],
+              [
+                124,
+                162,
+                220
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      },
+      {
+        "id": "neck_p5",
+        "front": "SUMMER_E_neck_p5_front",
+        "top": "SUMMER_E_neck_p5_top",
+        "right": "SUMMER_E_neck_p5_right",
+        "expected_face_vertices_pt": {
+          "front": [
+            [
+              607.5,
+              106.25
+            ],
+            [
+              622.5,
+              106.25
+            ],
+            [
+              622.5,
+              126.25
+            ],
+            [
+              607.5,
+              126.25
+            ]
+          ],
+          "top": [
+            [
+              607.5,
+              106.25
+            ],
+            [
+              612.5,
+              101.25
+            ],
+            [
+              627.5,
+              101.25
+            ],
+            [
+              622.5,
+              106.25
+            ]
+          ],
+          "right": [
+            [
+              622.5,
+              106.25
+            ],
+            [
+              627.5,
+              101.25
+            ],
+            [
+              627.5,
+              121.25
+            ],
+            [
+              622.5,
+              126.25
+            ]
+          ]
+        },
+        "vertex_tolerance_pt": 0.8,
+        "expected_gradients": {
+          "front": {
+            "colors": [
+              [
+                166,
+                204,
+                255
+              ],
+              [
+                124,
+                162,
+                220
+              ]
+            ],
+            "angle": 90,
+            "color_tolerance": 2,
+            "angle_tolerance": 1
+          }
+        }
+      }
+    ],
+    "size_order": [
+      "bb1",
+      "bb2",
+      "bb3",
+      "bb4"
+    ],
+    "z_order": [
+      "bb1",
+      "bb2",
+      "bb3",
+      "bb4"
+    ],
+    "overlap_pairs": []
+  },
+  "text_audit": {
+    "items": [
+      {
+        "name": "SUMMER_T_banner",
+        "contains": "MPHF-Net",
+        "min_font_pt": 17,
+        "align": "center",
+        "max_lines": 1
+      },
+      {
+        "name": "SUMMER_T_backbone_title",
+        "contains": "CSP-MEEM",
+        "min_font_pt": 11,
+        "max_lines": 1
+      },
+      {
+        "name": "SUMMER_T_neck_title",
+        "contains": "FPN-PAN",
+        "min_font_pt": 11,
+        "max_lines": 1
+      },
+      {
+        "name": "SUMMER_T_head_title",
+        "contains": "RT-DETR",
+        "min_font_pt": 10,
+        "max_lines": 1,
+        "estimate_overflow": true
+      },
+      {
+        "name": "SUMMER_T_m1_title",
+        "contains": "CSP-MEEM",
+        "min_font_pt": 10,
+        "max_lines": 1
+      },
+      {
+        "name": "SUMMER_T_m2_title",
+        "contains": "LOSC",
+        "min_font_pt": 10,
+        "max_lines": 1
+      },
+      {
+        "name": "SUMMER_T_m3_title",
+        "contains": "CGAFusion",
+        "min_font_pt": 10,
+        "max_lines": 1
+      },
+      {
+        "name": "SUMMER_T_b4_title",
+        "text": "三模块协同优势",
+        "min_font_pt": 10,
+        "max_lines": 1
+      }
+    ]
+  },
+  "editability_audit": {
+    "allowed_raster_shapes": [
+      "SUMMER_R1_pcb",
+      "SUMMER_E_b4_icon0",
+      "SUMMER_E_b4_icon1",
+      "SUMMER_E_b4_icon2"
+    ],
+    "reference_slide_shapes": [
+      "SUMMER_R_reference_full"
+    ],
+    "max_unregistered_raster_ratio": 0,
+    "max_preserved_raster_ratio": 0.04,
+    "min_editable_shape_count": 280
+  }
+}

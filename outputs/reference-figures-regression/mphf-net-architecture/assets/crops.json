@@ -1,0 +1,34 @@
+{
+  "source_image": "assets/reference-figures/mphf-net-architecture.png",
+  "source_size_px": {"width": 1536, "height": 1024},
+  "assets": [
+    {
+      "asset_id": "preserved_001",
+      "name": "R1_pcb",
+      "reason": "texture-heavy PCB input image",
+      "asset_path": "assets/01_R1_pcb.png",
+      "source_box_px": {"x": 25, "y": 162, "width": 171, "height": 244}
+    },
+    {
+      "asset_id": "preserved_002",
+      "name": "adv_precision",
+      "reason": "small anti-aliased source icon",
+      "asset_path": "assets/02_adv_precision.png",
+      "source_box_px": {"x": 1160, "y": 874, "width": 42, "height": 42}
+    },
+    {
+      "asset_id": "preserved_003",
+      "name": "adv_robust",
+      "reason": "small anti-aliased source icon",
+      "asset_path": "assets/03_adv_robust.png",
+      "source_box_px": {"x": 1160, "y": 914, "width": 42, "height": 42}
+    },
+    {
+      "asset_id": "preserved_004",
+      "name": "adv_efficient",
+      "reason": "small anti-aliased source icon",
+      "asset_path": "assets/04_adv_efficient.png",
+      "source_box_px": {"x": 1160, "y": 954, "width": 42, "height": 42}
+    }
+  ]
+}
