@@ -145,6 +145,30 @@ class OfficeShapeCanvasTests(unittest.TestCase):
         payload = vba.read_text(encoding="utf-8")
         self.assertIn("20.000, 60.000, 90.000, 60.000", payload)
 
+    def test_generated_shapes_disable_theme_shadow_effects(self) -> None:
+        module = load_module()
+        canvas = module.ShapeCanvas(200, 120)
+        shape = canvas.round_rect(
+            20,
+            20,
+            80,
+            50,
+            fill=(252, 252, 254),
+            line=(190, 200, 220),
+            name="FIG_E_panel",
+        )
+
+        style = shape._element.find(
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}style"
+        )
+        self.assertIsNotNone(style)
+        effect_ref = style.find(
+            "{http://schemas.openxmlformats.org/drawingml/2006/main}effectRef"
+        )
+        self.assertIsNotNone(effect_ref)
+        self.assertEqual(effect_ref.get("idx"), "0")
+        self.assertFalse(shape.shadow.inherit)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -42,7 +42,7 @@ python scripts/pptx_editability_audit.py final.pptx \
   --manifest figure-manifest.json --json-out audit/editability.json --pretty
 ```
 
-箭头碰撞、重复线段、零长度线段、错误入边、缺失立体面、错误顶点、渐变色/方向不符、
+箭头碰撞、重复线段、零长度线段、错误入边、虚实/方向错误、缺失立体面、错误顶点、渐变色/方向不符、
 未登记的大面积栅格图都属于失败。
 
 ## 4. 参考图保真审计

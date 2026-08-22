@@ -42,7 +42,10 @@ class ManifestValidateTests(unittest.TestCase):
                         "target": "FIG_E_fusion",
                         "target_edge": "left",
                     }
-                ]
+                ],
+                "segments": [
+                    {"connector": "FIG_L_skip_h", "dash": True, "orientation": "horizontal"}
+                ],
             },
             "text_audit": {"items": [{"name": "FIG_T_fusion", "text": "融合"}]},
             "editability_audit": {"allowed_raster_shapes": []},
@@ -61,14 +64,19 @@ class ManifestValidateTests(unittest.TestCase):
                 {"id": "x", "bbox_px": [1, 1, 5, 5], "status": "matched"},
             ],
             "routing_audit": {
-                "routes": [{"connector": "FIG_L_1", "target": "", "target_edge": "diagonal"}]
+                "routes": [{"connector": "FIG_L_1", "target": "", "target_edge": "diagonal"}],
+                "segments": [{"connector": "", "orientation": "zigzag"}],
             },
         }
         result = module.validate_manifest(manifest)
         codes = {error["code"] for error in result["errors"]}
         self.assertFalse(result["passed"])
         self.assertEqual(
-            {"element_bbox_invalid", "element_id_duplicate", "route_target_missing", "route_edge_invalid"},
+            {
+                "element_bbox_invalid", "element_id_duplicate",
+                "route_target_missing", "route_edge_invalid",
+                "segment_connector_missing", "segment_orientation_invalid",
+            },
             codes,
         )
 

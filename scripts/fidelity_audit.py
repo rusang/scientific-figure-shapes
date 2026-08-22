@@ -44,8 +44,14 @@ def _mae(a, b) -> float:
 def _edge_mae(a, b) -> float:
     from PIL import ImageChops, ImageFilter, ImageStat
 
-    edge_a = a.convert("L").filter(ImageFilter.FIND_EDGES)
-    edge_b = b.convert("L").filter(ImageFilter.FIND_EDGES)
+    # Office/LibreOffice/font rasterizers produce different sub-pixel
+    # antialiasing for identical geometry. A sub-pixel pre-blur removes that
+    # renderer noise while still exposing real 1–2 px displacement or missing
+    # strokes through the element-level ROI gate.
+    gray_a = a.convert("L").filter(ImageFilter.GaussianBlur(0.75))
+    gray_b = b.convert("L").filter(ImageFilter.GaussianBlur(0.75))
+    edge_a = gray_a.filter(ImageFilter.FIND_EDGES)
+    edge_b = gray_b.filter(ImageFilter.FIND_EDGES)
     return ImageStat.Stat(ImageChops.difference(edge_a, edge_b)).mean[0] / 255
 
 

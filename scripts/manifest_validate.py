@@ -104,6 +104,31 @@ def validate_manifest(data: Any) -> dict[str, Any]:
         if edge is not None and edge not in ALLOWED_ROUTE_EDGES:
             _error(errors, "route_edge_invalid", f"{path}.target_edge", "target_edge 值无效")
 
+    segments = routing.get("segments", []) if isinstance(routing, dict) else []
+    if not isinstance(segments, list):
+        _error(errors, "segments_invalid", "$.routing_audit.segments", "segments 必须是 list")
+        segments = []
+    for index, segment in enumerate(segments):
+        path = f"$.routing_audit.segments[{index}]"
+        if not isinstance(segment, dict):
+            _error(errors, "segment_invalid", path, "segment 必须是 object")
+            continue
+        if not str(segment.get("connector", "")).strip():
+            _error(
+                errors, "segment_connector_missing", f"{path}.connector",
+                "connector 不能为空",
+            )
+        orientation = segment.get("orientation")
+        if orientation is not None and orientation not in {
+            "horizontal", "vertical", "diagonal"
+        }:
+            _error(
+                errors, "segment_orientation_invalid", f"{path}.orientation",
+                "orientation 值无效",
+            )
+        if "dash" in segment and not isinstance(segment["dash"], bool):
+            _error(errors, "segment_dash_invalid", f"{path}.dash", "dash 必须是 boolean")
+
     for section, list_key in (("text_audit", "items"), ("layering_audit", "cuboids")):
         value = data.get(section)
         if value is not None and not isinstance(value, dict):

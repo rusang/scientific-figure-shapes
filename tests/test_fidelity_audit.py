@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -146,6 +146,31 @@ class FidelityAuditTests(unittest.TestCase):
         )
         self.assertEqual(process.returncode, 0, process.stderr)
         self.assertIn("\n  \"passed\"", process.stdout)
+
+    def test_renderer_antialiasing_does_not_become_a_false_failure(self) -> None:
+        module = load_module()
+        reference = self.root / "reference.png"
+        rendered = self.root / "rendered.png"
+        source = Image.new("RGB", (80, 40), "white")
+        draw = ImageDraw.Draw(source)
+        for x in range(5, 75, 6):
+            draw.rectangle((x, 8, x + 2, 32), fill="black")
+        source.save(reference)
+        source.filter(ImageFilter.GaussianBlur(0.75)).save(rendered)
+        manifest = self._manifest([0, 0, 80, 40])
+
+        result = module.audit_reference(
+            str(reference),
+            str(rendered),
+            manifest_path=str(manifest),
+            warn_mae=0.08,
+            fail_mae=0.16,
+            rows=1,
+            cols=1,
+        )
+
+        self.assertTrue(result["passed"])
+        self.assertNotEqual(result["elements"][0]["severity"], "FAIL")
 
 
 if __name__ == "__main__":

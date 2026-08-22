@@ -88,6 +88,7 @@ Treat connector routing as geometry, not decoration:
 - For fan-in routes, choose the target edge deliberately. Left, center, and right sources should normally enter through left, top/bottom, and right edges rather than sharing one hard-coded endpoint.
 - A connector may touch a text-bearing box at its boundary, but must not enter the shrunken text rectangle or cross the label.
 - Record required edges in a routing manifest. Intentional line-to-text cases must be listed explicitly with `ignore_text_shapes` or `ignore_pairs`; do not disable the audit globally.
+- Record cross-scale or semantically styled segments in `routing_audit.segments`; declare `dash` and `orientation` so a dashed orthogonal link cannot silently become a solid diagonal line.
 - Run the audit on the materialized `.pptx`; connector/text collisions, duplicate segments, zero-length segments, and target-edge mismatches are failures. Then inspect the rendered preview. A clean source macro is not evidence that the final arrows are routed correctly.
 
 Read `references/office-shape-recipes.md` for the fan-in pattern and manifest example.

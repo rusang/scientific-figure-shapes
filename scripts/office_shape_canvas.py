@@ -220,7 +220,11 @@ class ShapeCanvas:
         if style is not None:
             effect_ref = style.find(qn("a:effectRef"))
             if effect_ref is not None:
-                effect_ref.set("idx", "1")
+                effect_ref.set("idx", "0")
+        try:
+            shape.shadow.inherit = False
+        except (AttributeError, ValueError):
+            pass
 
     def shape(
         self,

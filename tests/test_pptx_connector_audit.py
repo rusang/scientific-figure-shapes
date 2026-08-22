@@ -198,6 +198,33 @@ class ConnectorAuditTests(unittest.TestCase):
         self.assertTrue(result["passed"])
         self.assertEqual(result["connector_count"], 1)
 
+    def test_segment_manifest_checks_dash_and_orientation(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        connector = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT, Pt(100), Pt(120), Pt(200), Pt(120)
+        )
+        connector.name = "FIG_L_cross_scale_segment"
+        path = self.root / "segment-style.pptx"
+        presentation.save(path)
+        manifest = {
+            "segments": [
+                {
+                    "connector": "FIG_L_cross_scale_segment",
+                    "dash": True,
+                    "orientation": "vertical",
+                    "tolerance_pt": 0.5,
+                }
+            ]
+        }
+
+        result = module.audit_presentation(str(path), manifest=manifest)
+        codes = {error["code"] for error in result["style_errors"]}
+
+        self.assertFalse(result["passed"])
+        self.assertEqual(codes, {"dash_style_mismatch", "orientation_mismatch"})
+
 
 if __name__ == "__main__":
     unittest.main()

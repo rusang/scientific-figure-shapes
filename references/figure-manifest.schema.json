@@ -52,6 +52,20 @@
             "additionalProperties": true
           }
         },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["connector"],
+            "properties": {
+              "connector": {"type": "string", "minLength": 1},
+              "dash": {"type": "boolean"},
+              "orientation": {"enum": ["horizontal", "vertical", "diagonal"]},
+              "tolerance_pt": {"type": "number", "minimum": 0}
+            },
+            "additionalProperties": true
+          }
+        },
         "ignore_text_shapes": {"type": "array", "items": {"type": "string"}},
         "ignore_pairs": {"type": "array"}
       },

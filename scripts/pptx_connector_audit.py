@@ -49,6 +49,12 @@ def _connector_preset(shape) -> str:
     return prst_geom.get("prst", "") if prst_geom is not None else ""
 
 
+def _is_dashed(shape) -> bool:
+    namespace = "{http://schemas.openxmlformats.org/drawingml/2006/main}prstDash"
+    node = shape._element.spPr.get_or_add_ln().find(namespace)
+    return node is not None and node.get("val", "solid") != "solid"
+
+
 def _line_endpoints(shape) -> tuple[tuple[float, float], tuple[float, float]]:
     left, top, right, bottom = _bounds(shape)
     xfrm = shape._element.spPr.xfrm
@@ -180,6 +186,7 @@ def audit_presentation(
     duplicate_segments: list[dict[str, Any]] = []
     degenerate_segments: list[dict[str, Any]] = []
     unsupported_connectors: list[dict[str, Any]] = []
+    style_errors: list[dict[str, Any]] = []
     indexed_shapes: dict[str, list[tuple[int, Any]]] = {}
     connector_count = 0
     text_count = 0
@@ -316,11 +323,69 @@ def audit_presentation(
                 "target_bounds_pt": list(target_rect),
             })
 
+    for segment in config.get("segments", []):
+        if not isinstance(segment, dict):
+            style_errors.append({"code": "segment_invalid", "segment": segment})
+            continue
+        connector_name = str(segment.get("connector", ""))
+        matches = indexed_shapes.get(connector_name, [])
+        if len(matches) != 1:
+            style_errors.append({
+                "code": "segment_shape_missing_or_ambiguous",
+                "connector": connector_name,
+                "matches": len(matches),
+            })
+            continue
+        _, connector = matches[0]
+        preset = _connector_preset(connector)
+        if preset not in STRAIGHT_PRSTS:
+            style_errors.append({
+                "code": "unsupported_connector_geometry",
+                "connector": connector_name,
+                "preset": preset,
+            })
+            continue
+        if "dash" in segment:
+            expected_dash = bool(segment["dash"])
+            actual_dash = _is_dashed(connector)
+            if actual_dash != expected_dash:
+                style_errors.append({
+                    "code": "dash_style_mismatch",
+                    "connector": connector_name,
+                    "expected": expected_dash,
+                    "actual": actual_dash,
+                })
+        orientation = segment.get("orientation")
+        if orientation is not None:
+            orientation = str(orientation).lower()
+            tolerance = float(segment.get("tolerance_pt", 0.5))
+            start, end = _line_endpoints(connector)
+            delta_x = abs(end[0] - start[0])
+            delta_y = abs(end[1] - start[1])
+            actual_orientation = (
+                "horizontal" if delta_y <= tolerance
+                else "vertical" if delta_x <= tolerance
+                else "diagonal"
+            )
+            if orientation not in {"horizontal", "vertical", "diagonal"}:
+                style_errors.append({
+                    "code": "orientation_invalid",
+                    "connector": connector_name,
+                    "expected": orientation,
+                })
+            elif actual_orientation != orientation:
+                style_errors.append({
+                    "code": "orientation_mismatch",
+                    "connector": connector_name,
+                    "expected": orientation,
+                    "actual": actual_orientation,
+                })
+
     return {
         "passed": (
             not collisions and not route_errors
             and not duplicate_segments and not degenerate_segments
-            and not unsupported_connectors
+            and not unsupported_connectors and not style_errors
         ),
         "pptx": str(source.resolve()),
         "slides": len(presentation.slides),
@@ -333,6 +398,7 @@ def audit_presentation(
         "duplicate_segments": duplicate_segments,
         "degenerate_segments": degenerate_segments,
         "unsupported_connectors": unsupported_connectors,
+        "style_errors": style_errors,
     }
 
 
@@ -367,6 +433,7 @@ def main() -> int:
             "route_errors": [{"code": "runtime_error", "message": str(exc)}],
             "duplicate_segments": [],
             "degenerate_segments": [],
+            "style_errors": [],
         }
     payload = json.dumps(result, ensure_ascii=False, indent=2 if args.pretty else None)
     print(payload)
