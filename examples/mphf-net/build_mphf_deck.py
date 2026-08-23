@@ -10,6 +10,7 @@ from pathlib import Path
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
+from pptx.enum.dml import MSO_LINE_DASH_STYLE as MSO_LINE
 from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.oxml.ns import qn
@@ -209,26 +210,28 @@ def build() -> Path:
     label(slide, "SUMMER_T_backbone_sub", 228, 108, 258, 16,
           "多尺度细粒度特征提取", size=8, color=GRAY)
     pyramid = [  # (x, y, w, h) 自上而下渐大，相邻层叠（front 与下一层 top 相交）
-        (286, 158, 34, 26),
-        (272, 186, 48, 38),
-        (256, 224, 64, 50),
-        (240, 276, 82, 62),
+        (290, 150, 36, 30),
+        (270, 182, 52, 46),
+        (248, 232, 70, 64),
+        (222, 296, 96, 84),
     ]
     for index, (x, y, w, h) in enumerate(pyramid, start=1):
         cuboid(slide, f"SUMMER_E_bb{index}", x, y, w, h, CUBE_BLUE)
     label(slide, "SUMMER_T_backbone_dots", 270, 452, 40, 18, "⋮", size=11,
           color=GRAY, bold=True)
-    stage = [("C5", "20×C", BLUE, 188), ("C4", "40×C", BLUE, 268),
-             ("C3", "80×C", RED, 362)]
-    for name, dim, color, y in stage:
-        rect(slide, f"SUMMER_E_bb_{name.lower()}", 396, y, 58, 44,
-             fill=RGBColor(245, 248, 255), edge=color, edge_w=1.4)
-        label(slide, f"SUMMER_T_bb_{name.lower()}", 396, y + 4, 58, 20, name,
-              size=10, color=color, bold=True)
-        label(slide, f"SUMMER_T_bb_{name.lower()}_dim", 396, y + 22, 58, 18,
-              dim, size=8, color=color)
-        line(slide, f"SUMMER_L_bb_to_{name.lower()}", 332, y + 22, 396,
-             y + 22, color=INK, width=1.2)
+    # 箭头从对应方块（bb2/bb3/bb4）右缘中心水平指向各 stage 框左缘
+    stage = [("C5", "20×C", BLUE, pyramid[1]), ("C4", "40×C", BLUE,
+             pyramid[2]), ("C3", "80×C", RED, pyramid[3])]
+    for name, dim, color, (bx, by, bw, bh) in stage:
+        center_y = by + 8 + bh / 2
+        rect(slide, f"SUMMER_E_bb_{name.lower()}", 396, center_y - 22, 58,
+             44, fill=RGBColor(245, 248, 255), edge=color, edge_w=1.4)
+        label(slide, f"SUMMER_T_bb_{name.lower()}", 396, center_y - 18, 58,
+              20, name, size=10, color=color, bold=True)
+        label(slide, f"SUMMER_T_bb_{name.lower()}_dim", 396, center_y, 58,
+              18, dim, size=8, color=color)
+        line(slide, f"SUMMER_L_bb_to_{name.lower()}", bx + bw + 8, center_y,
+             396, center_y, color=INK, width=1.2)
     rect(slide, "SUMMER_E_bb_outbar", 240, 486, 216, 30,
          fill=RGBColor(235, 241, 255), edge=PANEL_EDGE)
     label(slide, "SUMMER_T_bb_outbar", 240, 490, 216, 22, "输出多尺度特征",
@@ -299,23 +302,25 @@ def build() -> Path:
               size=8, color=color)
 
     # Neck 主干箭头（直线，审计目标）
-    line(slide, "SUMMER_L_neck_c5_up", 572, 182, 598, 206)
-    line(slide, "SUMMER_L_neck_up1_add", 602, 239, 602, 264)
-    line(slide, "SUMMER_L_neck_c4_add", 548, 280, 585, 280)
-    line(slide, "SUMMER_L_neck_add1_fusion", 618, 280, 660, 280)
-    line(slide, "SUMMER_L_neck_up2_add", 602, 361, 602, 404)
-    line(slide, "SUMMER_L_neck_c3_add", 548, 421, 585, 421)
-    line(slide, "SUMMER_L_neck_add2_fusion", 618, 420, 660, 420)
-    line(slide, "SUMMER_L_neck_fusion1_add", 752, 280, 876, 186)
-    line(slide, "SUMMER_L_neck_fusion2_add", 752, 420, 875, 461)
-    line(slide, "SUMMER_L_neck_addp5_cube", 908, 182, 964, 176)
-    line(slide, "SUMMER_L_neck_addp4_cube", 908, 342, 964, 336)
-    line(slide, "SUMMER_L_neck_addp3_cube", 908, 468, 964, 462)
-    line(slide, "SUMMER_L_neck_addp5_down", 892, 198, 892, 225)
-    line(slide, "SUMMER_L_neck_down_losc", 892, 259, 892, 286)
-    line(slide, "SUMMER_L_neck_losc_addp4", 892, 316, 892, 326)
-    line(slide, "SUMMER_L_neck_addp4_down2", 892, 358, 892, 387)
-    line(slide, "SUMMER_L_neck_down2_addp3", 892, 421, 892, 452)
+    # 箭头端点贴目标边界（badge 字标已列入 routing manifest 的
+    # ignore_text_shapes 窄豁免，线触圆边不再退让悬空）
+    line(slide, "SUMMER_L_neck_c5_up", 572, 182, 601, 208)
+    line(slide, "SUMMER_L_neck_up1_add", 602, 236, 602, 267)
+    line(slide, "SUMMER_L_neck_c4_add", 548, 280, 589, 280)
+    line(slide, "SUMMER_L_neck_add1_fusion", 615, 280, 660, 280)
+    line(slide, "SUMMER_L_neck_up2_add", 602, 358, 602, 407)
+    line(slide, "SUMMER_L_neck_c3_add", 548, 421, 589, 421)
+    line(slide, "SUMMER_L_neck_add2_fusion", 615, 420, 660, 420)
+    line(slide, "SUMMER_L_neck_fusion1_add", 752, 280, 881, 189)
+    line(slide, "SUMMER_L_neck_fusion2_add", 752, 420, 881, 461)
+    line(slide, "SUMMER_L_neck_addp5_cube", 905, 182, 964, 181)
+    line(slide, "SUMMER_L_neck_addp4_cube", 905, 342, 964, 341)
+    line(slide, "SUMMER_L_neck_addp3_cube", 905, 468, 964, 467)
+    line(slide, "SUMMER_L_neck_addp5_down", 892, 195, 892, 228)
+    line(slide, "SUMMER_L_neck_down_losc", 892, 256, 892, 288)
+    line(slide, "SUMMER_L_neck_losc_addp4", 892, 314, 892, 329)
+    line(slide, "SUMMER_L_neck_addp4_down2", 892, 355, 892, 390)
+    line(slide, "SUMMER_L_neck_down2_addp3", 892, 418, 892, 455)
     # 跨层虚线（装饰，不入审计前缀）
     line(slide, "SUMMER_LD_skip1", 706, 296, 706, 405, dash=True,
          color=GRAY, width=1.0)
@@ -353,7 +358,7 @@ def build() -> Path:
     mini_bars(slide, "SUMMER_E_head_bars", 1136, 478)
     rect(slide, "SUMMER_E_head_bbox", 1216, 478, 40, 32, fill=None,
          edge=BLUE, edge_w=1.2, shape=MSO_SHAPE.RECTANGLE,
-         dash=None)
+         dash=MSO_LINE.DASH)
 
     # ---- P5 图例 ----
     label(slide, "SUMMER_T_legend_title", 1340, 86, 186, 20, "图例说明",
@@ -398,11 +403,11 @@ def build() -> Path:
 
     # ---- 顶行主流程箭头 ----
     line(slide, "SUMMER_L_input_backbone", 212, 296, 228, 296, color=BLUE,
-         width=2.5)
+         width=4.0)
     line(slide, "SUMMER_L_backbone_neck", 486, 296, 498, 296, color=BLUE,
-         width=2.5)
+         width=4.0)
     line(slide, "SUMMER_L_neck_head", 1072, 296, 1086, 296, color=BLUE,
-         width=2.5)
+         width=4.0)
 
     # ---- 中行三模块 ----
     modules = {
@@ -536,7 +541,7 @@ def build() -> Path:
           color=GRAY, bold=True)
     rect(slide, "SUMMER_E_b2_last", 792, 918, 16, 16,
          fill=RGBColor(140, 110, 214), shape=MSO_SHAPE.RECTANGLE, radius=0)
-    line(slide, "SUMMER_L_b2_flow", 512, 940, 560, 928, width=1.2)
+    line(slide, "SUMMER_L_b2_flow", 516, 930, 556, 930, width=1.2)
     line(slide, "SUMMER_L_b1_b2", 334, 934, 348, 934, color=BLUE, width=2.5)
     line(slide, "SUMMER_L_b2_b3", 890, 934, 908, 934, color=BLUE, width=2.5)
     label(slide, "SUMMER_T_b3_title", 908, 860, 226, 20, "检测结果", size=10,
@@ -628,6 +633,15 @@ def _write_manifests(pyramid):
                 {"connector": connector, "target": target,
                  "target_edge": edge, "tolerance_pt": 1.5}
                 for connector, target, edge in routes
+            ],
+            # 窄豁免：箭头按源图语义精确触及 UP/Down/+ 圆形徽章边缘，
+            # 徽章内的单字标注文本框与线端点必然相接，非误压正文
+            "ignore_text_shapes": [
+                "SUMMER_E_neck_up1_text", "SUMMER_E_neck_up2_text",
+                "SUMMER_E_neck_add_td1_text", "SUMMER_E_neck_add_td2_text",
+                "SUMMER_E_neck_add_p5_text", "SUMMER_E_neck_add_p4_text",
+                "SUMMER_E_neck_add_p3_text", "SUMMER_E_neck_down1_text",
+                "SUMMER_E_neck_down2_text",
             ],
         }
     }

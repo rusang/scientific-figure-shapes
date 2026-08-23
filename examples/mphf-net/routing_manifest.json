@@ -55,6 +55,17 @@
         "target_edge": "top",
         "tolerance_pt": 1.5
       }
+    ],
+    "ignore_text_shapes": [
+      "SUMMER_E_neck_up1_text",
+      "SUMMER_E_neck_up2_text",
+      "SUMMER_E_neck_add_td1_text",
+      "SUMMER_E_neck_add_td2_text",
+      "SUMMER_E_neck_add_p5_text",
+      "SUMMER_E_neck_add_p4_text",
+      "SUMMER_E_neck_add_p3_text",
+      "SUMMER_E_neck_down1_text",
+      "SUMMER_E_neck_down2_text"
     ]
   }
 }

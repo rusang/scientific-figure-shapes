@@ -1,5 +1,11 @@
 # MPHF-Net 整图重建验证报告
 
+修订:2026-08-23——修复箭头两处硬伤(backbone C3 箭头从空白出发;
+全部箭头端点退让 3px 悬空不触目标)。箭头改为从对应方块右缘出发、
+端点贴目标边界;badge 单字标注列入 routing manifest 的
+ignore_text_shapes 窄豁免(契约允许的 intentional 例外,非全局绕过)。
+复审:双审计 passed / exit 0,mad 0.0873 / SSIM 0.425,51 测试全过。
+
 日期:2026-08-22。源图:`assets/reference-figures/mphf-net-architecture.png`(1536×1024 px)。
 映射:uniform 0.625 pt/px → slide 960×640 pt。构建:`build_mphf_deck.py`(python-pptx,editable fallback 路径)。
 
