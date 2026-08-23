@@ -1,0 +1,38 @@
+{
+  "text_audit": {
+    "items": [
+      {
+        "name": "FIG_T_banner",
+        "text": "MPHF-Net 工业表面缺陷检测网络结构设计图",
+        "min_font_pt": 15,
+        "align": "center",
+        "max_lines": 1
+      },
+      {
+        "name": "FIG_T_neck_title",
+        "min_font_pt": 10,
+        "max_lines": 1
+      },
+      {
+        "name": "FIG_T_head_title",
+        "min_font_pt": 9,
+        "max_lines": 1
+      },
+      {
+        "name": "FIG_T_head_dec",
+        "min_font_pt": 8,
+        "max_lines": 1
+      },
+      {
+        "name": "FIG_T_b2_title",
+        "min_font_pt": 9,
+        "max_lines": 1
+      },
+      {
+        "name": "FIG_T_lg_cga_tag",
+        "text": "CGAFusion",
+        "max_lines": 1
+      }
+    ]
+  }
+}

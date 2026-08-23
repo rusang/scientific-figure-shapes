@@ -1,0 +1,110 @@
+{
+  "layering_audit": {
+    "cuboids": [
+      {
+        "id": "bb1",
+        "front": "FIG_E_bb1_front",
+        "top": "FIG_E_bb1_top",
+        "right": "FIG_E_bb1_right"
+      },
+      {
+        "id": "bb2",
+        "front": "FIG_E_bb2_front",
+        "top": "FIG_E_bb2_top",
+        "right": "FIG_E_bb2_right"
+      },
+      {
+        "id": "bb3",
+        "front": "FIG_E_bb3_front",
+        "top": "FIG_E_bb3_top",
+        "right": "FIG_E_bb3_right"
+      },
+      {
+        "id": "bb4",
+        "front": "FIG_E_bb4_front",
+        "top": "FIG_E_bb4_top",
+        "right": "FIG_E_bb4_right"
+      },
+      {
+        "id": "neck_p5",
+        "front": "FIG_E_neck_p5_front",
+        "top": "FIG_E_neck_p5_top",
+        "right": "FIG_E_neck_p5_right"
+      },
+      {
+        "id": "neck_p4",
+        "front": "FIG_E_neck_p4_front",
+        "top": "FIG_E_neck_p4_top",
+        "right": "FIG_E_neck_p4_right"
+      },
+      {
+        "id": "neck_p3",
+        "front": "FIG_E_neck_p3_front",
+        "top": "FIG_E_neck_p3_top",
+        "right": "FIG_E_neck_p3_right"
+      },
+      {
+        "id": "lg_p5",
+        "front": "FIG_E_lg_p5_front",
+        "top": "FIG_E_lg_p5_top",
+        "right": "FIG_E_lg_p5_right"
+      },
+      {
+        "id": "lg_p4",
+        "front": "FIG_E_lg_p4_front",
+        "top": "FIG_E_lg_p4_top",
+        "right": "FIG_E_lg_p4_right"
+      },
+      {
+        "id": "lg_p3",
+        "front": "FIG_E_lg_p3_front",
+        "top": "FIG_E_lg_p3_top",
+        "right": "FIG_E_lg_p3_right"
+      },
+      {
+        "id": "out_p3",
+        "front": "FIG_E_out_p3_front",
+        "top": "FIG_E_out_p3_top",
+        "right": "FIG_E_out_p3_right"
+      },
+      {
+        "id": "out_p4",
+        "front": "FIG_E_out_p4_front",
+        "top": "FIG_E_out_p4_top",
+        "right": "FIG_E_out_p4_right"
+      },
+      {
+        "id": "out_p5",
+        "front": "FIG_E_out_p5_front",
+        "top": "FIG_E_out_p5_top",
+        "right": "FIG_E_out_p5_right"
+      }
+    ],
+    "size_order": [
+      "bb1",
+      "bb2",
+      "bb3",
+      "bb4"
+    ],
+    "z_order": [
+      "bb1",
+      "bb2",
+      "bb3",
+      "bb4"
+    ],
+    "overlap_pairs": [
+      [
+        "bb1",
+        "bb2"
+      ],
+      [
+        "bb2",
+        "bb3"
+      ],
+      [
+        "bb3",
+        "bb4"
+      ]
+    ]
+  }
+}

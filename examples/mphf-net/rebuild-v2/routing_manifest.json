@@ -1,0 +1,104 @@
+{
+  "routing_audit": {
+    "routes": [
+      {
+        "connector": "FIG_L_bb_to_c5",
+        "target": "FIG_E_bb_c5",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_bb_to_c4",
+        "target": "FIG_E_bb_c4",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_bb_to_c3",
+        "target": "FIG_E_bb_c3",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_neck_add1_fusion",
+        "target": "FIG_E_neck_fusion1",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_neck_add2_fusion",
+        "target": "FIG_E_neck_fusion2",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_head_iou_dec",
+        "target": "FIG_E_head_dec",
+        "target_edge": "top",
+        "tolerance_pt": 1.5,
+        "source": "FIG_E_head_iou",
+        "source_edge": "bottom"
+      },
+      {
+        "connector": "FIG_L_head_dec_out",
+        "target": "FIG_E_head_out",
+        "target_edge": "top",
+        "tolerance_pt": 1.5,
+        "source": "FIG_E_head_dec",
+        "source_edge": "bottom"
+      },
+      {
+        "connector": "FIG_L_input_backbone",
+        "target": "FIG_E_panel_backbone",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_backbone_neck",
+        "target": "FIG_E_panel_neck",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_neck_head",
+        "target": "FIG_E_panel_head",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_b1_b2",
+        "target": "FIG_E_panel_b2",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      },
+      {
+        "connector": "FIG_L_b2_b3",
+        "target": "FIG_E_panel_b3",
+        "target_edge": "left",
+        "tolerance_pt": 1.5
+      }
+    ],
+    "ignore_text_shapes": [
+      "FIG_E_neck_up1_text",
+      "FIG_E_neck_up2_text",
+      "FIG_E_neck_add_td1_text",
+      "FIG_E_neck_add_td2_text",
+      "FIG_E_neck_add_p5_text",
+      "FIG_E_neck_add_p4_text",
+      "FIG_E_neck_add_p3_text",
+      "FIG_E_neck_down1_text",
+      "FIG_E_neck_down2_text",
+      "FIG_E_lg_up_text",
+      "FIG_E_lg_down_text",
+      "FIG_E_lg_add_text",
+      "FIG_E_m2_down_text",
+      "FIG_E_m3_add_text"
+    ],
+    "ignore_dangling": [
+      "FIG_E_head_bars_axis",
+      "FIG_LD_lg_solid",
+      "FIG_LD_lg_dash",
+      "FIG_E_b3_bars_axis"
+    ]
+  }
+}
