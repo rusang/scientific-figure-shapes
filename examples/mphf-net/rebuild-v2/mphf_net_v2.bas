@@ -34,21 +34,21 @@ Public Sub BuildFinal()
     Set shp = AddFigureText(sld, 7.500, 268.750, 125.000, 15.000, "640 × 640 × 3", 11.000, RGB(40, 44, 60), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_input_size")
     Set shp = AddFigureText(sld, 142.500, 53.750, 161.250, 12.500, "Backbone：CSP-MEEM", 11.000, RGB(37, 80, 216), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_backbone_title")
     Set shp = AddFigureText(sld, 142.500, 67.500, 161.250, 10.000, "多尺度细粒度特征提取", 8.000, RGB(120, 126, 140), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_backbone_sub")
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 180.000, 97.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 185.000, 92.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 92.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 201.250, 97.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 180.000, 97.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 187.500, 100.000)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 193.750, 93.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 215.000, 93.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 100.000
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 187.500, 100.000
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb1_top"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(174, 212, 255): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 180.000, 97.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 201.250, 97.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 201.250, 116.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 180.000, 116.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 180.000, 97.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 187.500, 100.000)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 100.000
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 118.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 187.500, 118.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 187.500, 100.000
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb1_front"
     shp.Shadow.Visible = msoFalse
@@ -57,31 +57,31 @@ Public Sub BuildFinal()
     shp.Fill.TwoColorGradient msoGradientVertical, 1
     shp.Fill.ForeColor.RGB = RGB(166, 204, 255)
     shp.Fill.BackColor.RGB = RGB(124, 162, 220)
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 201.250, 97.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 92.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 111.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 201.250, 116.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 201.250, 97.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 208.750, 100.000)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 215.000, 93.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 215.000, 112.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 118.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 100.000
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb1_right"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(94, 132, 190): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 170.000, 122.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 177.500, 115.000
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 207.500, 115.000
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 200.000, 122.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 170.000, 122.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 177.500, 147.500)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 185.000, 140.000
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 213.750, 140.000
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 147.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 177.500, 147.500
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb2_top"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(174, 212, 255): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 170.000, 122.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 200.000, 122.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 200.000, 151.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 170.000, 151.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 170.000, 122.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 177.500, 147.500)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 147.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 172.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 177.500, 172.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 177.500, 147.500
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb2_front"
     shp.Shadow.Visible = msoFalse
@@ -90,31 +90,31 @@ Public Sub BuildFinal()
     shp.Fill.TwoColorGradient msoGradientVertical, 1
     shp.Fill.ForeColor.RGB = RGB(166, 204, 255)
     shp.Fill.BackColor.RGB = RGB(124, 162, 220)
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 200.000, 122.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 207.500, 115.000
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 207.500, 143.750
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 200.000, 151.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 200.000, 122.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 206.250, 147.500)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 213.750, 140.000
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 213.750, 165.000
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 172.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 206.250, 147.500
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb2_right"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(94, 132, 190): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 157.500, 157.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 167.500, 147.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 207.500, 147.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 197.500, 157.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 157.500, 157.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 166.250, 197.500)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 176.250, 187.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 215.000, 187.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 205.000, 197.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 166.250, 197.500
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb3_top"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(174, 212, 255): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 157.500, 157.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 197.500, 157.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 197.500, 196.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 157.500, 196.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 157.500, 157.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 166.250, 197.500)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 205.000, 197.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 205.000, 228.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 166.250, 228.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 166.250, 197.500
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb3_front"
     shp.Shadow.Visible = msoFalse
@@ -123,31 +123,31 @@ Public Sub BuildFinal()
     shp.Fill.TwoColorGradient msoGradientVertical, 1
     shp.Fill.ForeColor.RGB = RGB(166, 204, 255)
     shp.Fill.BackColor.RGB = RGB(124, 162, 220)
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 197.500, 157.500)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 207.500, 147.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 207.500, 186.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 197.500, 196.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 197.500, 157.500
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 205.000, 197.500)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 215.000, 187.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 215.000, 218.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 205.000, 228.750
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 205.000, 197.500
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb3_right"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(94, 132, 190): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 142.500, 201.250)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 156.250, 187.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 187.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 195.000, 201.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 142.500, 201.250
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 150.000, 256.250)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 163.750, 242.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 216.250, 242.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 202.500, 256.250
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 150.000, 256.250
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb4_top"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(174, 212, 255): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 142.500, 201.250)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 195.000, 201.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 195.000, 251.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 142.500, 251.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 142.500, 201.250
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 150.000, 256.250)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 202.500, 256.250
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 202.500, 296.250
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 150.000, 296.250
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 150.000, 256.250
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb4_front"
     shp.Shadow.Visible = msoFalse
@@ -156,31 +156,37 @@ Public Sub BuildFinal()
     shp.Fill.TwoColorGradient msoGradientVertical, 1
     shp.Fill.ForeColor.RGB = RGB(166, 204, 255)
     shp.Fill.BackColor.RGB = RGB(124, 162, 220)
-    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 195.000, 201.250)
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 187.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 208.750, 237.500
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 195.000, 251.250
-    ff.AddNodes msoSegmentLine, msoEditingAuto, 195.000, 201.250
+    Set ff = sld.Shapes.BuildFreeform(msoEditingAuto, 202.500, 256.250)
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 216.250, 242.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 216.250, 282.500
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 202.500, 296.250
+    ff.AddNodes msoSegmentLine, msoEditingAuto, 202.500, 256.250
     Set shp = ff.ConvertToShape
     shp.Name = "FIG_E_bb4_right"
     shp.Shadow.Visible = msoFalse
     shp.Fill.ForeColor.RGB = RGB(94, 132, 190): shp.Fill.Transparency = 0 / 100#
     shp.Line.ForeColor.RGB = RGB(72, 110, 168): shp.Line.Weight = 0.800
-    Set shp = AddFigureText(sld, 168.750, 282.500, 25.000, 11.250, "⋮", 11.000, RGB(120, 126, 140), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_backbone_dots")
-    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 247.500, 123.125, 36.250, 27.500, RGB(245, 248, 255), RGB(37, 80, 216), 1.400, 0, "FIG_E_bb_c5")
-    Set shp = AddFigureText(sld, 247.500, 125.625, 36.250, 12.500, "C5", 10.000, RGB(37, 80, 216), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c5")
-    Set shp = AddFigureText(sld, 247.500, 136.875, 36.250, 11.250, "20×C", 8.000, RGB(37, 80, 216), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c5_dim")
-    Set shp = AddFigureLine(sld, 207.500, 136.875, 247.500, 136.875, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_to_c5")
-    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 247.500, 163.125, 36.250, 27.500, RGB(245, 248, 255), RGB(37, 80, 216), 1.400, 0, "FIG_E_bb_c4")
-    Set shp = AddFigureText(sld, 247.500, 165.625, 36.250, 12.500, "C4", 10.000, RGB(37, 80, 216), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c4")
-    Set shp = AddFigureText(sld, 247.500, 176.875, 36.250, 11.250, "40×C", 8.000, RGB(37, 80, 216), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c4_dim")
-    Set shp = AddFigureLine(sld, 207.500, 176.875, 247.500, 176.875, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_to_c4")
-    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 247.500, 212.500, 36.250, 27.500, RGB(245, 248, 255), RGB(224, 58, 38), 1.400, 0, "FIG_E_bb_c3")
-    Set shp = AddFigureText(sld, 247.500, 215.000, 36.250, 12.500, "C3", 10.000, RGB(224, 58, 38), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c3")
-    Set shp = AddFigureText(sld, 247.500, 226.250, 36.250, 11.250, "80×C", 8.000, RGB(224, 58, 38), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c3_dim")
-    Set shp = AddFigureLine(sld, 208.750, 226.250, 247.500, 226.250, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_to_c3")
-    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 150.000, 303.750, 135.000, 18.750, RGB(235, 241, 255), RGB(203, 210, 228), 0.800, 0, "FIG_E_bb_outbar")
-    Set shp = AddFigureText(sld, 150.000, 306.250, 135.000, 13.750, "输出多尺度特征", 9.000, RGB(40, 44, 60), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_outbar")
+    Set shp = AddFigureLine(sld, 198.125, 118.750, 198.125, 140.000, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_chain1")
+    Set shp = AddFigureLine(sld, 191.875, 172.500, 191.875, 187.500, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_chain2")
+    Set shp = AddFigureLine(sld, 185.625, 228.750, 185.625, 242.500, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_chain3")
+    Set shp = AddFigureLine(sld, 215.000, 109.375, 232.500, 109.375, RGB(40, 44, 60), 1.200, false, false, false, "FIG_L_bb_bus_in1")
+    Set shp = AddFigureLine(sld, 232.500, 109.375, 232.500, 258.750, RGB(40, 44, 60), 1.200, false, false, false, "FIG_L_bb_bus")
+    Set shp = AddFigureLine(sld, 215.000, 213.125, 232.500, 213.125, RGB(40, 44, 60), 1.200, false, false, false, "FIG_L_bb_bus_in3")
+    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 247.500, 128.125, 36.250, 27.500, RGB(245, 248, 255), RGB(37, 80, 216), 1.400, 0, "FIG_E_bb_c5")
+    Set shp = AddFigureText(sld, 247.500, 130.625, 36.250, 12.500, "C5", 10.000, RGB(37, 80, 216), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c5")
+    Set shp = AddFigureText(sld, 247.500, 141.875, 36.250, 11.250, "20×C", 8.000, RGB(37, 80, 216), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c5_dim")
+    Set shp = AddFigureLine(sld, 232.500, 141.875, 247.500, 141.875, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_to_c5")
+    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 247.500, 186.875, 36.250, 27.500, RGB(245, 248, 255), RGB(37, 80, 216), 1.400, 0, "FIG_E_bb_c4")
+    Set shp = AddFigureText(sld, 247.500, 189.375, 36.250, 12.500, "C4", 10.000, RGB(37, 80, 216), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c4")
+    Set shp = AddFigureText(sld, 247.500, 200.625, 36.250, 11.250, "40×C", 8.000, RGB(37, 80, 216), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c4_dim")
+    Set shp = AddFigureLine(sld, 232.500, 200.625, 247.500, 200.625, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_to_c4")
+    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 247.500, 245.000, 36.250, 27.500, RGB(245, 248, 255), RGB(224, 58, 38), 1.400, 0, "FIG_E_bb_c3")
+    Set shp = AddFigureText(sld, 247.500, 247.500, 36.250, 12.500, "C3", 10.000, RGB(224, 58, 38), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c3")
+    Set shp = AddFigureText(sld, 247.500, 258.750, 36.250, 11.250, "80×C", 8.000, RGB(224, 58, 38), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_c3_dim")
+    Set shp = AddFigureLine(sld, 216.250, 258.750, 247.500, 258.750, RGB(40, 44, 60), 1.200, false, false, true, "FIG_L_bb_to_c3")
+    Set shp = AddFigureText(sld, 168.750, 296.250, 25.000, 10.000, "⋮", 11.000, RGB(120, 126, 140), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_backbone_dots")
+    Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 150.000, 311.250, 135.000, 18.750, RGB(235, 241, 255), RGB(203, 210, 228), 0.800, 0, "FIG_E_bb_outbar")
+    Set shp = AddFigureText(sld, 150.000, 313.750, 135.000, 13.750, "输出多尺度特征", 9.000, RGB(40, 44, 60), false, "center", "middle", 0.000, "PingFang SC", "FIG_T_bb_outbar")
     Set shp = AddFigureText(sld, 311.250, 53.750, 358.750, 12.500, "Neck：FPN-PAN （LOSC + CGAFusion）", 11.000, RGB(28, 148, 84), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_neck_title")
     Set shp = AddFigureShape(sld, msoShapeRoundedRectangle, 337.500, 72.500, 81.250, 16.250, RGB(226, 244, 230), RGB(28, 148, 84), 0.900, 0, "FIG_E_neck_td")
     Set shp = AddFigureText(sld, 337.500, 74.375, 81.250, 12.500, "Top-Down 路径", 8.500, RGB(28, 148, 84), true, "center", "middle", 0.000, "PingFang SC", "FIG_T_neck_td")
@@ -731,7 +737,7 @@ Public Sub BuildFinal()
     shp.Name = "FIG_G_panels"
     Set shp = sld.Shapes.Range(Array("FIG_T_input_title", "FIG_R_pcb", "FIG_T_input_size")).Group
     shp.Name = "FIG_G_input"
-    Set shp = sld.Shapes.Range(Array("FIG_T_backbone_title", "FIG_T_backbone_sub", "FIG_E_bb1_top", "FIG_E_bb1_front", "FIG_E_bb1_right", "FIG_E_bb2_top", "FIG_E_bb2_front", "FIG_E_bb2_right", "FIG_E_bb3_top", "FIG_E_bb3_front", "FIG_E_bb3_right", "FIG_E_bb4_top", "FIG_E_bb4_front", "FIG_E_bb4_right", "FIG_T_backbone_dots", "FIG_E_bb_c5", "FIG_T_bb_c5", "FIG_T_bb_c5_dim", "FIG_L_bb_to_c5", "FIG_E_bb_c4", "FIG_T_bb_c4", "FIG_T_bb_c4_dim", "FIG_L_bb_to_c4", "FIG_E_bb_c3", "FIG_T_bb_c3", "FIG_T_bb_c3_dim", "FIG_L_bb_to_c3", "FIG_E_bb_outbar", "FIG_T_bb_outbar")).Group
+    Set shp = sld.Shapes.Range(Array("FIG_T_backbone_title", "FIG_T_backbone_sub", "FIG_E_bb1_top", "FIG_E_bb1_front", "FIG_E_bb1_right", "FIG_E_bb2_top", "FIG_E_bb2_front", "FIG_E_bb2_right", "FIG_E_bb3_top", "FIG_E_bb3_front", "FIG_E_bb3_right", "FIG_E_bb4_top", "FIG_E_bb4_front", "FIG_E_bb4_right", "FIG_L_bb_chain1", "FIG_L_bb_chain2", "FIG_L_bb_chain3", "FIG_L_bb_bus_in1", "FIG_L_bb_bus", "FIG_L_bb_bus_in3", "FIG_E_bb_c5", "FIG_T_bb_c5", "FIG_T_bb_c5_dim", "FIG_L_bb_to_c5", "FIG_E_bb_c4", "FIG_T_bb_c4", "FIG_T_bb_c4_dim", "FIG_L_bb_to_c4", "FIG_E_bb_c3", "FIG_T_bb_c3", "FIG_T_bb_c3_dim", "FIG_L_bb_to_c3", "FIG_T_backbone_dots", "FIG_E_bb_outbar", "FIG_T_bb_outbar")).Group
     shp.Name = "FIG_G_backbone"
     Set shp = sld.Shapes.Range(Array("FIG_T_neck_title", "FIG_E_neck_td", "FIG_T_neck_td", "FIG_E_neck_bu", "FIG_T_neck_bu", "FIG_E_neck_c5", "FIG_T_neck_c5", "FIG_E_neck_c4", "FIG_T_neck_c4", "FIG_E_neck_c3", "FIG_T_neck_c3", "FIG_E_neck_up1", "FIG_E_neck_up1_text", "FIG_E_neck_up2", "FIG_E_neck_up2_text", "FIG_E_neck_add_td1", "FIG_E_neck_add_td1_text", "FIG_E_neck_add_td2", "FIG_E_neck_add_td2_text", "FIG_E_neck_fusion1", "FIG_T_neck_fusion1", "FIG_E_neck_fusion2", "FIG_T_neck_fusion2", "FIG_E_neck_add_p5", "FIG_E_neck_add_p5_text", "FIG_E_neck_add_p4", "FIG_E_neck_add_p4_text", "FIG_E_neck_add_p3", "FIG_E_neck_add_p3_text", "FIG_E_neck_down1", "FIG_E_neck_down1_text", "FIG_E_neck_down2", "FIG_E_neck_down2_text", "FIG_E_neck_losc", "FIG_T_neck_losc", "FIG_E_neck_p5_top", "FIG_E_neck_p5_front", "FIG_E_neck_p5_right", "FIG_T_neck_p5", "FIG_T_neck_p5_dim", "FIG_E_neck_p4_top", "FIG_E_neck_p4_front", "FIG_E_neck_p4_right", "FIG_T_neck_p4", "FIG_T_neck_p4_dim", "FIG_E_neck_p3_top", "FIG_E_neck_p3_front", "FIG_E_neck_p3_right", "FIG_T_neck_p3", "FIG_T_neck_p3_dim", "FIG_L_neck_c5_up", "FIG_L_neck_up1_add", "FIG_L_neck_c4_add", "FIG_L_neck_add1_fusion", "FIG_L_neck_up2_add", "FIG_L_neck_c3_add", "FIG_L_neck_add2_fusion", "FIG_L_neck_addp5_cube", "FIG_L_neck_addp4_cube", "FIG_L_neck_addp3_cube", "FIG_L_neck_addp5_down", "FIG_L_neck_down_losc", "FIG_L_neck_losc_addp4", "FIG_L_neck_addp4_down2", "FIG_L_neck_down2_addp3", "FIG_LD_fusion1_addp5_1", "FIG_LD_fusion1_addp5_2", "FIG_LD_fusion1_addp5_3", "FIG_LD_fusion2_addp3_1", "FIG_LD_fusion2_addp3_2", "FIG_LD_fusion2_addp3_3", "FIG_LD_fusion1_fusion2_1", "FIG_E_neck_note_cga", "FIG_T_neck_note_cga", "FIG_E_neck_note_losc", "FIG_T_neck_note_losc")).Group
     shp.Name = "FIG_G_neck"

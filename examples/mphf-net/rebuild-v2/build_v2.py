@@ -201,21 +201,32 @@ def build() -> Path:
                     size=11, color=BLUE, bold=True, name="FIG_T_backbone_title")
         canvas.text(px(228), px(108), px(258), px(16), "多尺度细粒度特征提取",
                     size=8, color=GRAY, name="FIG_T_backbone_sub")
+        # 原图拓扑：4 块分离垂直排列 + 块间向下箭头（特征流），
+        # 右侧垂直 bus 干线一干三支分发到 C5/C4/C3（trunk+branch）
         pyramid = [
-            ("FIG_E_bb1", 288, 148, 34, 30, 8),
-            ("FIG_E_bb2", 272, 184, 48, 46, 12),
-            ("FIG_E_bb3", 252, 236, 64, 62, 16),
-            ("FIG_E_bb4", 228, 300, 84, 80, 22),
+            ("FIG_E_bb1", 300, 150, 34, 30, 10),
+            ("FIG_E_bb2", 284, 224, 46, 40, 12),
+            ("FIG_E_bb3", 266, 300, 62, 50, 16),
+            ("FIG_E_bb4", 240, 388, 84, 64, 22),
         ]
         for name, x, y, w, h, depth in pyramid:
             cuboid(canvas, name, x, y, w, h, CUBE_BLUE, depth)
-        canvas.text(px(270), px(452), px(40), px(18), "⋮", size=11,
-                    color=GRAY, bold=True, name="FIG_T_backbone_dots")
-        stages = [("c5", "C5", "20×C", BLUE, pyramid[1]),
-                  ("c4", "C4", "40×C", BLUE, pyramid[2]),
-                  ("c3", "C3", "80×C", RED, pyramid[3])]
-        for key, label_text, dim, color, (_, bx, by, bw, bh, bd) in stages:
-            center_y = by + bd + bh / 2
+        # 块间向下箭头：上块 front 底中心 -> 下块 top 上缘
+        chain = [(317, 190, 224), (307, 276, 300), (297, 366, 388)]
+        for index, (cx, y1, y2) in enumerate(chain, start=1):
+            arrow(canvas, f"FIG_L_bb_chain{index}", cx, y1, cx, y2)
+        # bus 干线：块1 右缘引出，垂直贯穿到 C3 行；块3/块4 右缘并入
+        bus_x = 372
+        canvas.line(px(344), px(175), px(bus_x), px(175), color=INK,
+                    weight=1.2, name="FIG_L_bb_bus_in1")
+        canvas.line(px(bus_x), px(175), px(bus_x), px(414), color=INK,
+                    weight=1.2, name="FIG_L_bb_bus")
+        canvas.line(px(344), px(341), px(bus_x), px(341), color=INK,
+                    weight=1.2, name="FIG_L_bb_bus_in3")
+        stages = [("c5", "C5", "20×C", BLUE, 227),
+                  ("c4", "C4", "40×C", BLUE, 321),
+                  ("c3", "C3", "80×C", RED, 414)]
+        for key, label_text, dim, color, center_y in stages:
             canvas.round_rect(px(396), px(center_y - 22), px(58), px(44),
                               fill=(245, 248, 255), line=color, weight=1.4,
                               name=f"FIG_E_bb_{key}")
@@ -224,13 +235,16 @@ def build() -> Path:
                         name=f"FIG_T_bb_{key}")
             canvas.text(px(396), px(center_y), px(58), px(18), dim, size=8,
                         color=color, name=f"FIG_T_bb_{key}_dim")
-            arrow(canvas, f"FIG_L_bb_to_{key}", bx + bw + bd, center_y, 396,
+            start_x = 346 if key == "c3" else bus_x  # C3 行与块4并入线共线直达
+            arrow(canvas, f"FIG_L_bb_to_{key}", start_x, center_y, 396,
                   center_y)
             route(f"FIG_L_bb_to_{key}", f"FIG_E_bb_{key}", "left")
-        canvas.round_rect(px(240), px(486), px(216), px(30),
+        canvas.text(px(270), px(474), px(40), px(16), "⋮", size=11,
+                    color=GRAY, bold=True, name="FIG_T_backbone_dots")
+        canvas.round_rect(px(240), px(498), px(216), px(30),
                           fill=(235, 241, 255), line=PANEL_EDGE, weight=0.8,
                           name="FIG_E_bb_outbar")
-        canvas.text(px(240), px(490), px(216), px(22), "输出多尺度特征",
+        canvas.text(px(240), px(502), px(216), px(22), "输出多尺度特征",
                     size=9, color=INK, name="FIG_T_bb_outbar")
 
     # ---- P3 Neck ----
@@ -611,7 +625,6 @@ def _write_manifests() -> None:
             "cuboids": cuboids,
             "size_order": ["bb1", "bb2", "bb3", "bb4"],
             "z_order": ["bb1", "bb2", "bb3", "bb4"],
-            "overlap_pairs": [["bb1", "bb2"], ["bb2", "bb3"], ["bb3", "bb4"]],
         }
     }
     (HERE / "layering_manifest.json").write_text(
