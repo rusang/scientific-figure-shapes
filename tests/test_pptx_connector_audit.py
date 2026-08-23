@@ -51,6 +51,10 @@ class ConnectorAuditTests(unittest.TestCase):
         text.text_frame.text = text_value
 
         x1, y1, x2, y2 = line_points
+        anchor = slide.shapes.add_shape(
+            MSO_SHAPE.RECTANGLE, Pt(x1 - 12), Pt(y1 - 6), Pt(12), Pt(12)
+        )
+        anchor.name = "SUMMER_E_line_anchor"
         connector = slide.shapes.add_connector(
             1, Pt(x1), Pt(y1), Pt(x2), Pt(y2)
         )
@@ -104,7 +108,7 @@ class ConnectorAuditTests(unittest.TestCase):
     def test_ignores_decorative_ellipsis_text(self) -> None:
         module = load_module()
         path = self._save_fixture(
-            "ellipsis.pptx", (100, 120, 350, 120), text_value="••••"
+            "ellipsis.pptx", (100, 120, 300, 120), text_value="••••"
         )
         result = module.audit_presentation(str(path), shrink_pt=1.0)
         self.assertTrue(result["passed"])
@@ -177,6 +181,10 @@ class ConnectorAuditTests(unittest.TestCase):
             MSO_SHAPE.ROUNDED_RECTANGLE, Pt(200), Pt(100), Pt(100), Pt(40)
         )
         target.name = "FIG_E_target"
+        anchor = slide.shapes.add_shape(
+            MSO_SHAPE.RECTANGLE, Pt(88), Pt(114), Pt(12), Pt(12)
+        )
+        anchor.name = "FIG_E_source"
         connector = slide.shapes.add_connector(
             MSO_CONNECTOR.STRAIGHT, Pt(100), Pt(120), Pt(200), Pt(120)
         )
@@ -197,6 +205,103 @@ class ConnectorAuditTests(unittest.TestCase):
 
         self.assertTrue(result["passed"])
         self.assertEqual(result["connector_count"], 1)
+
+    def test_dangling_start_endpoint_fails(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        target = slide.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE, Pt(200), Pt(100), Pt(100), Pt(40)
+        )
+        target.name = "SUMMER_E_target"
+        connector = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT, Pt(80), Pt(120), Pt(200), Pt(120)
+        )
+        connector.name = "SUMMER_L_from_nowhere"
+        path = self.root / "dangling.pptx"
+        presentation.save(path)
+
+        result = module.audit_presentation(str(path))
+        self.assertFalse(result["passed"])
+        self.assertEqual(len(result["dangling_endpoints"]), 1)
+        entry = result["dangling_endpoints"][0]
+        self.assertEqual(entry["connector"], "SUMMER_L_from_nowhere")
+        self.assertEqual(entry["endpoint"], "start")
+
+    def test_line_chain_endpoints_anchor_each_other(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        first = slide.shapes.add_shape(
+            MSO_SHAPE.RECTANGLE, Pt(60), Pt(110), Pt(20), Pt(20)
+        )
+        first.name = "SUMMER_E_trunk_source"
+        second = slide.shapes.add_shape(
+            MSO_SHAPE.RECTANGLE, Pt(300), Pt(80), Pt(40), Pt(30)
+        )
+        second.name = "SUMMER_E_branch_target"
+        trunk = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT, Pt(80), Pt(120), Pt(200), Pt(120)
+        )
+        trunk.name = "SUMMER_L_trunk"
+        branch = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT, Pt(200), Pt(120), Pt(300), Pt(95)
+        )
+        branch.name = "SUMMER_L_branch"
+        path = self.root / "chain.pptx"
+        presentation.save(path)
+
+        result = module.audit_presentation(str(path))
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["dangling_endpoints"], [])
+
+    def test_ignore_dangling_is_narrow_exemption(self) -> None:
+        module = load_module()
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[6])
+        connector = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT, Pt(80), Pt(120), Pt(200), Pt(120)
+        )
+        connector.name = "SUMMER_L_free_leader"
+        path = self.root / "exempt.pptx"
+        presentation.save(path)
+
+        result = module.audit_presentation(
+            str(path), manifest={"ignore_dangling": ["SUMMER_L_free_leader"]}
+        )
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["dangling_endpoints"], [])
+
+    def test_route_source_edge_checked(self) -> None:
+        module = load_module()
+        path = self._save_fixture("source-edge.pptx", (100, 120, 200, 120))
+        good = {
+            "routes": [{
+                "connector": "SUMMER_L_branch_to_fusion",
+                "target": "SUMMER_E_fusion_box",
+                "target_edge": "left",
+                "source": "SUMMER_E_line_anchor",
+                "source_edge": "right",
+                "tolerance_pt": 1.0,
+            }]
+        }
+        result = module.audit_presentation(str(path), manifest=good)
+        self.assertTrue(result["passed"])
+
+        bad = {
+            "routes": [{
+                "connector": "SUMMER_L_branch_to_fusion",
+                "target": "SUMMER_E_fusion_box",
+                "target_edge": "left",
+                "source": "SUMMER_E_line_anchor",
+                "source_edge": "top",
+                "tolerance_pt": 1.0,
+            }]
+        }
+        result = module.audit_presentation(str(path), manifest=bad)
+        self.assertFalse(result["passed"])
+        codes = [error["code"] for error in result["route_errors"]]
+        self.assertIn("source_edge_mismatch", codes)
 
     def test_segment_manifest_checks_dash_and_orientation(self) -> None:
         module = load_module()

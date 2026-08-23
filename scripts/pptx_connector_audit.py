@@ -133,6 +133,43 @@ def _edge_contains_point(
     return False
 
 
+def _point_in_rect(
+    point: tuple[float, float],
+    rect: tuple[float, float, float, float],
+    tolerance: float,
+) -> bool:
+    x, y = point
+    left, top, right, bottom = rect
+    return (left - tolerance <= x <= right + tolerance
+            and top - tolerance <= y <= bottom + tolerance)
+
+
+def _endpoint_anchored(
+    point: tuple[float, float],
+    other: tuple[float, float],
+    anchor_rects: list[tuple[float, float, float, float]],
+    peer_endpoints: list[tuple[float, float]],
+    tolerance: float,
+) -> bool:
+    """端点锚定：贴/扎进某 shape，或与另一连接线端点接续。
+
+    整条线深居某 shape 内部时该 shape 视为背景容器，不提供锚定。
+    """
+    for rect in anchor_rects:
+        if not _point_in_rect(point, rect, tolerance):
+            continue
+        inner = _shrink_rect(rect, tolerance)
+        if (inner is not None and _point_in_rect(point, inner, 0.0)
+                and _point_in_rect(other, inner, 0.0)):
+            continue
+        return True
+    for candidate in peer_endpoints:
+        if math.hypot(point[0] - candidate[0],
+                      point[1] - candidate[1]) <= tolerance:
+            return True
+    return False
+
+
 def _segment_key(
     start: tuple[float, float],
     end: tuple[float, float],
@@ -176,6 +213,8 @@ def audit_presentation(
     }
     ignore_connectors = set(config.get("ignore_connectors", []))
     ignore_text_shapes = set(config.get("ignore_text_shapes", []))
+    ignore_dangling = set(config.get("ignore_dangling", []))
+    anchor_tolerance = float(config.get("anchor_tolerance_pt", 1.5))
     ignore_pairs = {
         tuple(pair) for pair in config.get("ignore_pairs", [])
         if isinstance(pair, list) and len(pair) == 2
@@ -187,6 +226,7 @@ def audit_presentation(
     degenerate_segments: list[dict[str, Any]] = []
     unsupported_connectors: list[dict[str, Any]] = []
     style_errors: list[dict[str, Any]] = []
+    dangling_endpoints: list[dict[str, Any]] = []
     indexed_shapes: dict[str, list[tuple[int, Any]]] = {}
     connector_count = 0
     text_count = 0
@@ -194,8 +234,14 @@ def audit_presentation(
     for slide_index, slide in enumerate(presentation.slides, start=1):
         connectors = []
         texts = []
+        anchor_rects: list[tuple[float, float, float, float]] = []
         for shape in slide.shapes:
             indexed_shapes.setdefault(shape.name, []).append((slide_index, shape))
+            if shape.shape_type != MSO_SHAPE_TYPE.LINE:
+                try:
+                    anchor_rects.append(_bounds(shape))
+                except TypeError:
+                    pass  # 继承几何（无 xfrm）的 shape 不作锚定候选
             if shape.shape_type == MSO_SHAPE_TYPE.LINE:
                 named_connector = (
                     shape.name in route_connector_names
@@ -224,9 +270,13 @@ def audit_presentation(
 
         connector_count += len(connectors)
         text_count += len(texts)
+        endpoint_map = {
+            connector.name: _line_endpoints(connector)
+            for connector in connectors
+        }
         seen_segments: dict[tuple[tuple[int, int], tuple[int, int]], tuple[str, Any]] = {}
         for connector in connectors:
-            start, end = _line_endpoints(connector)
+            start, end = endpoint_map[connector.name]
             length = math.hypot(end[0] - start[0], end[1] - start[1])
             if length <= segment_tolerance_pt:
                 degenerate_segments.append({
@@ -251,6 +301,22 @@ def audit_presentation(
                     })
                 else:
                     seen_segments[key] = (connector.name, connector)
+                if connector.name not in ignore_dangling:
+                    peers = [
+                        point for name, points in endpoint_map.items()
+                        if name != connector.name for point in points
+                    ]
+                    for tag, point, other in (("start", start, end),
+                                              ("end", end, start)):
+                        if not _endpoint_anchored(point, other, anchor_rects,
+                                                  peers, anchor_tolerance):
+                            dangling_endpoints.append({
+                                "slide": slide_index,
+                                "connector": connector.name,
+                                "endpoint": tag,
+                                "point_pt": [round(point[0], 3),
+                                             round(point[1], 3)],
+                            })
             for text_shape, text in texts:
                 if (connector.name, text_shape.name) in ignore_pairs:
                     continue
@@ -322,6 +388,46 @@ def audit_presentation(
                 "endpoints_pt": [list(point) for point in endpoints],
                 "target_bounds_pt": list(target_rect),
             })
+        source_name = route.get("source")
+        if source_name is not None:
+            source_name = str(source_name)
+            source_edge = str(route.get("source_edge", "")).lower()
+            if source_edge not in VALID_EDGES:
+                route_errors.append({
+                    "code": "source_edge_invalid",
+                    "connector": connector_name,
+                    "source_edge": source_edge,
+                })
+                continue
+            source_matches = indexed_shapes.get(source_name, [])
+            if len(source_matches) != 1:
+                route_errors.append({
+                    "code": "source_shape_missing_or_ambiguous",
+                    "connector": connector_name,
+                    "source": source_name,
+                    "source_matches": len(source_matches),
+                })
+                continue
+            source_slide, source_shape = source_matches[0]
+            if source_slide != connector_slide:
+                route_errors.append({
+                    "code": "route_cross_slide",
+                    "connector": connector_name,
+                    "source": source_name,
+                })
+                continue
+            source_rect = _bounds(source_shape)
+            if not any(_edge_contains_point(point, source_rect, source_edge,
+                                            tolerance)
+                       for point in endpoints):
+                route_errors.append({
+                    "code": "source_edge_mismatch",
+                    "connector": connector_name,
+                    "source": source_name,
+                    "expected_edge": source_edge,
+                    "endpoints_pt": [list(point) for point in endpoints],
+                    "source_bounds_pt": list(source_rect),
+                })
 
     for segment in config.get("segments", []):
         if not isinstance(segment, dict):
@@ -386,6 +492,7 @@ def audit_presentation(
             not collisions and not route_errors
             and not duplicate_segments and not degenerate_segments
             and not unsupported_connectors and not style_errors
+            and not dangling_endpoints
         ),
         "pptx": str(source.resolve()),
         "slides": len(presentation.slides),
@@ -399,6 +506,7 @@ def audit_presentation(
         "degenerate_segments": degenerate_segments,
         "unsupported_connectors": unsupported_connectors,
         "style_errors": style_errors,
+        "dangling_endpoints": dangling_endpoints,
     }
 
 
@@ -434,6 +542,7 @@ def main() -> int:
             "duplicate_segments": [],
             "degenerate_segments": [],
             "style_errors": [],
+            "dangling_endpoints": [],
         }
     payload = json.dumps(result, ensure_ascii=False, indent=2 if args.pretty else None)
     print(payload)

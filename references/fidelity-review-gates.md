@@ -57,6 +57,8 @@ Check that these are editable when present:
 - No connector is zero-length, and no two connectors have duplicate geometry unless one is explicitly excluded for a documented reason.
 - Fan-in routes do not reuse one hard-coded endpoint when that would force a line through the merge label.
 - Lines may touch target boundaries but do not enter the shrunken text rectangle or cross labels.
+- Every connector endpoint is anchored to a shape or to another connector's endpoint; `dangling_endpoints` findings (blank-canvas starts, hovering arrowheads) fail the gate.
+- Principal routes declare `source`/`source_edge` in addition to `target_edge` so departure anchoring is machine-checked, not eyeballed.
 - Run `scripts/pptx_connector_audit.py` on the materialized deck. Any collision or target-edge mismatch is a failure.
 - Intentional line-to-text cases are narrow manifest exceptions (`ignore_text_shapes` / `ignore_pairs`), not a global audit bypass.
 
