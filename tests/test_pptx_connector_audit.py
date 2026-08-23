@@ -303,6 +303,24 @@ class ConnectorAuditTests(unittest.TestCase):
         codes = [error["code"] for error in result["route_errors"]]
         self.assertIn("source_edge_mismatch", codes)
 
+    def test_min_connector_count_guards_missing_arrows(self) -> None:
+        module = load_module()
+        path = self._save_fixture("inventory.pptx", (100, 120, 200, 120))
+        result = module.audit_presentation(
+            str(path), manifest={"min_connector_count": 1})
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["coverage_errors"], [])
+
+        result = module.audit_presentation(
+            str(path), manifest={"min_connector_count": 3})
+        self.assertFalse(result["passed"])
+        self.assertEqual(
+            result["coverage_errors"][0]["code"],
+            "connector_inventory_shortfall",
+        )
+        self.assertEqual(result["coverage_errors"][0]["expected_min"], 3)
+        self.assertEqual(result["coverage_errors"][0]["actual"], 1)
+
     def test_segment_manifest_checks_dash_and_orientation(self) -> None:
         module = load_module()
         presentation = Presentation()

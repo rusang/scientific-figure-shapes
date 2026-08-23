@@ -230,6 +230,7 @@ def audit_presentation(
     ignore_text_shapes = set(config.get("ignore_text_shapes", []))
     ignore_dangling = set(config.get("ignore_dangling", []))
     anchor_tolerance = float(config.get("anchor_tolerance_pt", 1.5))
+    min_connector_count = config.get("min_connector_count")
     ignore_pairs = {
         tuple(pair) for pair in config.get("ignore_pairs", [])
         if isinstance(pair, list) and len(pair) == 2
@@ -502,12 +503,22 @@ def audit_presentation(
                     "actual": actual_orientation,
                 })
 
+    coverage_errors: list[dict[str, Any]] = []
+    if min_connector_count is not None:
+        expected = int(min_connector_count)
+        if connector_count < expected:
+            coverage_errors.append({
+                "code": "connector_inventory_shortfall",
+                "expected_min": expected,
+                "actual": connector_count,
+            })
+
     return {
         "passed": (
             not collisions and not route_errors
             and not duplicate_segments and not degenerate_segments
             and not unsupported_connectors and not style_errors
-            and not dangling_endpoints
+            and not dangling_endpoints and not coverage_errors
         ),
         "pptx": str(source.resolve()),
         "slides": len(presentation.slides),
@@ -522,6 +533,7 @@ def audit_presentation(
         "unsupported_connectors": unsupported_connectors,
         "style_errors": style_errors,
         "dangling_endpoints": dangling_endpoints,
+        "coverage_errors": coverage_errors,
     }
 
 
@@ -558,6 +570,7 @@ def main() -> int:
             "degenerate_segments": [],
             "style_errors": [],
             "dangling_endpoints": [],
+            "coverage_errors": [],
         }
     payload = json.dumps(result, ensure_ascii=False, indent=2 if args.pretty else None)
     print(payload)

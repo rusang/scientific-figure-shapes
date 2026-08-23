@@ -64,6 +64,8 @@ Use the slower path only when the user asks for high fidelity, pixel-level match
 For that path:
 
 - expand the map to individual visible elements
+- zoom into each panel of the source and take an explicit arrow inventory (every connector's start element, end element, solid/dashed style, and direction) before drawing; a connector present in the source but absent from the rebuild is a coverage defect that no per-connector audit can catch
+- record the inventoried minimum as `routing_audit.min_connector_count`; the connector audit fails with `connector_inventory_shortfall` when the materialized deck carries fewer audited connectors
 - record exact crop boxes, key arrow endpoints, and the intended target edge for each fan-in/fan-out route
 - render a preview when possible
 - compare source and preview with `scripts/fidelity_audit.py`; register every salient icon, label, face group, and output symbol in `elements`

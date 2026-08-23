@@ -51,6 +51,7 @@ Check that these are editable when present:
 ## 6. Routing Gate
 
 - Major arrows point to the right target region.
+- An arrow inventory taken from the zoomed source (per panel: endpoints, style, direction) is recorded, and `min_connector_count` in the routing manifest reflects it; `connector_inventory_shortfall` findings fail the gate.
 - Dashed zoom lines attach to the intended source and destination.
 - Every important final connector segment has a stable name and a recorded target edge (`left`, `right`, `top`, or `bottom`).
 - Shared fan-out trunks/buses are drawn once, not repeated once per branch.
