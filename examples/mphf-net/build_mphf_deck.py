@@ -535,13 +535,13 @@ def build() -> Path:
     square_row(slide, "SUMMER_E_b2_sq1", 386, 934, 6, size=12, gap=5)
     label(slide, "SUMMER_T_b2_dec", 560, 880, 240, 18,
           "Transformer Decoder × 6 层", size=8.5, color=INK)
-    square_row(slide, "SUMMER_E_b2_sq2", 584, 918, 5, size=16, gap=9,
+    square_row(slide, "SUMMER_E_b2_sq2", 584, 922, 5, size=16, gap=9,
                fill=RGBColor(140, 110, 214))
-    label(slide, "SUMMER_T_b2_dots2", 742, 918, 40, 20, "····", size=9,
+    label(slide, "SUMMER_T_b2_dots2", 742, 922, 40, 20, "····", size=9,
           color=GRAY, bold=True)
-    rect(slide, "SUMMER_E_b2_last", 792, 918, 16, 16,
+    rect(slide, "SUMMER_E_b2_last", 792, 922, 16, 16,
          fill=RGBColor(140, 110, 214), shape=MSO_SHAPE.RECTANGLE, radius=0)
-    line(slide, "SUMMER_L_b2_flow", 516, 930, 556, 930, width=1.2)
+    line(slide, "SUMMER_L_b2_flow", 516, 930, 584, 930, width=1.2)
     line(slide, "SUMMER_L_b1_b2", 334, 934, 348, 934, color=BLUE, width=2.5)
     line(slide, "SUMMER_L_b2_b3", 890, 934, 908, 934, color=BLUE, width=2.5)
     label(slide, "SUMMER_T_b3_title", 908, 860, 226, 20, "检测结果", size=10,
