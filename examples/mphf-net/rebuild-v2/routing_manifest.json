@@ -1,5 +1,6 @@
 {
   "routing_audit": {
+    "min_connector_count": 68,
     "routes": [
       {
         "connector": "FIG_L_bb_to_c5",

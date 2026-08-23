@@ -30,3 +30,19 @@
 build_v2.py(可复跑)、mphf_net_v2.pptx(可编辑,等轴测样式)、
 mphf_net_v2.bas(VBA)、scene-manifest.json、routing/layering/text 三份
 审计 manifest、assets/01_R1_pcb.png + crops.json、preview.png(诊断预览)。
+
+## 箭头覆盖补齐(2026-08-23 第二轮)
+
+用户对照发现多面板缺箭头。根因:审计缺覆盖率维度(该画没画不可见),
+已在 skill 层新增 min_connector_count 清点门禁(commit 46a2814)。本轮补:
+
+- Neck 跨层虚线改为原图 4 条拓扑:fusion1→+P5、fusion1→UP2、
+  fusion2→+P4、fusion2→+P3(删自造的 fusion1→fusion2 直线),并改
+  FIG_L_ 前缀纳入锚定/清点审计;
+- 模块一:CSP→三分支扇出 3 条 + 三分支→融合扇入 3 条(原为单轴线);
+- 模块三:Fh/Fl grid→高低频分支 2 条;
+- Decoder 方块序列连线:Head 5 段 + b2 4 段。
+
+验收:connector audit passed(68 条被审计,min_connector_count=68 随
+构建落盘防缩水);layering/text/editability passed;mad 0.0818 /
+SSIM 0.4656(逐轮 0.425→0.455→0.464→0.466)。

@@ -131,13 +131,16 @@
       "FIG_L_neck_losc_addp4",
       "FIG_L_neck_addp4_down2",
       "FIG_L_neck_down2_addp3",
-      "FIG_LD_fusion1_addp5_1",
-      "FIG_LD_fusion1_addp5_2",
-      "FIG_LD_fusion1_addp5_3",
-      "FIG_LD_fusion2_addp3_1",
-      "FIG_LD_fusion2_addp3_2",
-      "FIG_LD_fusion2_addp3_3",
-      "FIG_LD_fusion1_fusion2_1",
+      "FIG_L_fusion1_addp5_1",
+      "FIG_L_fusion1_addp5_2",
+      "FIG_L_fusion1_addp5_3",
+      "FIG_L_fusion1_up2_1",
+      "FIG_L_fusion1_up2_2",
+      "FIG_L_fusion2_addp4_1",
+      "FIG_L_fusion2_addp4_2",
+      "FIG_L_fusion2_addp4_3",
+      "FIG_L_fusion2_addp3_1",
+      "FIG_L_fusion2_addp3_2",
       "FIG_E_neck_note_cga",
       "FIG_T_neck_note_cga",
       "FIG_E_neck_note_losc",
@@ -165,6 +168,11 @@
       "FIG_E_head_dec_sq_4",
       "FIG_E_head_dec_sq_5",
       "FIG_E_head_dec_sq_dots",
+      "FIG_L_head_dec_link1",
+      "FIG_L_head_dec_link2",
+      "FIG_L_head_dec_link3",
+      "FIG_L_head_dec_link4",
+      "FIG_L_head_dec_link5",
       "FIG_L_head_dec_out",
       "FIG_E_head_out",
       "FIG_T_head_out",
@@ -232,8 +240,12 @@
       "FIG_T_m1_ema",
       "FIG_T_m1_out",
       "FIG_L_m1_f1",
-      "FIG_L_m1_f2",
-      "FIG_L_m1_f3",
+      "FIG_L_m1_fan_out0",
+      "FIG_L_m1_fan_in0",
+      "FIG_L_m1_fan_out1",
+      "FIG_L_m1_fan_in1",
+      "FIG_L_m1_fan_out2",
+      "FIG_L_m1_fan_in2",
       "FIG_L_m1_f4",
       "FIG_L_m1_f5",
       "FIG_T_m1_p0",
@@ -290,6 +302,8 @@
       "FIG_G_m3_out_v2",
       "FIG_G_m3_out_h1",
       "FIG_T_m3_out",
+      "FIG_L_m3_in_high",
+      "FIG_L_m3_in_low",
       "FIG_L_m3_f1_1",
       "FIG_L_m3_f1_2",
       "FIG_L_m3_f2",
@@ -329,6 +343,10 @@
       "FIG_E_b2_sq2_3",
       "FIG_E_b2_sq2_4",
       "FIG_E_b2_sq2_dots",
+      "FIG_L_b2_dec_link1",
+      "FIG_L_b2_dec_link2",
+      "FIG_L_b2_dec_link3",
+      "FIG_L_b2_dec_link4",
       "FIG_E_b2_last",
       "FIG_L_b2_flow",
       "FIG_L_b1_b2",
@@ -3287,7 +3305,7 @@
     },
     {
       "kind": "line",
-      "name": "FIG_LD_fusion1_addp5_1",
+      "name": "FIG_L_fusion1_addp5_1",
       "x1": 470.0,
       "y1": 175.0,
       "x2": 493.75,
@@ -3305,7 +3323,7 @@
     },
     {
       "kind": "line",
-      "name": "FIG_LD_fusion1_addp5_2",
+      "name": "FIG_L_fusion1_addp5_2",
       "x1": 493.75,
       "y1": 175.0,
       "x2": 493.75,
@@ -3323,7 +3341,7 @@
     },
     {
       "kind": "line",
-      "name": "FIG_LD_fusion1_addp5_3",
+      "name": "FIG_L_fusion1_addp5_3",
       "x1": 493.75,
       "y1": 113.75,
       "x2": 549.375,
@@ -3341,7 +3359,43 @@
     },
     {
       "kind": "line",
-      "name": "FIG_LD_fusion2_addp3_1",
+      "name": "FIG_L_fusion1_up2_1",
+      "x1": 441.25,
+      "y1": 184.375,
+      "x2": 441.25,
+      "y2": 215.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "weight": 1.0,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "neck"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_fusion1_up2_2",
+      "x1": 441.25,
+      "y1": 215.0,
+      "x2": 385.0,
+      "y2": 215.0,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "weight": 1.0,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "neck"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_fusion2_addp4_1",
       "x1": 470.0,
       "y1": 262.5,
       "x2": 493.75,
@@ -3359,10 +3413,46 @@
     },
     {
       "kind": "line",
-      "name": "FIG_LD_fusion2_addp3_2",
+      "name": "FIG_L_fusion2_addp4_2",
       "x1": 493.75,
       "y1": 262.5,
       "x2": 493.75,
+      "y2": 213.75,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "weight": 1.0,
+      "dash": true,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "neck"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_fusion2_addp4_3",
+      "x1": 493.75,
+      "y1": 213.75,
+      "x2": 549.375,
+      "y2": 213.75,
+      "color": [
+        120,
+        126,
+        140
+      ],
+      "weight": 1.0,
+      "dash": true,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "neck"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_fusion2_addp3_1",
+      "x1": 441.25,
+      "y1": 271.875,
+      "x2": 441.25,
       "y2": 292.5,
       "color": [
         120,
@@ -3377,29 +3467,11 @@
     },
     {
       "kind": "line",
-      "name": "FIG_LD_fusion2_addp3_3",
-      "x1": 493.75,
+      "name": "FIG_L_fusion2_addp3_2",
+      "x1": 441.25,
       "y1": 292.5,
       "x2": 549.375,
       "y2": 292.5,
-      "color": [
-        120,
-        126,
-        140
-      ],
-      "weight": 1.0,
-      "dash": true,
-      "arrow_end": true,
-      "arrow_begin": false,
-      "group": "neck"
-    },
-    {
-      "kind": "line",
-      "name": "FIG_LD_fusion1_fusion2_1",
-      "x1": 441.25,
-      "y1": 184.375,
-      "x2": 441.25,
-      "y2": 253.125,
       "color": [
         120,
         126,
@@ -3989,6 +4061,96 @@
       "margin": 0,
       "font_name": "PingFang SC",
       "rotation": 0,
+      "group": "head"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_head_dec_link1",
+      "x1": 705.0,
+      "y1": 216.875,
+      "x2": 709.375,
+      "y2": 216.875,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "head"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_head_dec_link2",
+      "x1": 718.125,
+      "y1": 216.875,
+      "x2": 722.5,
+      "y2": 216.875,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "head"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_head_dec_link3",
+      "x1": 731.25,
+      "y1": 216.875,
+      "x2": 735.625,
+      "y2": 216.875,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "head"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_head_dec_link4",
+      "x1": 744.375,
+      "y1": 216.875,
+      "x2": 748.75,
+      "y2": 216.875,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "head"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_head_dec_link5",
+      "x1": 757.5,
+      "y1": 216.875,
+      "x2": 761.875,
+      "y2": 216.875,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
       "group": "head"
     },
     {
@@ -5488,7 +5650,43 @@
     },
     {
       "kind": "line",
-      "name": "FIG_L_m1_f2",
+      "name": "FIG_L_m1_fan_out0",
+      "x1": 75.0,
+      "y1": 407.5,
+      "x2": 33.75,
+      "y2": 421.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "m1"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_m1_fan_in0",
+      "x1": 33.75,
+      "y1": 437.5,
+      "x2": 75.0,
+      "y2": 447.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "m1"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_m1_fan_out1",
       "x1": 75.0,
       "y1": 407.5,
       "x2": 75.0,
@@ -5506,8 +5704,44 @@
     },
     {
       "kind": "line",
-      "name": "FIG_L_m1_f3",
+      "name": "FIG_L_m1_fan_in1",
       "x1": 75.0,
+      "y1": 437.5,
+      "x2": 75.0,
+      "y2": 447.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "m1"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_m1_fan_out2",
+      "x1": 75.0,
+      "y1": 407.5,
+      "x2": 116.25,
+      "y2": 421.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "m1"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_m1_fan_in2",
+      "x1": 116.25,
       "y1": 437.5,
       "x2": 75.0,
       "y2": 447.5,
@@ -6586,6 +6820,42 @@
     },
     {
       "kind": "line",
+      "name": "FIG_L_m3_in_high",
+      "x1": 631.25,
+      "y1": 400.0,
+      "x2": 653.75,
+      "y2": 400.0,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "m3"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_m3_in_low",
+      "x1": 631.25,
+      "y1": 452.5,
+      "x2": 653.75,
+      "y2": 452.5,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 1.0,
+      "dash": false,
+      "arrow_end": true,
+      "arrow_begin": false,
+      "group": "m3"
+    },
+    {
+      "kind": "line",
       "name": "FIG_L_m3_f1_1",
       "x1": 713.75,
       "y1": 400.0,
@@ -7573,6 +7843,78 @@
       "margin": 0,
       "font_name": "PingFang SC",
       "rotation": 0,
+      "group": "bottom"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_b2_dec_link1",
+      "x1": 375.0,
+      "y1": 581.25,
+      "x2": 380.625,
+      "y2": 581.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "bottom"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_b2_dec_link2",
+      "x1": 390.625,
+      "y1": 581.25,
+      "x2": 396.25,
+      "y2": 581.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "bottom"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_b2_dec_link3",
+      "x1": 406.25,
+      "y1": 581.25,
+      "x2": 411.875,
+      "y2": 581.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
+      "group": "bottom"
+    },
+    {
+      "kind": "line",
+      "name": "FIG_L_b2_dec_link4",
+      "x1": 421.875,
+      "y1": 581.25,
+      "x2": 427.5,
+      "y2": 581.25,
+      "color": [
+        40,
+        44,
+        60
+      ],
+      "weight": 0.9,
+      "dash": false,
+      "arrow_end": false,
+      "arrow_begin": false,
       "group": "bottom"
     },
     {

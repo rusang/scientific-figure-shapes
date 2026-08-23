@@ -44,6 +44,7 @@ CUBOID_GEOMETRY: dict[str, dict] = {}
 ROUTES: list[dict] = []
 IGNORE_TEXT: list[str] = []
 IGNORE_DANGLING: list[str] = []
+CANVAS_OPS: list = []
 
 
 def px(value: float) -> float:
@@ -328,12 +329,15 @@ def build() -> Path:
         arrow(canvas, "FIG_L_neck_losc_addp4", 892, 314, 892, 329)
         arrow(canvas, "FIG_L_neck_addp4_down2", 892, 355, 892, 390)
         arrow(canvas, "FIG_L_neck_down2_addp3", 892, 418, 892, 455)
-        # CGAFusion 输出 -> 右侧拼接点：正交虚线（贴原图跨层连接）
-        ortho(canvas, "FIG_LD_fusion1_addp5",
+        # 跨层虚线（原图 4 条）：CGAFusion 输出分发到拼接点与下级 UP
+        ortho(canvas, "FIG_L_fusion1_addp5",
               [(752, 280), (790, 280), (790, 182), (879, 182)])
-        ortho(canvas, "FIG_LD_fusion2_addp3",
-              [(752, 420), (790, 420), (790, 468), (879, 468)])
-        ortho(canvas, "FIG_LD_fusion1_fusion2", [(706, 295), (706, 405)])
+        ortho(canvas, "FIG_L_fusion1_up2",
+              [(706, 295), (706, 344), (616, 344)])
+        ortho(canvas, "FIG_L_fusion2_addp4",
+              [(752, 420), (790, 420), (790, 342), (879, 342)])
+        ortho(canvas, "FIG_L_fusion2_addp3",
+              [(706, 435), (706, 468), (879, 468)])
 
         canvas.round_rect(px(506), px(508), px(250), px(28),
                           fill=(235, 242, 255), line=BLUE, weight=0.8,
@@ -368,6 +372,10 @@ def build() -> Path:
                     "Transformer Decoder × 6 层", size=8.5, color=INK,
                     bold=True, name="FIG_T_head_dec")
         square_row(canvas, "FIG_E_head_dec_sq", 1114, 340, 6, 14, 7)
+        for index in range(5):
+            x = 1114 + 14 + index * 21
+            canvas.line(px(x), px(347), px(x + 7), px(347), color=INK,
+                        weight=0.9, name=f"FIG_L_head_dec_link{index + 1}")
         arrow(canvas, "FIG_L_head_dec_out", 1206, 400, 1206, 432)
         route("FIG_L_head_dec_out", "FIG_E_head_out", "top",
               source="FIG_E_head_dec", source_edge="bottom")
@@ -471,9 +479,14 @@ def build() -> Path:
                     color=(200, 100, 30), name="FIG_T_m1_ema")
         canvas.text(px(60), px(790), px(120), px(20), "输出特征", size=8,
                     color=INK, name="FIG_T_m1_out")
-        for index, (y1, y2) in enumerate(((616, 622), (652, 674), (700, 716),
-                                          (742, 754), (780, 790)), start=1):
-            arrow(canvas, f"FIG_L_m1_f{index}", 120, y1, 120, y2, weight=1.0)
+        arrow(canvas, "FIG_L_m1_f1", 120, 616, 120, 622, weight=1.0)
+        for index, bx in enumerate((54, 120, 186)):
+            arrow(canvas, f"FIG_L_m1_fan_out{index}", 120, 652, bx, 674,
+                  weight=1.0)
+            arrow(canvas, f"FIG_L_m1_fan_in{index}", bx, 700, 120, 716,
+                  weight=1.0)
+        arrow(canvas, "FIG_L_m1_f4", 120, 742, 120, 754, weight=1.0)
+        arrow(canvas, "FIG_L_m1_f5", 120, 780, 120, 790, weight=1.0)
         for index, item in enumerate(("多尺度并行感知，捕获不同大小的缺陷信息",
                                       "增强细节特征表达，保留边缘和纹理",
                                       "EMA 注意力增强关键特征，抑制冗余信息")):
@@ -530,6 +543,8 @@ def build() -> Path:
         grid(canvas, "FIG_G_m3_out", 1166, 730, 52, 40, 3, 2)
         canvas.text(px(1140), px(776), px(110), px(18), "输出特征", size=8,
                     color=INK, name="FIG_T_m3_out")
+        arrow(canvas, "FIG_L_m3_in_high", 1010, 640, 1046, 640, weight=1.0)
+        arrow(canvas, "FIG_L_m3_in_low", 1010, 724, 1046, 724, weight=1.0)
         ortho(canvas, "FIG_L_m3_f1", [(1142, 640), (1176, 640), (1176, 672)],
               color=INK, dash=False, weight=1.0)
         arrow(canvas, "FIG_L_m3_f2", 1142, 724, 1176, 690, weight=1.0)
@@ -567,6 +582,10 @@ def build() -> Path:
                     name="FIG_T_b2_dec")
         square_row(canvas, "FIG_E_b2_sq2", 584, 922, 5, 16, 9,
                    fill=(140, 110, 214))
+        for index in range(4):
+            x = 584 + 16 + index * 25
+            canvas.line(px(x), px(930), px(x + 9), px(930), color=INK,
+                        weight=0.9, name=f"FIG_L_b2_dec_link{index + 1}")
         canvas.rect(px(792), px(922), px(16), px(16), fill=(140, 110, 214),
                     line=(110, 82, 178), weight=0.6, name="FIG_E_b2_last")
         arrow(canvas, "FIG_L_b2_flow", 516, 930, 584, 930, weight=1.2)
@@ -603,6 +622,7 @@ def build() -> Path:
                         align="left", color=INK, name=f"FIG_T_b4_tail{index}")
 
     out = HERE / "mphf_net_v2.pptx"
+    CANVAS_OPS.extend(canvas.ops)
     canvas.save(out)
     canvas.export_scene_manifest(HERE / "scene-manifest.json")
     canvas.emit_vba(HERE / "mphf_net_v2.bas")
@@ -629,8 +649,12 @@ def _write_manifests() -> None:
     }
     (HERE / "layering_manifest.json").write_text(
         json.dumps(layering, ensure_ascii=False, indent=2), encoding="utf-8")
+    audited = sum(
+        1 for op in CANVAS_OPS
+        if op.kind == "line" and "_L_" in str(op.values.get("name", "")))
     routing = {
         "routing_audit": {
+            "min_connector_count": audited,
             "routes": ROUTES,
             "ignore_text_shapes": IGNORE_TEXT,
             "ignore_dangling": IGNORE_DANGLING,
