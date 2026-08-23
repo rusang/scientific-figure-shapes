@@ -144,14 +144,30 @@ def _point_in_rect(
             and top - tolerance <= y <= bottom + tolerance)
 
 
+def _point_segment_distance(
+    point: tuple[float, float],
+    start: tuple[float, float],
+    end: tuple[float, float],
+) -> float:
+    px, py = point
+    x1, y1 = start
+    x2, y2 = end
+    dx, dy = x2 - x1, y2 - y1
+    length_sq = dx * dx + dy * dy
+    if length_sq < 1e-12:
+        return math.hypot(px - x1, py - y1)
+    t = max(0.0, min(1.0, ((px - x1) * dx + (py - y1) * dy) / length_sq))
+    return math.hypot(px - (x1 + t * dx), py - (y1 + t * dy))
+
+
 def _endpoint_anchored(
     point: tuple[float, float],
     other: tuple[float, float],
     anchor_rects: list[tuple[float, float, float, float]],
-    peer_endpoints: list[tuple[float, float]],
+    peer_segments: list[tuple[tuple[float, float], tuple[float, float]]],
     tolerance: float,
 ) -> bool:
-    """端点锚定：贴/扎进某 shape，或与另一连接线端点接续。
+    """端点锚定：贴/扎进某 shape，或接续另一连接线（含 trunk 中段 T 形接续）。
 
     整条线深居某 shape 内部时该 shape 视为背景容器，不提供锚定。
     """
@@ -163,9 +179,8 @@ def _endpoint_anchored(
                 and _point_in_rect(other, inner, 0.0)):
             continue
         return True
-    for candidate in peer_endpoints:
-        if math.hypot(point[0] - candidate[0],
-                      point[1] - candidate[1]) <= tolerance:
+    for seg_start, seg_end in peer_segments:
+        if _point_segment_distance(point, seg_start, seg_end) <= tolerance:
             return True
     return False
 
@@ -303,8 +318,8 @@ def audit_presentation(
                     seen_segments[key] = (connector.name, connector)
                 if connector.name not in ignore_dangling:
                     peers = [
-                        point for name, points in endpoint_map.items()
-                        if name != connector.name for point in points
+                        points for name, points in endpoint_map.items()
+                        if name != connector.name
                     ]
                     for tag, point, other in (("start", start, end),
                                               ("end", end, start)):
