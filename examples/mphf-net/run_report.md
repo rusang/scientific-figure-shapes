@@ -33,3 +33,21 @@ ignore_text_shapes 窄豁免(契约允许的 intentional 例外,非全局绕过)
 
 - PCB 电路板图为图像 crop(纹理密集,按 Crop Contract 保留)。
 - 其余全部为可编辑 shape/text/connector。
+
+## 基准示例升级(2026-08-23,用户拍板 a1)
+
+基准换用 codex v6 重建稿(视觉保真更优:mad 0.0644 / SSIM 0.601,
+对比本目录教学版 0.0873 / 0.425),经门禁修复后入库:
+
+- `baseline_v6.pptx`:在 v6 上修 4 处——SUMMER_L_line_198 终点缩回
+  「输出特征」文字框顶边(消 collision);line_220 / line_146 终点各延
+  1.9 / 6.9pt 贴附目标(消真悬空);line_145 误延长已还原(柱状图轴线
+  出头属设计)。
+- `baseline_routing_manifest.json`:28 条 ignore_dangling 窄豁免
+  (decoder/方块行装饰短须、图例样例线、盾牌对勾、示意箭头、轴线出头)。
+- `baseline_layering_manifest.json`:沿用 codex v6 layering manifest。
+- 验收:connector audit passed(dangling 0 / collisions 0)、layering
+  audit passed、mad 0.0644 / SSIM 0.601 与修前持平(微修视觉无损)。
+
+本目录 `build_mphf_deck.py` 教学版保留,作为脚本化重建 + 全门禁
+0-findings 的可复跑样例;发布级观感以 baseline_v6 为准。

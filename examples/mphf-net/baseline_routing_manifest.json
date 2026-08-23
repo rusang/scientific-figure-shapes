@@ -1,0 +1,34 @@
+{
+  "routing_audit": {
+    "ignore_dangling": [
+      "SUMMER_L_line_127",
+      "SUMMER_L_line_128",
+      "SUMMER_L_line_130",
+      "SUMMER_L_line_131",
+      "SUMMER_L_line_133",
+      "SUMMER_L_line_134",
+      "SUMMER_L_line_136",
+      "SUMMER_L_line_137",
+      "SUMMER_L_line_139",
+      "SUMMER_L_line_140",
+      "SUMMER_L_line_178",
+      "SUMMER_L_line_180",
+      "SUMMER_L_line_326",
+      "SUMMER_L_line_330",
+      "SUMMER_L_line_331",
+      "SUMMER_L_line_333",
+      "SUMMER_L_line_334",
+      "SUMMER_L_line_336",
+      "SUMMER_L_line_337",
+      "SUMMER_L_line_339",
+      "SUMMER_L_line_340",
+      "SUMMER_L_line_342",
+      "SUMMER_L_line_343",
+      "SUMMER_L_line_347",
+      "SUMMER_L_line_348",
+      "SUMMER_L_advantage_shield_check_1",
+      "SUMMER_L_advantage_shield_check_2",
+      "SUMMER_L_line_145"
+    ]
+  }
+}

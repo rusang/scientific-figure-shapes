@@ -1,0 +1,68 @@
+{
+  "layering_audit": {
+    "min_face_color_delta": 8,
+    "face_gap_tolerance_pt": 1.0,
+    "min_size_growth": 1.02,
+    "min_overlap_area_pt2": 1.0,
+    "cuboids": [
+      {
+        "id": "c5",
+        "front": "SUMMER_E_backbone_c5_front",
+        "top": "SUMMER_E_backbone_c5_top",
+        "right": "SUMMER_E_backbone_c5_right",
+        "gradient_faces": ["front", "top", "right"],
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_bounds_pt": {
+          "front": [175.688, 108.25, 22.437, 19.125],
+          "top": [175.688, 100.562, 28.25, 7.687],
+          "right": [198.125, 101.0, 5.813, 26.375]
+        }
+      },
+      {
+        "id": "c4_light",
+        "front": "SUMMER_E_backbone_c4_light_front",
+        "top": "SUMMER_E_backbone_c4_light_top",
+        "right": "SUMMER_E_backbone_c4_light_right",
+        "gradient_faces": ["front", "top", "right"],
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_bounds_pt": {
+          "front": [172.375, 161.75, 22.812, 24.688],
+          "top": [172.375, 150.312, 30.687, 11.438],
+          "right": [195.188, 150.312, 7.875, 36.125]
+        }
+      },
+      {
+        "id": "c4_deep",
+        "front": "SUMMER_E_backbone_c4_deep_front",
+        "top": "SUMMER_E_backbone_c4_deep_top",
+        "right": "SUMMER_E_backbone_c4_deep_right",
+        "gradient_faces": ["front", "top", "right"],
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_bounds_pt": {
+          "front": [166.125, 200.438, 29.5, 24.187],
+          "top": [166.125, 181.312, 43.187, 19.125],
+          "right": [195.625, 181.312, 13.687, 43.312]
+        }
+      },
+      {
+        "id": "c3",
+        "front": "SUMMER_E_backbone_c3_front",
+        "top": "SUMMER_E_backbone_c3_top",
+        "right": "SUMMER_E_backbone_c3_right",
+        "gradient_faces": ["front", "top", "right"],
+        "bounds_tolerance_pt": 1.0,
+        "expected_face_bounds_pt": {
+          "front": [157.875, 243.375, 37.75, 33.125],
+          "top": [157.875, 214.438, 58.062, 28.937],
+          "right": [195.625, 214.438, 20.312, 62.062]
+        }
+      }
+    ],
+    "size_order": ["c5", "c4_light", "c4_deep", "c3"],
+    "z_order": ["c3", "c4_deep", "c4_light", "c5"],
+    "overlap_pairs": [
+      ["c4_light", "c4_deep"],
+      ["c4_deep", "c3"]
+    ]
+  }
+}
